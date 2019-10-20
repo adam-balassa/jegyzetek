@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <title>Grafika</title>
+    <style>
+        :root{
+            --dark-blue: #4c7783;
+            --white: #f2f0f6;
+            --pink: #e67b82;
+            --dark-pink: #c26168;
+            --blue: #65cbc3;
+            --red: rgb(190, 50, 50);
+            --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+        }
+        body{
+            background-color: var(--white);
+            margin: 0!important;
+            padding: 0;
+        }
+        *, body{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: inherit;
+        }
+        h2{
+            color: var(--dark-pink);
+            position: relative;
+            padding-bottom: 0.6rem;
+            font-size: 1.6rem;
+        }
+
+        h2::after{
+            position: absolute;
+            bottom: 0;
+            margin-top: 10px;
+            content: ' ';
+            background-color: var(--dark-pink);
+            width: 100%;
+            height: 1px;
+            left: 0;
+        }
+
+        .header{
+            padding: 5vh 5vw;
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+
+        main {
+            padding: 10vh 10vw;
+            font-weight: 400;
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        ul{
+            margin-bottom: 0.3rem;
+        }
+        a, a:hover{
+            color: var(--dark-blue);
+            text-decoration: none;
+            transition: all ease-in-out .12s;
+        }
+        a:hover{
+            color: var(--blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Számítógépes grafika</h1>
+    </div>
+    <main>
+        <h2>Geometria és algebra</h2>
+        <ul>
+            <li>Euklideszi geometria</li>
+            <ul>
+                <li>Axiomák</li>
+                <ul>
+                    <li>Alapfogalmak (amikre nincs definíció)</li>
+                    <ul>
+                        <li>Méret</li>
+                        <li>Egynes</li>
+                        <li>Pont</li>
+                    </ul>
+                    <li>Alapigazságok</li>
+                    <ol>
+                        <li>2 egyenes pontosan akkor párhozamos, ha nincs metszéspotnjuk</li>
+                        <li>2 pont meghatároz egy egyenest, 1 egyenesnek legalább 2 pontja van</li>
+                        <li>A részek összege az egész mérete</li>
+                        <li>Egybevágó dolgok mérete megegyezik</li>
+                    </ol>
+                </ul>
+                <li>Tételek</li>
+                <ul>
+                    <li>Az axiomákból és egymásból bizonyíthatók</li>
+                </ul>
+                <ol>
+                    <li>Pitagorasz</li>
+                    <li>3szög szögeinek összege 180°</li>
+                    <li>Két egyenesnek legfeljebb 1 metszéspontja van</li>       
+                    <li>Ha egy egyenes 2 másikat ugyanabban a szögben metsz, akkor a 2 másik párhuzamos</li>         
+                </ol>
+                <li>Vektoralgebra</li>
+                <ul>
+                    <li>Vektorok összege, különbsége</li>
+                    <li>Skálázás, skaláris szorzat, kereszt szorzat</li>
+                    <li>Vektor normája</li>
+                </ul>
+                <li>Descartes koordináta rendszer</li>
+                <ul>
+                    <li>Felveszünk 2 egység hosszú merőleges vektort (i, j)</li>
+                    <li>Minden vektor (x, y) alakban, ahol a vektor x*i + y*j</li>
+                    <li>Vektor műveletek descartes rendszerben</li>
+                    <li>Egyenes</li>
+                    <ul>
+                        <li>Olyan r(x, y) pontok halmaza, melyekre n * (r - r0) = 0</li>
+                        <ul>
+                            <li>Ha egy pont az egynesen van, akkor r - r0 vektor párhuzamos az egynessel</li>
+                            <li>Egy ilyen párhuzamos merőleges a normálvektorra</li>
+                        </ul>
+                        <li>ax + by + c = 0 vagyis [x, y, 1] * [a, b, c] = 0</li>
+                        <ul>
+                            <li>Egy egyenes modellezhető egy 3d vektorral (a, b, c)</li>
+                        </ul>
+                    </ul>
+                    <li>Sík</li>
+                    <ul>
+                        <li>3D koordinta rendszerben (kell egy k egységvektor is)</li>
+                        <ul>
+                            <li>Ekkor az egynes egyenlete r = r0 + &alpha; * v, ahol v egy irányvektor</li>
+                        </ul>
+                        <li>n * (r - r0) = 0 már egy sík</li>
+                        <li>[x, y, z, 1] * [a, b, c, d] = 0</li>
+                        <li>Egy sík modellezhető egy 4d vektorral (a, b, c, d)</li>
+                    </ul>
+                    <li>Kör</li>
+                    <ul>
+                        <li>Kör egyenelete (<u>r</u> - <u>c</u>)<sup>2</sup> = r<sup>2</sup></li>
+                        <li>Esetleg szögfüggvényekkel r(&Phi;) = c + (r * sin(&Phi;), r * cos(&Phi;) )(&Phi; &Element; [0, 2&pi;])</li>
+                    </ul>
+                    <li>Ezen egyenletekkel megadható, egy pont rajta van-e az alakzaton / az alakzat által közbezárt síkon</li>
+                    <ul>
+                        <li>Poligon esetében: irányítsuk az éleket és nézzük meg, hogy a keresztszorzatuk felfele vagy lefele mutat</li>
+                        <li>Irányítsuk az éleket és nézzük meg h a skaláris szorzatuk pozitív-e</li>
+                    </ul>
+                    <li>Tetszőleges függvény</li>
+                    <ul>
+                        <li>Implicit egyenlet</li>
+                        <ul>
+                            <li>Rendezzük 0-ra az x, y koordináták közti összefüggést</li>
+                            <li>Implementáció: keressük azon x,y okat melyekre a fv értéke (kb) 0</li>
+                        </ul>
+                        <li>Paraméteres egyenlet</li>
+                        <ul>
+                            <li>Adjunk egy x(t) és egy y(t) függvényt amelyek visszaadják az x és y értékeket (t &Element; [-&infin;, &infin;])</li>
+                            <li>Szabadformájú görbék</li>
+                            <ul>
+                                <li>Nincs matematikai összefüggés x(t) és y(t)-re, de felvennénk pontokat amik között interpolálnánk</li>
+                                <li>Interpoláció</li>
+                                <ul>
+                                    <li>Ne hullámozzon összevissza</li>
+                                    <li>Legyen folytonos a 2. deriváltja</li>
+                                    <li>Lokális vezérelhetőség</li>
+                                </ul>
+                                <li>Approximáció</li>
+                                <ul>
+                                    <li>A kontrolpontok irányelvek a görbéhez, de nem feltétlenül részei annak</li>
+                                </ul>
+                                <li>Lagrange interpoláció</li>
+                                <ul>
+                                    <li>r(t) R&rArr;R<sup>2</sup> függvényt keresünk</li>
+                                    <li>A pontok legynek rajta a görbén (r(tk) = rk)</li>
+                                    <li>Minden kontrolpont beleszámít valamilyen Lk súllyal r(t) értékébe</li>
+                                    <li>Lk(t) legyen (&prod;(t - ti) / &prod;(tk - ti))</li>
+                                    <li>r(t) legyen az Lk(t) * rk-k összege</li>
+                                </ul>
+                                <li>Hermite interpoláció</li>
+                                <ul>
+                                    <li>Lagrange interpoláció túlságosan beveszi az összes pontot (sérül a lokális vezérelhetőség)</li>
+                                    <li>Megoldás: vegyük be csak a szomszédos 2 pontot</li>
+                                    <li>Minden ponthoz rendeljünk egy deriváltat amit érint a görbe a 2 pontban</li>
+                                </ul>
+                                <li>Bezier approximáció</li>
+                                <ul>
+                                    <li>Legyen csak approcimáció, de nem hullámozzon</li>
+                                    <li>Minden kontrollponthoz rendeljünk egy súlyt, és legyen ez egy baricentrikus koordináta</li>
+                                    <li>A súly t-től függ, mindig (n alatt az k)*t^k * (1 - t)^(1 - k)</li>
+                                    <li>Vagyis az össz súly mindig 0, r(t) simán &sum; Bk(t) * rk</li>
+                                </ul>
+                                <li>Catmull-Rom görbe</li>
+                                <ul>
+                                    <li>Használjuk a Hermite interpolációt, a sebességek pedig legyenek a pontok közti súlyozott érintő</li>
+                                    <li>vi = avg( (r[i+1] - r[i])/t[i+1]-t[i],  r[i] - r[i-1])/t[i]-t[i-1])</li>
+                                    <li>vi-ket esetleg felskálázhatjuk egy 1 - &tau;-val 1/2 helyett</li>
+                                    <li>&tau; a tenzió</li>
+                                    <li>Az első és utolsó sebesség explicit (legyen mondjuk 0, vagy az elsőből másodikba mutató vektor)</li>
+                                </ul>
+                            </ul>
+                        </ul>
+                        <li>3D felületek</li>
+                        <ul>
+                            <li>Ugyanúgy mint 2D-ben</li>
+                            <li>Implicit egyenlet, vagy (u, v)-től függő parametrikus egyenlet, esetleg (x, y)-tól függő magasságmező (explicit egyenlet)</li>
+                            <li>Kihúzás</li>
+                            <ul>
+                                <li>Definiálunk egy b(u) és egy s(v) függvényt, r(u, v) ezek összege</li>
+                                <li>Ez olyan lesz, mintha a b(u) körül végighúznánk az s(v) alakzatot és az így kapott alakzat lesz a felület</li>
+                            </ul>
+                            <li>Forgatás</li>
+                            <ul>
+                                <li>z körül forgatunk</li>
+                                <li>Definiáljuk a px(u) és pz(u) függvényeket</li>
+                                <li>az x-z függvényt forgatjuk meg z körül</li>
+                                <li>x(u, v) = px(u) * sin(v)</li>
+                                <li>y(u, v) = px(u) * cos(v)</li>
+                                <li>z(u, v) = pz(u)</li>
+                            </ul>
+                            <li>Tórusz</li>
+                            <ul>
+                                <li>Vegyük px pz-nek a kör szinuszos egyenletét</li>
+                                <li>Forgatás</li>
+                            </ul>
+                            <li>Kontrollpontok</li>
+                            <ul>
+                                <li>Ugyanúgy vmi 3d interpoláció vagy approximáció közéjük</li>
+                                <li>Most u, v-túl függő interpoláció kell</li>
+                                <li>Catmull Rom féle subdivision</li>
+                                <ul>
+                                    <li>Adott egy poligon háló</li>
+                                    <li>A pontok közé nem interpolál, hanem új pontokat vesz fel</li>
+                                    <li>Felveszi minden alakzat súlypontját, melyet összeköt minden oldalával</li>
+                                    <li>A pontot a négyszögre merőleges irányba a környező pontok alapján súlyozva kihúzza</li>
+                                    <li>Finomítja a térhálókat</li>
+                                </ul>
+                                <li>Honnan tudjuk, hogy egy térháló helyes?</li>
+                                <ul>
+                                    <li>Minden él tökéletesen érintkezik, nincsenek nem a felületen futó élek stb.</li>
+                                    <li>Euler Poincarre tétel (síkban rajzolható gráfokra)</li>
+                                    <ul>
+                                        <li>Minden térháló síkban rajzolható és minden síkbanrajzolható (öf.) gráfból lehet térháló</li>
+                                        <li>Ezen gráfokra n + l = t + k (k = 2, ha öf.)</li>
+                                    </ul>
+                                    <li>Induljunk ki egy téglatestből és csináljunk transzformációkat amik tartják az euler feltételt</li>
+                                    <li>Euler operátorok</li>
+                                    <ol>
+                                        <li>Lapkihúzás (téglalapon belül új téglalap, melynek megfelelő csúcsai össze vannak kötve)</li>
+                                        <li>Lap felvágás (új él két egyazon laphoz tartozó él 1-1 csúcsa közé)</li>
+                                        <li>Csúcs vágás / él törlés</li>
+                                    </ol>
+                                </ul>
+                            </ul>
+                        </ul>
+                    </ul>
+                </ul>
+                <li>Baricentrikus koordiánta rendszer</li>
+                <ul>
+                    <li>Felveszünk kdb pontot (egy vektort és egy súlyt), az ezek által meghatározott pont a rendszer súlypontja</li>
+                    <li>A baricentrikus pontok konvex burkába képződik le az r pont</li>
+                    <li>Válasszuk a súlyokat úgy, hogy összegük 1 legyen</li>
+                    <li>Ekkor r = &sum; m<sub>i</sub> * r<sub>i</sub></li>
+                    <li>Homogén rendszer</li>
+                    <ul>
+                        <li>Ha a baricentrikus pontok súlyát ugyanazzal a skalárral skálázzuk, a tömegközéppont ugyanaz marad</li>
+                    </ul>
+                    <li>Egyenes</li>
+                    <ul>
+                        <li>Felveszünk 2 pontot (x1, y1), (x2, y2) t és 1-t súlyokkal</li>
+                        <li>Ha t végigfut a [0, 1] intervallumon, akkor a leképződő pontok a 2 pont közti szakasz</li>
+                        <li>Ha t a [-&infin;, &infin;] intervallumon fut végig akkor a 2 pont közti egyenes</li>
+                    </ul>
+                </ul>
+            </ul>
+            <li>Gömbi geometria</li>
+            <ul>
+                <li>Pozitív görbület</li>
+                <li>Axiómák</li>
+                <ul>
+                    <li>Ugyanaz, mint Euklidesznél</li>
+                    <li>DE!</li>
+                </ul>
+                <ol>
+                    <li>2 pont NEM határoz meg feltétlenül egy egyenest</li>
+                    <ul>
+                        <li>Egy egynes mindig a főkörön van (legrövidebb út)</li>
+                        <li>Egy átmérő 2 végpontja között végtelen sok főkör megy át</li>
+                    </ul>
+                    <li>2 egyenes mindig pontosan 2 pontban metszi egymást</li>
+                </ol>
+                <li>Tételek</li>
+                <ol>
+                    <li>3szög szögeinek összege > 180°</li>
+                    <li>Pitagorasz a2 + b2 > c2</li>
+                </ol>
+            </ul>
+            <li>Hiperbolikus geometria</li>
+            <ul>
+                <li>Negatív görbület</li>
+                <li>Egy egyenshez több adott ponton átmeni párhuzamos egynes tartozik</li>
+                <li>Tételei pont a gömbi fordítottjai</li>
+            </ul>
+            <li>Projektív geometria</li>
+            <ul>
+                <li>2 egynesnek pontosan 1 metszéspontja van</li>
+                <li>&rarr; Párhuzamos egynesek is metszik egymást az ideális pontban</li>
+                <li>Minden egyenes pontosan 1 ideális ponton megy át</li>
+                <li>2 egyenes pontosan akkor párhuzamos, ha ugyanazon az ideális ponton mennek át</li>
+            </ul>
+            <li>Hiperszámok</li>
+            <ul>
+                <li>Olyanok mint a komplexek, de i * i = 0</li>
+                <li>Ezzel a szabállyal, ha Re(h) a függvényárták, Im(h) a derivált, akkor a szorzás osztás összeadás követik a deriválási szonosságokat</li>
+                <li>Definiáljuk le a nevezetes függvények azonosságait is (az első koordináta a fv értéke, a 2. a derivált fv értéke)</li>
+                <li>Ha számok helyett Clifford számokat használunk, és műveletek helyett a clifford műveleteket, akkor buzi egyszerűen tudunk deriválni</li>
+            </ul>
+            <li>Transzformációk</li>
+            <ul>
+                <li>Komplex algebra</li>
+                <ul>
+                    <li>Műveletek komplex számokkal</li>
+                    <li>Egy komplex számmal való szorzás == forgvatva nyújtás origó körül</li>
+                    <ul>
+                        <li>A nyújtás mértéke a komley szám abszolút értéke</li>
+                        <li>A forgatás szöge, a komplex szám polár koordinátarendszerben is ábrázolt szöge</li>
+                    </ul>
+                    <li>Tetszőleges pont körül forgatás: eltolás origóba + forgatva nyújtás</li>
+                </ul>
+                <li>Kvaterniók</li>
+                <ul>
+                    <li>4D komplex számok (3D komplex algebrában már az összeadás se lenne asszociatív)</li>
+                    <li>i, j, k négyzete -1</li>
+                    <li>Bármely kettő szorzata a harmadik (előjellel)</li>
+                    <li>Mind3 szorzata is -1</li>
+                    <li>Asszociatív (de nem kommutatív) szorzás</li>
+                    <li>Inverze a képletes részeinek ellentettje</li>
+                    <li>Cél: 3D forgatás</li>
+                    <ul>
+                        <li>q = [cos(&alpha; / 2), d], ahol alpha a forgatás szöge, d a tengely</li>
+                    </ul>
+                </ul>
+                </li>Def: függvény amely alakzatot (ponthalmazt) alakzatba képez le</li>
+                <ul>
+                    <li>Szeretnénk h az alakzat típusa ne változzon</li>
+                    <li>Élből élet, pontból pontot</li>
+                    <li>A gemoetria ne változzon: párhuzamosból párhuzamosat, egybevágóból egybevágót stb.</li>
+                </ul>
+                <li>Invariáns transzformációk</li>
+                <ul>
+                    <li>Affin transzformációk</li>
+                    <ul>
+                        <li>Párhuzamos tartás</li>
+                        <li>Lineáris (descartes koordináták szerint)</li>
+                    </ul>
+                    <li>Homogén transzformációk</li>
+                    <ul>
+                        <li>Egyenest egyenesbe (párhuzamos tartás nincs)</li>
+                        <li>Lineáris (homogén koordinátákban)</li>
+                        <li>Az euklideszi térben nincs perspektíva &rarr; használjunk projektív geometriát</li>
+                        <li>Projektív tér szabályait betartják a homogén transzformációk</li>
+                        <ul>
+                            <li>Homogén koordináták</li>
+                            <ul>
+                                <li>[x, y] &rarr; [x, y, 1] &rarr; [Xh, Yh, h]</li>
+                                <li>Xh és Yh legyenek baricentrikus koordináták (0, 1) és (1, 0)ban, 1/h pedig a skálázási tényező</li>
+                                <li>Ideális pontoknál Xh és Yh nem 0-k, de h 0</li>
+                                <li>3D-ben ugyanez</li>
+                                <li>Most a baricentrikus súlyok lehetnek negatívak ("taszítás")</li>
+                            </ul>
+                            <li>Egyenes homogén egyenlete</li>
+                            <ul>
+                                <li>Paremetrikus (t paraméterrel) felveszünk 2 homogén pontot, egyiket t-vel másikat 1-tvel szorozuk</li>
+                            </ul>
+                            <li>Sík ~</li>
+                            <ul>
+                                <li>Implicit: [X, Y, Z, h] × [nx, ny, nz, d] = 0</li>
+                            </ul>
+                        </ul>
+                        <li>Megvalósítás: homogén koordinátákat szorozzunk mátrixokkal</li>
+                        <li>Ha a mátrix utolsó oszlopa (0, 0, 1), akkor a transzformáció affin is</li>
+                        <li>A mátrix sorai</li>
+                        <ol>
+                            <li>Transzformáció az i vektoron</li>
+                            <li>~ a j vektoron</li>
+                            <li>~ az origón</li>
+                        </ol>
+                        <li>Eltolás</li>
+                        <ul>
+                            <li>Utolsó sor az eltolás vektor</li>
+                        </ul>
+                        <li>Forgatás</li>
+                        <ul>
+                            <li>i, j szorzódik cos(&Phi;) sin(&Phi;) illetve -sin(&Phi;) és cos(&Phi;)-vel</li>
+                        </ul>
+                        <li>Skálázás</li>
+                        <ul>
+                            <li>Főátlóban a skálázási tényezők</li>
+                        </ul>
+                        <li>3D forgatás (d tengely körül)</li>
+                        <ul>
+                            <li>Kvaterniókkal</li>
+                            <li>(vagy) Rodriguez formula</li>
+                            <ul>
+                                <li>Felbontjuk a forgatandó vektorunkat 2 merőleges és egy d-vel párhuzamos komponensre</li>
+                                <li>A párhuzamossal nem csinálunk semmit</li>
+                                <li>A merőlegeseket forgatjuk (sin(&Phi;) és cos(&Phi;)-vel szorozzuk, mint 2D-ben)</li>
+                                <li>Honnan szerzünk merőlegeseket? keresztszorzás illetve r - "r vetülete d-re"</li>
+                            </ul>
+                        </ul>
+                        <li>Vetítés</li>
+                        <ul>
+                            <li>Ez már nem affin</li>
+                            <li>Utolsó oszlop p, q, 0 (am identitás mátrix)</li>
+                            <li>Faszom tudja mi p és q</li>
+                            <li>Átfordulási probléma</li>
+                            <ul>
+                                <li>Szakaszt vetítek középpontosan</li>
+                                <li>A képe a szakasz "komplementere", vagyis az egyenes végtelenben lévő részei</li>
+                            </ul>
+                        </ul>
+                    </ul>
+                </ul>
+            </ul>
+        </ul>
+        <h2>2D képszintézis</h2>
+        <ul>
+            <li>Cél: minden pixelnek szertném tudni a színét</li>
+            <li>Van egy képernyőm, ezen kell megjeleníteni (ViewPort)</li>
+            <li>A virtuális világot egy virtuális kamera nézi, ez mondja meg milyen képet lát majd a felhasználó</li>
+            <li>Pixelvezérelt megközelítés</li>
+            <ul>
+                <li>Menjünk végig az összes pixelen és nézzük meg milyen színű</li>
+                <li>Megkérdezzük az objetumokat h az adott pixel bennük van-e (inCircle, inTriangle stb.) és ha igen, kiszínezzük olyan színűre</li>
+                <li>Alakzatok esetében implicit egyenlet pozitív vagy negatív</li>
+                <li>Paremtrikus görbéknél elindulunk a pontból a végtelenbe és számoljuk hányszor léptünk át határon</li>
+            </ul>
+            <li>Objektum vezérelt</li>
+            <ol>
+                <li>Vektorizáció (CPU)</li>
+                <ul>
+                    <li>Az objektumainkat háromszöghálóra / vonalhálóra képezzük le</li>
+                    <li>Pl.: mintavételezés az objektum határvonalán dx-enként &rarr; poligon, majd háromszögelés</li>
+                    <li>dx legyen nagyon kicsi, és pontos lesz</li>
+                    <li>Az így kapott pontokat feltöltjük a GPU VAO-iba </li>
+                    <li>A pontokhoz a színüket is tárolni kell (ugyanabban a VBO-ban vagy külön VBO-ban)</li>
+                    <li>Hármoszögekre bontás</li>
+                    <ul>
+                        <li>Konvex esetben pontbeli átlókból</li>
+                        <li>Egyébként fülvágással</li>
+                        <li>Minden poligonnak van 2 füle (bontsuk átlókkal addig amíg már csak 3szögeink vannak. Ekkor ebből fát lehet csinálni, aminek van 2 levele)</li>
+                        <li>Minden poligonnak van diagonálja</li>
+                        <li>Fülvágó algoritmus</li>
+                        <ul>
+                            <li>Induljunk egy pontból és húzzunk be átlókat amíg az nem egy fül</li>
+                            <li>Fül: Az átló minden pontja belül van és az átlótól vmelyik irányban csak 1 csúcs van</li>
+                        </ul>
+                    </ul>
+                </ul>
+                <li>Modell transzformáció (Vertex Shader)</li>
+                <ul>
+                    <li>Minden homogén transzformáció egy mátrixszorzás</li>
+                    <li>A mátrixszorzás asszociatív</li>
+                    <li>A feltöltött pontok mindegyikét felszorozzuk a transzformációs mátrix-ával, és az így kapott "csúcsot" adjuk tovább a pipelineban</li>
+                </ul>
+                <li>Kamera transzformáció (Vertex Shader)</li>
+                <ul>
+                    <li>View transzformáció V()</li>
+                    <ul>
+                        <li>A kamerát helyezzük az origóba</li>
+                        <li>Egyszerű translation (mátrixszorzás)</li>
+                        <li>mat4 V () => return TranslateMatrix(-wCenter)</li>
+                        <li>mat4 Vinv() => return TranslateMatrix(wCenter)</li>
+                    </ul>
+                    <li>Projection transzformáció P()</li>
+                    <ul>
+                        <li>Kamera ablakot az x = 1, -1 és y = 1, -1 négyzetbe transzformáljuk</li>
+                        <li>Sima scale: 2 / scaleX</li>
+                    </ul>
+                    <li>Az objektumokat így ne is az M modellezési transzformációs mátrixzal szorozzuk</li>
+                    <li>Szorozzuk rögtön MVP-vel (M() * V() * P())</li>
+                </ul>
+                <li>Vágás, nézettranszformáció (GPU hardver)</li>
+                <ul>
+                    <li>GPU-n történik, nekünk nem kell vele foglalkozni</li>
+                    <li>A Vertex shadertől kapott vonalakat és 3-szögeket kell újabb vonalakká és 3szögekké alakítani, melyekből le van vágva a ViewPorton kívül eső rész</li>
+                    <li>Vágjunk először x = 1 mentén, majd y = 1 mentén majd.......</li>
+                    <li>Egyenes mentén vágás</li>
+                    <ul>
+                        <li>Pont kívül / belül? (egyszerű compare)</li>
+                        <li>Szakasz: mind2 pont kívül/ mind2 pont belül / egyik kívül, másik belül &rarr; ilyenkor új pont a metszéspontnál</li>
+                        <li>Poligon vágás: minden élre szakasz vágás, új pontok legyenek a poligonnak is új pontjai</li>
+                    </ul>
+                    <li>Viewport traszformáció</li>
+                    <ul>
+                        <li>Megvan a kép tehát egy 2 egység oldalú négyzetben</li>
+                        <li>Rakjuk ki a képernyőre</li>
+                        <li>Pontos pixeladatok az oprendszer számára</li>
+                        <li>Pont mint a kamera transzformáció, csak most width / 2 a scale</li>
+                    </ul>
+                </ul>
+                <li>Raszterizáció (Fragment shader)</li>
+                <ul>
+                    <li>Megvannak a szakaszaink és 3szögeink viewport koordinátarendszerben</li>
+                    <li>Kell: minden pixel (pontos értéke) színe</li>
+                    <li>Legyen buuuuzi gyors</li>
+                    <li>Szakasz rajzolás</li>
+                    <ul>
+                        <li>Behelyettesíteni az egyenes egyenletébe túl lassú (tele van lebegőpontos szorzással, nekünk nincs annyi időnk))</li>
+                        <li>Inkább: inkrementális módszer: számolunk egy meredekséget és ezzel megnöveljük az előző y koordináta értékét minden x++nál</li>
+                        <li>x-ünk egész, y-t lekerekítjük, az így kapott koordinátájú pixelt kiszínezzük (EZ)</li>
+                        <li>Ha nem float-ot hanem fixpontost használunk, akkor a kerekítés is csak bitshiftelés</li>
+                        <li>Erre van hardver elem (óraciklusonként x számlálót lépteti, y regisztert növeli m-el)</li>
+                    </ul>
+                    <li>Háromszög kitöltés</li>
+                    <ul>
+                        <li>Scanline-ok</li>
+                        <li>Menjünk végig y = konstans értékkel x-eken, mik vannak a háromszögön belül?</li>
+                        <li>Tároljuk minden oldal inverz meredekségét</li>
+                        <li>Amikor növeljük a scanline y koordnátájá, akkor növeljük a jelenleg tárolt határokat ezzel az értékkel</li>
+                    </ul>
+                    <li>Milyen színű legyen a pixel?</li>
+                    <ul>
+                        <li>Uniform (EZPZ)</li>
+                        <li>Interpoláljunk</li>
+                        <ul>
+                            <li>Csúcspontok között a szélső értékek között meghatározzuk az "1 léptetésre jutó" színváltozást, színezünk, léptetünk</li>
+                        </ul>
+                        <li>Textúrázzunk</li>
+                        <ul>
+                            <li>Le kell képezni a pixeleket texelekre (x, y) &rArr; (u, v)</li>
+                            <li>Sima affin transzformáció</li>
+                            <li>Hajtsuk végre a transzformációt és megvan melyik texel kell</li>
+                            <li>Probléma: A leképezett u,v-k nem egész számok, melyik pixelt válasszuk?</li>
+                            <ul>
+                                <li>NEAREST: azt amelyikbe beleesik a két u, v</li>
+                                <li>Interpoláljunk a környező texelek közt u, v szerinti arányban</li>
+                                <li>Minification: egy pixelre több texel jut</li>
+                                <li>Magnification: több pixel ugyanarra a texelre képez le</li>
+                            </ul>
+                            <li>MipMap</li>
+                            <ul>
+                                <li>Minificationre</li>
+                                <li>Tároljuk el a textúra lebutított változatait is</li>
+                                <li>Vonjunk össze szomszédos pixelek, köztük interpoláció</li>
+                                <li>Transzformáció után kiválasztjuk a megfelelő mip-map szintet, és az aszerinti színt adjuk vissza</li>
+                            </ul>
+                        </ul>
+                    </ul>
+                </ul>
+            </ol>
+            <li>Hardver és szoftver kapcsolata</li>
+            <ul>
+                <li>A felhasználó és a rendszer interakciója</li>
+                <ul>
+                    <li>A program a világ alapján megjelenít egy képet</li>
+                    <li>A user a kattintásaival megváltoztatja a világot</li>
+                </ul>
+                <li>Funkcionális modell</li>
+                <ul>
+                    <li>A világ alapján pipeline</li>
+                    <li>Kattintás: inverz pipeline<li>
+                    <ul>
+                        <li>Bejön, hogy melyik pixelre kattintottak, kell, hogy ez világkoordinátákban melyik pont</li>
+                        <li>Inverz viewport, inverz kamera, inverz modell transzformációk</li>
+                    </ul>
+                </ul>
+                <li>Szoftver architektúra</li>
+                <ul>
+                    <li>A harver eseményeket (egér, billentyű) az operációs rendszer kapja meg</li>
+                    <li>Az operációs rendszer által generált eseményekre a freeGLUT iratkozik fel és továbbítja az appunknak</li>
+                    <li>Az applikáció az OpenGL könyvtár segítségével irányítja a GPU-t, amely a rasztertárba ír</li>
+                    <li>A rasztertárból megintcsak az oprendszer jelenít meg</li>
+                </ul>
+                <li>GPU</li>
+                <ul>
+                    <li>A GPU-ban az objektumainknak nagyon absztrakt modellje érhető el</li>
+                    <li>Az objektumaink adatait VAO-kba (Vertex Array Object) tesszük</li>
+                    <ul>
+                        <li>A VAO-kban VBO-k vannak</li>
+                        <li>A VBO-ban már a közvetlen adatok (pontok koordinátái, színek rgb értékei stb.)</li>
+                        <li>Egy VBO-ban lehetnek felsorolva egymás után egy pont x, y, r, g, b adata is, de a színek pl. elszeparálhatók egy külön VBO-ba a VAO-n belül</li>
+                        <li>A VBO-kra AttribArray pointerek mutatnak, ezeken keresztül érjük el őket a kódban</li>
+                    </ul>
+                    <li>A GPU-n 2 program a Fragment Shader és a Vertex shader fut</li>
+                    <li>Vertex Shader</li>
+                    <ul>
+                        <li>Bemenete a VBO-k (valójában Attrib Arrayek), kimenete a Fragment shadernek továbbítódik</li>
+                        <li>Jellemzően a pontok modell és kamera transzformációját hajtjuk itt végre</li>
+                        <li>A pontok, fények és esetleg 3D-ben normálvektorok alapján a pixelek színét is kiszámolhatjuk már itt</li>
+                    </ul>
+                    <li>Fragment Shader</li>
+                    <ul>
+                        <li>Minden pixelre meghívódik</li>
+                        <li>Bemeneteként felhasználja a Vertex Shader által feldolgozott adatokat (melyek közben átmentek a viewport transzformáción)</li>
+                        <li>Outputja minden pixelre a rasztertárba íródik</li>
+                    </ul>
+                </ul>
+            </ul>
+        </ul>
+        <h2>3D képszintézis</h2>
+        <ul>
+            <li>Cél: minden pixel színét meghatározni (ez nem újdonság)</li>
+            <li>A 3D világot fényforrások és azok fényét visszaverő objektumokkal modellezzük</li>
+            <li>Egy pixel színe a pixel irányába visszavert fénysugár radianciája</li>
+            <li>Fény színe</li>
+            <ul>
+                <li>Az emberi szem becsapható 3 távoli hullámhossz lineáris kombinációjával</li>
+                <li>Mi az RGB-t használjuk</li>
+                <li>Egyes színek előállításához előfordulhat h negatív piros vagy zöld kell (vagyis nem keverhető ki tökéletesen minden szín)</li>
+                <li>Minden színt R G és B kompenensekből keverünk ki</li>
+                <li>Spektrális fényszíntézis</li>
+                <ul>
+                    <li>Először megszerezzük a sugárteljesítményt mindenféle hullámhosszra</li>
+                    <li>Ezeket megszűrjük a látható frekvenciákra</li>
+                    <li>Ezután illesztjük RGB koordinátákra</li>
+                    <li>Az így kapott szín a shader kimenete</li>
+                </ul>
+                <li>Egyszerűbb: A képet eleve ezen a 3 színen képezzük le</li>
+            </ul>
+            <li>Radiancia</li>
+            <ul>
+                <li>A fény intenzitása</li>
+                <li>Egységnyi területre jutó fényteljesítmény</li>
+                <li>Ez határozza meg a pixelek színét</li>
+                <li>r normálvektorú felület V irányból: L(r, V)</li>
+                <li>L(r, V) = &Phi; / (A * cos(&theta;) * &omega;)</li>
+            </ul>
+            <li>Visszaverődés</li>
+            <ul>
+                <li>Fresnel felületeken</li>
+                <li>A visszaverődés nem tökéletes: törésmutató és kioltási tényezőtől függ</li>
+                <li>Ezen kettőből meghatározható F0, vagyis, hogy a beérkező fénysugár mekkora részét veri vissza</li>
+                <ul>
+                    <li>F0 = (n - 1)2 + kappa2 /  (n + 1)2 + kappa2</li>
+                </ul>
+                <li>F0-t minden frekvenciára meg kel határozni (legyen egy vektor r-g-bre)</li>
+                <li>Fresnel fv: F(&theta;) = F0 + (1 - F0)(1 - &theta;)<sup>5</sup></li>
+                <li>A visszavert fénysugár radiánciáját a Fresnel fv megadja</li>
+                <li>A fénysugár iránya: v + 2 * N * cos(&alpha;), ahol N a normál vektor, v a bejövő sugár, &alpha; a normál vektorral bezárt szöge a sugárnak</li>
+                <li>cos(&alpha;) értelemszerűen a fénysugár és a normálvektor skalárszorzata (-nak az ellentettje)</li>
+            </ul>
+            <li>Törés</li>
+            <ul>
+                <li>Snellius-Descartes: n = sin(a) / sin(b), ahol "a" a beérkező, b a megtört fénysugár tengellyel bezárt szöge</li>
+                <li>Ezalapján: T = v/n + N(cosa / n - cosb) </li>
+                <li>cosb kijön n = sina / sinb-ből, vagy pitagorasz tételből</li>
+            </ul>
+            <li>Fényvisszaverődés rücskös felületen</li>
+            <ul>
+                <li>Random mikrofelelüteken random visszaverdés</li>
+                <li>Közelítés: minden irányba egységesen veri vissza</li>
+                <li>BRDF modell</li>
+                <ul>
+                    <li>L(r, V) = L(r, fényerősség) * cos(&theta;) * fr(L, r, V)</li>
+                    <li>fr = likelyhood of reflection (anyagiminőségre jellemző)</li>
+                </ul>
+                <li>Diffúz visszaverődés</li>
+                <ul>
+                    <li>A BRDF irányfüggetlen (független a bejövő íránytől, a nézeti iránytól stb.)</li>
+                    <li>Bizonyítás: Helmholtz</li>
+                    <li>fr(L, r, V) = kd (konstans)</li>
+                    <li>A visszavert sugár erőssége független az iránytól, de a sugársűrűség függ a beesési szögtől</li>
+                    <li>L(r, V) = Lbejövő * kd * cos(&theta;)</li>
+                    <li>cos(&theta;) mainimalizáljuk 0-ban, mert, nem akarjuk, hogy a hátulról jövő fény megjelenjen a testen elől</li>
+                </ul>
+                <li>Phong visszaverődés</li>
+                <ul>
+                    <li>Megvigyelhetjük a fényes rücskös matt tárgyakon a fényforrás elmosódott képét</li>
+                    <li>Phong: fr függjön a megvilágítástól és a nézettől, a megvilágítás fénye az impact pont távolságától exponenciálisan csökken</li>
+                    <li>L = Lbejövő * kd * cosa + Lbejövő * ks * cosdelta^shininess</li>
+                    <li>Vagyis fr lehet kd + ks * cosdelta^5 / cosa</li>
+                    <li>cosdelta = H * N ahol H a halfway vektor, vagyis a megvilágítás és megfigyelés között félúton futó vektor (ha úgy tetszik, az "átlagos beesési merőleges")</li>
+                    <li>Javítás: cosdelta^5-öt osszuk le (L + V)^2-el</li>
+                </ul>
+                <li>Ambiens tag</li>
+                <ul>
+                    <li>Az árnyékos területek Phong-gal még mindig nem látszódnak</li>
+                    <li>Globális illumináció esetén a diffúz tárgyakról visszavert fény is vetne fényt az objektumokra</li>
+                    <li>De az bonyi, helyette: ambiens tag</li>
+                    <li>Mindennek adunk egy "alapmegvilágítást"</li>
+                    <li>ka (anyagi állandó) * La (globális állandó, tetszés szerint)</li>
+                    <li>ka legyen kd / &pi;</li>
+                </ul>
+                <li>Fényforrások</li>
+                <ul>
+                    <li>Pozícionális (pontszerű)</li>
+                    <ul>
+                        <li>Az intenzitás d^2-el fordíttan arányos</li>
+                    </ul>
+                    <li>Irány fényforrások</li>
+                    <ul>
+                        <li>Párhuzamos sugarak &rarr; egységes megvilágítás</li>
+                    </ul>
+                </ul>
+                <li>Illumináció</li>
+                <ul>
+                    <li>Lokális: csak a közvetlen fényforrások visszaverődése</li>
+                    <li>Globális: tárgyakról visszavert gyenge szórt fény is visszverődik</li>
+                    <li>Rekurzív sugárvisszaverés: tükrök</li>
+                </ul>
+            </ul>
+            <li>Ray tracing szintézis</li>
+            <ul>
+                <li>Módszer: egy kamerából sugarakat lövünk a képernyő pixelei felé, és azokon áthaladva megnézzük mibe ütközünk bele</li>
+                <li>Kiválasztjuk a legkorábbi ütközést, és a színét illuminációs modellek szerint árnyaljuk</li>
+                <li>Mit látunk?</li>
+                <ul>
+                    <li>First intersect</li>
+                    <li>Egy sugarat meghatároz honnan indul (most: kamera), milyen irányba megy (pixel - camera) és esetleg, hogy milyen "hosszú"</li>
+                    <li>Minden objektum definiálja az intersect függvényt, vagyis visszatér azzal, hogy egy adott sugát eltalálta-e, és ha igen: hol</li>
+                    <li>Egy találatot meghatároz: mennyit ment a sugár a találatig, találat helye, normája, és az eltalált objektum anyaga</li>
+                    <li>Kérdezzük meg minden tárgyról, hogy eltalálta el a sugár</li>
+                    <li>Válasszuk ki a legkorábbi találatot</li>
+                    <li>A normál vektort fordítsuk magunk felé, ha nem felénk néz</li>
+                </ul>
+                <li>Intersect</li>
+                <ul>
+                    <li>Keressük, hogy a sugár egyenletét: start + dir * t kielégíti-e az objektum vmilyen t-re</li>
+                    <li>Gömb</li>
+                    <ul>
+                        <li>Vegyük a start center vektor és a sugár távolságát</li>
+                        <li>Azt tudjuk, hogy a start center vektor hol metszi a gömb (sugár távolságban a középponttól, start - center irányban)</li>
+                        <li>A távolságvektor és az iméni metszéspontból, pedig meghatározható a sugár és a gömb metszéspontja</li>
+                    </ul>
+                    <li>Implicit felületek</li>
+                    <ul>
+                        <li>f(x, y, z) = 0</li>
+                        <li>Intersect: f(ray(t)) = 0</li>
+                        <li>Függvény rendezése t-re</li>
+                        <li>Normál vektor meghatározása parciális deriváltak keresztszorzatából</li>
+                    </ul>
+                    <li>Sík</li>
+                    <ul>
+                        <li>(ray(t) - r0) * n = 0</li>
+                        <li>Ebből t = (r0 - start) * n / (dir * n)</li>
+                        <li>Normálvektor: n</li>
+                    </ul>
+                    <li>3szög</li>
+                    <ul>
+                        <li>Síkmetszés (r0 a 3szög vmelyik pontja, n két oldalának keresztszorzata)</li>
+                        <li>3szögön belül van-e?  merre néz a csúcsból a metszésbntba mutató vektor és a 3szög oldalának keresztszorzata</li>
+                        <li>Vagy: Baricentrikus koordinátákkal</li>
+                        <ul>
+                            <li>Ha a 3szögbe esik a síkmetszet pontja, akkor leírható baricentrikus koordinátákkal (beleesik a csúcsok konvex burkába)</li>
+                            <li>Keressük azokat az a, b, c súlyokat melyeket a 3szög csúcsaira akasztva p-t kapunk</li>
+                            <li>Ez 4 egyenlet, 4 ismeretlen (a 4. egyenlet az a + b + c = 1)</li>
+                        </ul>
+                    </ul>
+                    <li>Parametrikus egyenletek</li>
+                    <ul>
+                        <li>r(u, v) = ray(t)</li>
+                        <li>3 ismeretlenes egyenletrendszer</li>
+                        <li>Normálvektor: parciális deriváltak keresztszorzatából</li>
+                    </ul>
+                </ul>
+                <li>Render</li>
+                <ul>
+                    <li>Legeneráljuk a kamerából a pixel felé lőtt sugarat</li>
+                    <li>Meghívjuk a trace függvényt amely rekurzív sugárkövetéssel visszatér a radianciával</li>
+                    <li>Kiszínezzük a pixelt</li>
+                    <li>Mindezt a fragment shaderben</li>
+                    <li>A sugarat normalizált eszközkoordinátarendszerben lőjük ki</li>
+                    <ul>
+                        <li>Vagyis a kamera már transzformálva van, a terünk egy [-1, 1] négyzet</li>
+                        <li>Ebben az i, j-edik sugár az i, j-edik "pixel" helye és a kamera helye közti egyenesre esik</li>
+                    </ul>
+                </ul>
+                <li>Shading</li>
+                <ul>
+                    <li>A sugárkövetés során egy adott sugarat kilövünk és megkeressük a legközelebbi találatot</li>
+                    <li>Megkeressük, hogy az eltalát pont árnyékban van-e, vagy ha nem, milyen erős a megvilágítás alatt van</li>
+                    <ul>
+                        <li>Kilövünk az eltalált pontból egy shadow sugarat minden fényforrás felé</li>
+                        <li>A radianciát megnöveljükk diffúz + Phong + ambiens modell szerint</li>
+                        <li>(diffúz + phong-ot minden fényforrásra, ambienset csak egyszer)</li>
+                    </ul>
+                    <li>Ha a tükör felületre érkeztünk (az eltalált anyag "reflektív")</li>
+                    <ul>
+                        <li>Sugár erőssége Fresnel szerint</li>
+                        <li>Sugár iránya reflect szerint</li>
+                        <li>Az így kapott sugarat újra kilőjük</li>
+                        <li>Rekurzív sugárkövetés (vmikor azért állítsuk le a rekurziót egy "tükörszobában")</li>
+                    </ul>
+                    <li>Refraction</li>
+                    <ul>
+                        <li>Ugyanez csak Snellius Fresnel helyett</li>
+                    </ul>
+                </ul>
+                <li>Térpatícionálás</li>
+                <ul>
+                    <li>A sugárkövetés lassú, fel kéne boostolni</li>
+                    <li>Mielőtt kilőjük a sugarat és kiszámoljuk az ütközést minden objektummal, inkább jöjjünk rá melyik objektumok jöhetnek egyáltalán szóba</li>
+                    <li>Bounding layer</li>
+                    <ul>
+                        <li>Gömbbel és kockával könnyű ütközést számolni</li>
+                        <li>Mielőtt nekiállunk egy bonyolult objektum ütközését kiszámolni, megnézzük h egy befoglaló gömbjével vagy box-ával egyáltalán lenne-e ütközés</li>
+                        <li>Ha nem, akkor nem kell tovább számolnunk</li>
+                    </ul>
+                    <li>Térháló</li>
+                    <ul>
+                        <li>Egy kockahálóban tároljuk melyik kockákba lóg be az adott objektum</li>
+                        <li>Megnézzük (raszterizálásnál megismert inkrementális módszerrel), hogy milyen kockákat fog érinteni</li>
+                        <li>Ha nem érinti az objektum egyik kockáját se, akkor hagyjuk</li>
+                    </ul>
+                    <li>Oktális fa</li>
+                    <ul>
+                        <li>Egy térháló különböző méretű kockákkal</li>
+                        <li>Ahol nagy üres terek vannak, tegyünk nagy kockákat</li>
+                        <li>Kockák mérete 8^k (ezért oktális fa)</li>
+                    </ul>
+                    <li>Bináris térparticionáló fa</li>
+                    <ul>
+                        <li>Mindig ketté oszt egy téglatestet úgy, hogy a benne lévő találati valószínűség megegyezzen</li>
+                    </ul>
+                </ul>
+            </ul>
+            <li>Inkrementális 3D képszintézis</li>
+            <ul>
+                <li>Objektum vezérelt megközelítés (a raytracing pixel vezérelt volt)</li>
+                <li>A raytracing lassú, használjunk inkább objektum vezérelt megoldást</li>
+                <li>Az objetumaink legyenek 3szög hálók, minden 3szögnek kitaláljuk a színét (vagy vhogy interpoláljuk)</li>
+                <li>A radianciát háromszögekre számoljuk</li>
+                <li>Az így kapott világot 2D-ben tanult pipelineon küldjük végig</li>
+                <li>Lépések</li>
+                <ol>
+                    <li>Objektumok a világkoordinátarendszerben</li>
+                    <li>Tesszeláció (csináljunk az objektumokból 3 dimenziós hálót)</li>
+                    <ul>
+                        <li>A vertex shaderbe feltöltjük a 3szöghálót (legyen triangle strip)</li>
+                        <li>Mintavételezzünk pontokban</li>
+                        <li>Ne csak a pontot, hanem a felület normálvektorát is töltsük fel</li>
+                        <li>Töltsük fel a csúcs textúrakoordinátáit is (ha textúrázni akarjuk, és miért ne akarnánk)</li>
+                        <li>Parametrikus felületek</li>
+                        <ul>
+                            <li>u, v (textúra) koordinátákat képezzük le x y z koordinátákra</li>
+                            <li>u v [0, 1]-en fut végig, dx-es lépésközzel kiszámoljuk 1 / dx^2 pontot, ez lesz a háló</li>
+                            <li>A genVertexData visszatér az u, vbül képzett ponttal, normálvektorával és visszaadja az eredeti u, v koordinátákat</li>
+                            <li>Ha kell a normálvektor (és kell), használjunk Clifford deriválást</li>
+                        </ul>
+                    </ul>
+                    <li>Modell transzformáció (M mátrix szorzás vertex shaderen)</li>
+                    <ul>
+                        <li>Pont mint 2D esetben, most 4D mátrixokkal</li>
+                        <li>Forgatást már láttuk</li>
+                    </ul>
+                    <li>View transzformáció (kamerát az origóba)</li>
+                    <ul>
+                        <li>A kamera tárolja, hogy merről merre néz és merre van a felfele</li>
+                        <li>A kamera tudja, hogy széltében és magasságában mekkora képet lát (erre a téglalapra kell majd vágást csinálni)</li>
+                        <li>A View transzformáció 3 mátrix szorzata ami varázslatos módon működik</li>
+                        <li>Az első egy translation az origóba</li>
+                        <li>A másik 2 valszeg egy forgatást ad meg</li>
+                        <li>u, v, w vektorokból áló mátrix, ahol w a nézés irányvektora (eye - lookat) u merőleges w-re és a felelére, v pedig u-ra és w-re</li>
+                        <li>Ezeket tovább szorozzuk egy látoszöget normalizáló scalemátrixszal</li>
+                    </ul>
+                    <li>Perspektíva transzformáció (homogén koordinátarendszerben skálázás)</li>
+                    <ul>
+                        <li>Eddig: affin transzformációk</li>
+                        <li>Helyezzük az egészet perspektívába</li>
+                        <li>Csak horizontális perspektívát vesszük figyelembe</li>
+                        <li>A látószögből kiszámolható egy homogén T mátrix</li>
+                        <li>Végül ezeket a szorzásokat megcsináljuk GPU-n a vertex shaderben</li>
+                    </ul>
+                    <li>Vágás</li>
+                    <ul>
+                        <li>Homogén koordinátákban egyszerű</li>
+                        <li>|h| > |Xh| akkor vágunk</li>
+                    </ul>
+                    <li>Homogén osztás</li>
+                    <ul>
+                        <li>Alakítsuk vissza 3D-be homogénből</li>
+                    </ul>
+                    <li>Viewport transzformáció</li>
+                    <li>Takarás</li>
+                    <ul>
+                        <li>Lőjünk ki z tengellyel párhuzamos vetítősugarakat</li>
+                        <li>Ne shadeljük az objektumok hátlapjait, vagy előlapjait hátulról</li>
+                        <ul>
+                            <li>Raytracing szerű módszerrel</li>
+                        </ul>
+                        <li>Ne shadeljünk olyan lapokat amik ki vannak takarva más objektum által</li>
+                        <ul>
+                            <li>Z-buffer: pixelenként megmondjuk milyen távol van az adott objektum</li>
+                            <li>A legközelebbit shadeljük</li>
+                        </ul>
+                    </ul>
+                    <li>Árnyalt kép</li>
+                    <ul>
+                        <li>A meghatározott pixeleket shadeljük</li>
+                        <li>Megvan a normálvektoruk, anyaguk &rArr; Phong shading, ahogy láttuk már korábban</li>
+                    </ul>
+                </ol>
+            </ul>
+        </ul>
+    </main>
+</body>
+</html>

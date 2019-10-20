@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+    <style media="screen">
+      body{
+        font-family: 'Encode Sans Expanded', sans-serif;
+        font-size: 14px;
+        line-height: 22px;
+        padding: 30px 70px;
+      }
+      ul, ol{
+        margin: 0px 0px 7px 0px;
+      }
+      h2{
+        margin: 0.83em 0 5px 0!important;
+      }
+    </style>
+    <title>Fizika 2</title>
+    <style media="screen">
+
+    </style>
+  </head>
+  <body style = "font-family: 'Encode Sans Expanded', sans-serif; font-size: 14px; line-height: 22px; padding: 30px 70px;">
+    <h1>Fizika 2</h1>
+    <h2>1. EA</h2>
+    <ul>
+      <li>Követelmények</li>
+      <ul>
+        <li>5/6 KZH (5 * 5p) min: 10p, min: 2p / KZH</li>
+        <li>NZH min: 40 / 100p</li>
+        <li>Vizsgapontok: (1&rarr;5)sum(kzh) + NZH / 4 - 30</li>
+      </ul>
+      <li>Elektrosztatika</li>
+      <ul>
+        <li>Alapjeleneségek</li>
+        <ul>
+          <li>Töltés: +, -, 0 (pontszerű)</li>
+          <li>Vonzás, taszítás, megosztás</li>
+        </ul>
+        <li>Coulomb törvény</li>
+        <ul>
+          <li>Elektrosztatikus erő</li>
+          <li>F = k * (Q<sub>1</sub> Q<sub>2</sub>) / r<sub>1</sub><sup>2</sup> </li>
+          <li>k = 9 * 10<sup>9</sup> Vm/C</li>
+          <li>&epsilon; = 1 / (4&pi;*k) &rarr; Vákuum dielektrtomos állandó</li>
+          <li>Konzervatív erőtér</li>
+          <ul>
+            <li>Örvénymentes</li>
+            <li>Két pont közötti munkavégzés pályafüggetlen</li>
+          </ul>
+        </ul>
+        <li>Elektromos / villamos térerősségvektor</li>
+        <ul>
+          <li>Megadja a tér egy adott pontjában az egységtöltésre ható erővektort</li>
+          <li>[E] = N / C = V / m</li>
+        </ul>
+        <li>Vonalmenti töltés</li>
+        <ul>
+          <li>&eta; = dQ / dl</li>
+        </ul>
+        <li>Felületi töltés</li>
+        <ul>
+          <li>&omega; = dQ / dA</li>
+        </ul>
+        <li>Térfogati töltés</li>
+        <ul>
+          <li><i>&phi;</i> = dQ / dV</li>
+        </ul>
+        <li>Fluxus</li>
+        <ul>
+          <li>&Delta;&Phi; = <u>E</u> * &Delta;<u>A</u></li>
+          <li>d&Phi; = d<u>E</u> * d<u>A</u> = E * A * cos(&alpha;)</li>
+          <li>Integrális fluxus: &Phi; = &int;Ed<u>A</u></li>
+        </ul>
+      </ul>
+    </ul>
+    <h2>2. EA</h2>
+    <ul>
+      <li>Az elektrosztatika Gauss törvénye</li>
+      <ul>
+        <li>Fluxus: &Delta;&Phi; = |E| * &Delta;|A| * cos(&alpha;)</li>
+        <li>Elemi fluxusok összegzése "foltokra": Felületi integrál (&Phi; = &int;Ed<u>A</u>)</li>
+        <li>Gömb felszínére eső fluxus = &int;k * Q / r<sup>2</sup>dA = k * Q / r<sup>2</sup> * 4 &pi;r<sup>2</sup> = Q / &epsilon;<sub>0</sub></li>
+        <ul>
+          <li>A fluxus definíciójából adódik, hogy ez bármely Q-t körülvevő zárt felületre eső fluxus nagysága</li>
+          <li>Ha nem veszi körbe, akkor ugyanannyi erővonal lép be, mint ki, így &Phi; = 0</li>
+          <li>Zárt felületben ha több töltés is van: &Phi; = &sum;Q<sub>i</sub> / &epsilon;<sub>0</sub></li>
+        </ul>
+        <li>Töltéseloszlás által létrehozott elektrosztatikus erőtér zárt felületre vett fluxusa megegyezik a zárt felületen lévő össz töltés mennyiség
+        és a vákuum dielektromos állandójának hányadosával</li>
+      </ul>
+      <ul>
+        <li>Végtelen sík töltéssűrűsége</li>
+        <ul>
+          <li>Végtelen síkon &omega; töltéssűrűség esetén a térerősség E = &omega; / (2&epsilon;<sub>0</sub>)</li>
+        </ul>
+        <li>Gömbfelületen &omega; töltéssűrűség esetén &Phi; = <sub>gömb</sub>&int;EdA = E * 4&pi;r<sup>2</sup> = &sum;Q / &epsilon;<sub>0</sub></li>
+        <ul>
+          <li>Az R sugarú gömbfelület körül r sugarú gömbön: E * 4&pi;r<sup>2</sup> = 4&pi;R<sup>2</sup>&omega; / &epsilon;<sub>0</sub> &rarr; E = R<sup>2</sup>&omega; / r<sup>2</sup>&epsilon;<sub>0</sub></li>
+        </ul>
+        <li>Végtelen hosszú  &omega; töltéssűrűségű hengerfelületen</li>
+        <ul>
+          <li>Alap, fedőlap nem ad járulékot</li>
+          <li>&Phi; = <sub>palást</sub>&int;EdA = E * 2r&pi; * L = &sum;Q / &epsilon;<sub>0</sub></li>
+          <li>E = &omega;R / &epsilon;<sub>0</sub>r</li>
+        </ul>
+      </ul>
+      <li>Elektromos potenciál</li>
+      <ul>
+        <li>E erőtérben Q töltés mozgatása s úton</li>
+        <ul>
+          <li>&Delta;W = -Q<u>E</u>&Delta;<u>s</u></li>
+          <li>W = -<sub>görbe</sub>&int;Q<u>E</u>d<u>s</u> (vonalmenti integrál)</li>
+          <li>U<sub>AB</sub> = W<sub>AB</sub> / Q = -<sub>A</sub>&int;<sup>B</sup><u>E</u>d<u>s</u></li>
+        </ul>
+        <li>A villamos feszültség megadja mekkora munkát kell végeznünk, miközben 1C töltést A-ból B-be viszünk</li>
+        <li>Az elektrosztatikus potenciál azt a munkát jelenti mellyel 1C töltést a zérus potenciálú helyről A-ba viszünk</li>
+      </ul>
+    </ul>
+    <h2>3. EA</h2>
+    <ul>
+      <li>Térerősség és potenciál kapcsolata</li>
+      <ul>
+        <li>&Delta;U = U(x+&Delta;x, y, z) - U(x, y, z) = dU / dx = -E<sub>x</sub>&Delta;x</li>
+        <li>Ez igaz y-ra és z-re</li>
+        <li><b><u>E</u> = -grad(U)</b></li>
+      </ul>
+      <li>Fémek a statikus villamos (elektromos) térben</li>
+      <ul>
+        <li>Bármely fémen belül <u>E</u> = <u>0</u></li>
+        <li>Az elektronok a felületen pár atomos rétegben gyülekeznek fel</li>
+        <li>A felület ekvipotenciális felület, E érintőre merőleges</li>
+        <ul>
+          <li>Induktív bizonyítás: egyébként addig mozognának az elektronok amíg be nem állna egy ilyen egyensúly</li>
+        </ul>
+        <li>Elektrosztatikus térben egy fémüregben <u>E</u> = <u>0</u></li>
+        <ul>
+          <li>Bizonyítás</li>
+          <li>Gauss tétel: <sub>A</sub>&int;EdA = &sum;Q / &epsilon;<sub>0</sub></li>
+          <li>Mivel Q = 0 &rarr; E = 0</li>
+          <li>Másképp: &int;Eds = 0 (konzervatív erőtér)</li>
+          <li>Veszünk egy zárt görbét aminek egyik szakasza (g1) a fémen másik az üregben megy keresztül (g2)</li>
+          <li><sub>g1</sub>&int;Eds + <sub>g2</sub>&int;Eds = 0 + <sub>g2</sub>&int;Eds = 0</li>
+          <li>ds nem 0, így E = 0</li>
+        </ul>
+      </ul>
+      <li>Csúcshatás</li>
+      <ul>
+        <li>Töltéssűrűség ~ Görbület sugara</li>
+        <ul>
+          <li>&omega; = Q / 4&pi;r<sup>2</sup> és U = k Q/r képletekből kijön</li>
+        </ul>
+      </ul>
+    </ul>
+    <h2>4. EA</h2>
+    <ul>
+      <li>Eltolás vektor</li>
+      <ul>
+        <li>Adott egy töltött kondenzátor</li>
+        <li>Ha a fegyverzet közé dielektrikumot teszünk, a szigetelőben dipólusmomentumok jönnek létre</li>
+        <ul>
+          <li>Polarizált töltések megjelennek</li>
+          <li>Ahhoz, hogy a fegyverzeten lévő töltés állandó maradjon, a lapokon lévő töltésmennyiség lecsökken</li>
+          <li>&omega;<sub>t2</sub> = &omega;<sub>t1</sub> - &omega;<sub>polarizált</sub></li>
+        </ul>
+        <li><b>Villamos polarizáció vektora megadja az egységnyi térfogatra vonatkoztatott eredő villamos dipólnyomatékot</b></li>
+        <li>Értéke épp a felületi töltéssűrűségével egyezik meg</li>
+        <li>&omega;<sub>t</sub> = &epsilon;<sub>0</sub>E + &omega;<sub>p</sub> &rarr; <u>D</u> =  &epsilon;<sub>0</sub><u>E</u> + <u>P</u>  (D: eltolásvektor, E: térerősség, P: polarizáció vektora)</li>
+        <li><sub>A</sub>&int;<u>E</u>d<u>A</u> = Q<sub>szabad</sub> / &epsilon;<sub>0</sub> &rarr; <sub>A</sub>&int;(<u>D</u> - <u>P</u>) / &epsilon;<sub>0</sub>dA &rarr; <sub>A</sub>&int;<u>D</u>dA =  &sum;Q<sub>t</sub></li>
+        <li>A D eltolási vektor olyan elektromos teret ír le, melynek forrásai a többlettöltések</li>
+      </ul>
+      <li>Töltésrendszer elektrosztatikus energiája</li>
+      <ul>
+        <li>Rögzített ponttöltés terének energiája</li>
+        <ul>
+          <li>W = <sub>&infin;</sub><sup>R</sup>&int; k*Q<sub>1</sub>Q<sub>2</sub> / r<sup>2</sup>dr = k*Q<sub>1</sub>Q<sub>2</sub> / R</li>
+        </ul>
+        <li>N ponttöltés energiája</li>
+        <ul>
+          <li>W = 1/2 * <sub>i = 1</sub><sup>N</sup>&sum;(<sub>j = 1</sub><sup>N</sup>&sum; ( k*Q<sub>i</sub>j<sub>2</sub> / r<sub>i, j</sub>))</li>
+          <li>W = 1/2 &sum;Q<sub>i</sub>U<sub>i</sub> = 1/2 &int;&rho;UdV</li>
+        </ul>
+        <li>A kondenzátor energiája</li>
+        <ul>
+          <li>W = 1/2 &sum;Q<sub>i</sub>U<sub>i</sub> = 1/2 Q*U</li>
+          <li>W = 1/2 (A&omega;)(E*d) = 1/2 (A*d)(&epsilon;E)*E &rarr; W / V = &epsilon;E<sup>2</sup></li>
+          <ul>
+            <li>D = &epsilon;<sub>0</sub>E + P</li>
+            <li>P = &epsilon;<sub>0</sub>&chi;E &rarr; D = &epsilon;<sub>0</sub>(1 + &chi;)E</li>
+            <li>&epsilon;<sub>r</sub> = 1 + &chi;</li>
+            <li>&epsilon; = &epsilon;<sub>0</sub>&epsilon;<sub>r</sub></li>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+    <h2>5. EA</h2>
+    <ul>
+      <li>Elektromos áram</li>
+      <ul>
+        <li>Áramforrás</li>
+        <ul>
+          <li>Generátor (molukció)</li>
+          <li>Napelem (kvantummechanika)</li>
+          <li>Zsebtelep (kémiai)</li>
+        </ul>
+        <li>Elektromos erő</li>
+        <ul>
+          <li>U = &epsilon; mozagatja az elektronokat</li>
+          <li>[&epsilon;] = V</li>
+        </ul>
+        <li>Áramerősség</li>
+        <ul>
+          <li>I = &Delta;Q / &Delta;t = dQ / dt</li>
+          <li>[I] = A(mper)</li>
+          <li>v<sub>ol</sub> = olrittsebesség</li>
+          <ul>
+            <li>&Delta;l / &Delta;t</li>
+          </ul>
+          <li>n = részecskesűrűség = N / V [n] = 1 / m<sup>3</sup></li>
+          <li>&Delta;Q = enA&Delta;l = enAv<sub>ol</sub>&Delta;t</li>
+          <li>J = I / A (= áramsűrűség) = env<sub>ol</sub></li>
+        </ul>
+        <li>Ellenállás</li>
+        <ul>
+          <li>Elektronra ható erő</li>
+          <ul>
+            <li>&sum;F = ma = eE - cv<sub>ol</sub></li>
+            <li>a = 0</li>
+            <li>eE = cv<sub>ol</sub></li>
+            <li>E = U / l</li>
+            <li>v<sub>ol</sub> = I / (enA)</li>
+          </ul>
+          <li>Ohm törvény</li>
+          <ul>
+            <li>U = RI</li>
+            <li>R = &rho;l / A</li>
+            <li>E = &rho;J</li>
+            <ul>
+              <li>differenciális Ohm törvény</li>
+              <li>El =  &rho;l / A * J * A</li>
+              <li>Következik, hogy J is egy vektor</li>
+            </ul>
+          </ul>
+          <li>Energiaviszonyok</li>
+          <ul>
+            <li>dW = &epsilon; * dq</li>
+            <li>P = dW / dt = &epsilon; * dq / dt = &epsilon;I = UI</li>
+          </ul>
+          <li>Kirchoff törvényel</li>
+          <ol>
+            <li>Csomópontba befolyó áramerősség megegyezik a kifolyó áram erősségével</li>
+            <ul>
+              <li>&sum;I<sub>be</sub> = &sum;I<sub>ki</sub></li>
+              <li>&sum;I = 0</li>
+              <li>Indoklás: töltésmegmaradás törvénye</li>
+            </ul>
+            <li>Huroktörvény</li>
+            <ul>
+              <li>Egy hurokban</li>
+              <li>&sum;&epsilon; = &sum;I * R</li>
+            </ul>
+          </ol>
+        </ul>
+      </ul>
+    </ul>
+    <h2>6. EA</h2>
+    <ul>
+      <li>Mágneses tér anyagok jelenlétében</li>
+      <ul>
+        <li><u>H</u>: Mágneses térerősség</li>
+        <li><u>B</u>: Mágneses indukcióvektor</li>
+        <li>B = &mu;<sub>0</sub>H</li>
+        <li><b><sub>g</sub>&conint;<u>H</u>d<u></u>s = &sum;I</b></li>
+      </ul>
+      <li>Mágnesezettség</li>
+      <ul>
+        <li><u>M</u>: mágnesezettség vektora</li>
+        <li>Az egységnyi térfogatra vett eredő mágneses dipólnyomatékot</li>
+        <li>A * I<sub>m</sub> = VM (I: mágnesezési áram)</li>
+      </ul>
+      <li>Anyagegyenlet</li>
+      <ul>
+        <li>B = &mu;<sub>0</sub>H + &mu;<sub>0</sub>M</li>
+      </ul>
+    </ul>
+  </body>
+</html>

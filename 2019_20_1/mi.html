@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+  <title>Mesterséges intelligencia</title>
+  <style>
+    :root {
+      --dark-blue: #4c7783;
+      --white: #f2f0f6;
+      --pink: #e67b82;
+      --dark-pink: #c26168;
+      --blue: #65cbc3;
+      --red: rgb(190, 50, 50);
+      --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      background-color: var(--white);
+      margin: 0 !important;
+      padding: 0;
+    }
+
+    *,
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: inherit;
+    }
+
+    h2 {
+      color: var(--dark-pink);
+      position: relative;
+      padding-bottom: 0.6rem;
+      font-size: 1.6rem;
+    }
+
+    h2::after {
+      position: absolute;
+      bottom: 0;
+      margin-top: 10px;
+      content: ' ';
+      background-color: var(--dark-pink);
+      width: 100%;
+      height: 1px;
+      left: 0;
+    }
+
+    .header {
+      padding: 5vh 5vw;
+      background-color: var(--dark-blue);
+      color: var(--white);
+    }
+
+    main {
+      padding: 10vh 10vw;
+      font-weight: 400;
+      color: #333;
+      font-size: 0.9em;
+    }
+
+    ul {
+      margin-bottom: 0.3rem;
+    }
+
+    ul>li>ul>li>ul {
+      color: #555;
+    }
+
+    a,
+    a:hover {
+      color: var(--dark-blue);
+      text-decoration: none;
+      transition: all ease-in-out .12s;
+    }
+
+    a:hover {
+      color: var(--blue);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Mesterséges intelligencia</h1>
+  </div>
+  <main>
+    <h2>Bevezetés</h2>
+    <ul>
+      <li>Mire jó az AI?</li>
+      <ul>
+        <li>Segít megismerni az emberi tudatot</li>
+        <li>Emberi szakértők támogatása</li>
+        <li>Túl sok adat van egy ember számára feldolgozni</li>
+      </ul>
+      <li>Mérnöki szempontok</li>
+      <ul>
+        <li>Milyen AI kell a mi alkalmazásunkba?</li>
+      </ul>
+      <li>Megközelítések</li>
+      <ul>
+        <li>Emberi módon gondolkodó</li>
+        <ul>
+          <li>Ezzel mi mérnökök kevésbé foglalkozunk</li>
+          <li>Ez inkább kognitív modellezés, viselkedéstan</li>
+        </ul>
+        <li>Racionálisan gondolkodó</li>
+        <ul>
+          <li>Logika, Következtetés</li>
+          <li>Problémák: miről gondolkodjon? mi az a gondolat?</li>
+          <li>Nem minden gondolat írható le logikai kifejezésekkel</li>
+        </ul>
+        <li>Emberi módon cselekvő</li>
+        <ul>
+          <li>Turing teszt: felméri, hogy mennyire hasonlít egy emberre</li>
+          <li>Tudásábrázolás</li>
+          <li>Következtetés</li>
+          <li>Alkalmazás: chat botoknál</li>
+        </ul>
+        <li>Racionálisan cselekvő</li>
+        <ul>
+          <li>A megfelelő dolgot teszi</li>
+          <li>A rendelkezésre álló infóból kihozza a legtöbbet</li>
+          <li>De: nincs feltétlenül elég információ</li>
+          <li>Mi legyen a teljesítmény?</li>
+          <li>Mi az AI célja?</li>
+          <li>Mi erre fókuszálunk</li>
+        </ul>
+      </ul>
+      <li>Előzmények</li>
+      <ul>
+        <li>1930: Turing gép</li>
+        <li>1966: Neurális hálók</li>
+        <li>1969: Tudás alapú rendszerek</li>
+        <li>1986: Neurális hálók újabb lökete</li>
+        <li>1995: Gép tanulás</li>
+        <li>2005: Adatvezérelt AI</li>
+      </ul>
+      <li>Gyenge / szűk mesterséges intelligencia</li>
+      <ul>
+        <li>Weak AI</li>
+        <li>Intelligenciát mutat, de csak specifikus területen</li>
+        <li>Tud sakkozni VAGY képet felismerni, de ez még kevés</li>
+      </ul>
+      <li>Erős mesterséges intelligencia</li>
+      <ul>
+        <li>Az élet több területén intelligens</li>
+        <li>Gondolkodik (Human AI)</li>
+      </ul>
+      <li>Szuperintelligencia</li>
+      <ul>
+        <li>Okosabb szg. mint az ember, közel minden területen</li>
+        <li>AI tervez AI-t</li>
+        <li>2030-45re teszik ezt az időpontot</li>
+      </ul>
+    </ul>
+    <h2>Absztrakt állapottér</h2>
+    <ul>
+      <li>Az MI értékeléséhez szükség van egy állapottérre</li>
+      <li>Ezen diszkrét állapotok közül választ az ágens</li>
+      <li>Keresési eljárás</li>
+      <ul>
+        <li>Ki kell választani a jó állapotot</li>
+        <li>Ehhez fel kell térképezni az állapotokat és értékelni őket</li>
+        <li>Jó keresés</li>
+        <ul>
+          <li>Elért eredmény</li>
+          <ul>
+            <li>A legjobb-e a célállapot</li>
+            <li>Jó-e a célállapot</li>
+            <li>Ez-e az összes lehetséges jó állapot</li>
+          </ul>
+          <li>Keresés költsége</li>
+          <ul>
+            <li>Megvan-e szükségesen gyorsan a keresett állapot</li>
+            <li>Nem akar-e túl sok RAM-ot használni</li>
+          </ul>
+        </ul>
+        <li>Keresés értékelése</li>
+        <ul>
+          <li>Teljesség: ha van megoldás, megtalálja</li>
+          <li>Időigény: a keresés hossza</li>
+          <li>Tárigény: megfelelően kevés adatot használ</li>
+          <li>Optimális: ha vannak jó megoldások, megtalálja-e a legjobbat</li>
+        </ul>
+      </ul>
+      <li>Probléma formalizálása</li>
+      <ul>
+        <li>Célállapot meghatározása</li>
+        <ul>
+          <li>Optimális útvonal keresésénél egyértelmű</li>
+          <li>Sakkban, már nem annyira</li>
+        </ul>
+        <li>Jól definiált probléma</li>
+        <ul>
+          <li>1. Válasszunk pontosan 1 állapotot, mint kiinduló állapot</li>
+          <li>2. Határozzuk meg a lehetséges cselekvések halmazát</li>
+          <li>Ezek ketten a probléma állapottere</li>
+          <li>3. Célteszt</li>
+          <ul>
+            <li>A végállapot egy jó állapot-e</li>
+          </ul>
+          <li>4. Útköltség</li>
+          <ul>
+            <li>A cselkévések sorozatához hozzárendel egy költséget</li>
+            <li>Az útvonal optimálissága, idő és memória költség alapján</li>
+          </ul>
+        </ul>
+        <li>Nem informált keresések (vak keresés)</li>
+        <ul>
+          <li>Lehet, hogy tudjuk mi a célállapot, de nincs információnk, hogy lehetne optimálisan elérni</li>
+          <li>Az is lehet, nem tudom mi a célállapot</li>
+        </ul>
+        <li>Informált keresés</li>
+        <ul>
+          <li>Tudjuk, vagy jó becslésünk van a célállapotról</li>
+        </ul>
+        <li>Keresési fa</li>
+        <ul>
+          <li>Az állapottér feltérképezése keresési fával</li>
+          <li>Szélességi keresés</li>
+          <li>Egyenletes költségű keresés</li>
+          <li>Mélységi keresés</li>
+          <li>Mélység korlátozott keresés</li>
+          <li>Iteratívan mélyülő keresés</li>
+          <li>Kétirányú keresés</li>
+          <li>A* keresés</li>
+          <ul>
+            <li>Ez lesz a jó</li>
+            <li>Használjunk informált keresést</li>
+            <li>Minden 'lépésnél' kap egy 'súgást'</li>
+            <li>Súgás: heurisztikus függvény</li>
+            <ul>
+              <li>h(n)</li>
+              <li>Becslést ad arra, mennyire jó egy részcselekvés</li>
+              <li>Pl.: útkeresésénél egy lépés utáni legvonal beli távolság</li>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <title>Operációs rendszerek</title>
+    <style>
+        :root{
+            --dark-blue: #4c7783;
+            --white: #f2f0f6;
+            --pink: #e67b82;
+            --dark-pink: #c26168;
+            --blue: #65cbc3;
+            --red: rgb(190, 50, 50);
+            --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+        }
+        body{
+            background-color: var(--white);
+            margin: 0!important;
+            padding: 0;
+        }
+        *, body{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: inherit;
+        }
+        h2{
+            color: var(--dark-pink);
+            position: relative;
+            padding-bottom: 0.6rem;
+            font-size: 1.6rem;
+        }
+
+        h2::after{
+            position: absolute;
+            bottom: 0;
+            margin-top: 10px;
+            content: ' ';
+            background-color: var(--dark-pink);
+            width: 100%;
+            height: 1px;
+            left: 0;
+        }
+
+        .header{
+            padding: 5vh 5vw;
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+
+        main {
+            padding: 10vh 10vw;
+            font-weight: 400;
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        ul{
+            margin-bottom: 0.3rem;
+        }
+        ul > li > ul >li > ul{
+            color: #555;
+        }
+
+        a, a:hover{
+            color: var(--dark-blue);
+            text-decoration: none;
+            transition: all ease-in-out .12s;
+        }
+        a:hover{
+            color: var(--blue);
+        }
+        .note{
+            position: absolute;
+            right: 0;
+            border-left: 2px solid var(--dark-pink);
+            padding: 1.5rem;
+            max-width: 20vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Operációs rendszerek</h1>
+    </div>
+    <main>
+        <h2>1. Előadás</h2>
+        <ul>
+            <li>Operációs rendszer mérete</li>
+            <ul>
+                <li>Linux kernel</li>
+                <ul>
+                    <li>25 millió programsor</li>
+                    <li>És ez még csak a kernel</li>
+                </ul>
+                <li>Minix alap kernel</li>
+                <ul>
+                    <li>1500 programsor</li>
+                    <li>Nagyon nagy eltérések lehetnek</li>
+                </ul>
+            </ul>
+            <li>Operációs rendszer feladata</li>
+            <ul>
+                <li>A felhasználói feladatok végrehajtását támogassa</li>
+                <ul>
+                    <li>Felhasználó itt lehet a számítógépek általános vevőbázisa</li>
+                    <li>Felhasználó az alkalmazás fejlesztője is</li>
+                    <li>Az OS-nek mind2-t támogatnia kell</li>
+                </ul>
+                <li>A számítógép működését vezérlő szoftver</li>
+                <ul>
+                    <li>A számítógépet hardverként kezeljük</li>
+                    <li>Új hardverarchitektúrák kifejlődésével fejlődik az OS is</li>
+                </ul>
+            </ul>
+        </ul>
+        <h2>2. Előadás</h2>
+        <ul>
+            <li>Hogyan építsük fel?</li>
+            <ul>
+                <li>Az operációs rendszer</li>
+                <ul>
+                    <li>Programok összessége</li>
+                    <li>Felhasználói alkalmazások és hardver közötti vezérlést oldja meg</li>
+                    <li>Egyszerre több feladat kiszolgálása</li>
+                    <ul>
+                        <li>Az egyszerre futó programok "ne zavarják" egymást</li>
+                    </ul>
+                    <li>Biztonságos, megbízható</li>
+                </ul>
+                <li>Programok</li>
+                <ul>
+                    <li>Nagyon sokféle programot képzelhetünk el</li>
+                    <li>A program lehet, hogy szeparálva működve helyesen fut, de vajon más programokkal párhuzamosan is?</li>
+                    <li>Megbízhatatlan forrásokból is származhat</li>
+                    <li>OS tervezésénél nem feltételezhetjük, hogy a programok jól fognak működni</li>
+                    <li>A rendszernek ennek ellenére jól kell tudni működni</li>
+                </ul>
+                <li>Megoldás</li>
+                <ul>
+                    <li>Hierarchikus működés a programok közt</li>
+                    <li>Kitüntetett programok, melyeknek nagyobb jogosultságköre, mint a kliensalkalmazásoké</li>
+                    <li>CPU védettségi szintek</li>
+                    <ul>
+                        <li>Több is van</li>
+                        <li>Lényegében védett (bármilyen utasítás kiadható) és korlátozott</li>
+                    </ul>
+                </ul>
+                <li>Kernel</li>
+                <ul>
+                    <li>OS mag</li>
+                    <li>Azon program amely védett módban fut</li>
+                    <li>Felügyeli a többi program működését</li>
+                    <li>A kernelen kívül minden más program felhasználói módban fut</li>
+                    <li>Rétegmodell</li>
+                    <ol>
+                        <li>Felhasználói programok</li>
+                        <li>Kernel</li>
+                        <li>Hardver eszközök</li>
+                    </ol>
+                    <li>Feladata</li>
+                    <ul>
+                        <li>Vezérlőprogram</li>
+                        <ul>
+                            <li>Életciklus-menedzsment</li>
+                            <li>Eseménykezelés</li>
+                        </ul>
+                        <li>Kezeli a harver eszközöket</li>
+                        <li>Erőforrás allokátor és ütemező</li>
+                        <li>Megbízhatóság és biztonságosság szem előtt tartása</li>
+                    </ul>
+                    <li>Felépítése</li>
+                    <ul>
+                        <li>Feladatkezelés</li>
+                        <ul>
+                            <li>Kommunikáció</li>
+                            <ul>
+                                <li>Programok között</li>
+                                <li>A kernel elszapáralja a programokat, csak a kernelen keresztül van átjárás</li>
+                            </ul>
+                            <li>Memóriakezelő</li>
+                            <li>Betöltő</li>
+                            <li>Ütemező</li>
+                        </ul>
+                        <li>Megszakításkezelés</li>
+                        <li>I/O műveletek</li>
+                        <li>Rendszerhívás interface</li>
+                        <ul>
+                            <li>Ez az a függvénykönyvtár, melyet a felhasználói programok használhatnak</li>
+                        </ul>
+                    </ul>
+                </ul>
+                <li>Rendszerkönyvtárak</li>
+                <ul>
+                    <li>Olyan programkönyvtárak, melyet a felhasználói program használhatnak</li>
+                    <li>Pl.: libc</li>
+                </ul>
+                <li>Rendszerprogramok</li>
+                <ul>
+                    <li>A rendszer részét képezik</li>
+                    <li>Később</li>
+                </ul>
+                <li>Rendszerszolgáltatás</li>
+                <ul>
+                    <li>Folyamatosan működnek</li>
+                    <li>A felhasználó vagy más programok felé nyújtanak szolgáltatásokat</li>
+                </ul>
+                <li>Feladatok</li>
+                <ul>
+                    <li>Erőforrásigény</li>
+                    <ul>
+                        <li>I/O intenzív feladatok</li>
+                        <ul>
+                            <li>Az idejük nagy részét várakozással tölti</li>
+                            <li>Nem kell sok processzoridő</li>
+                            <li>Nem sok adatra van szükségük, csak egyszerűen ezzel foglalkoznak</li>
+                            <li>Fájlszerverek, emailkliensek stb.</li>
+                        </ul>
+                        <li>CPU-intenzív feladatok</li>
+                        <ul>
+                            <li>Az idejük nagyrészét a processzoron töltik</li>
+                            <li>Számolnak</li>
+                            <li>Ebből kevesebb van</li>
+                        </ul>
+                        <li>Memóriaintenzív feladatok</li>
+                        <ul>
+                            <li>Egyszerre nagy mennyiségű adat kell nekik gyors elérésre</li>
+                            <li>pl. keresési indexek, statisztikai elemzések stb.</li>
+                            <li>Ha van elég memória, CPU intenzívvé válnak</li>
+                            <li>Ha nincs elég memória, I/O intenzívvé válnak (virtuális memória a diszken)</li>
+                        </ul>
+                    </ul>
+                    <li>Elvárások</li>
+                    <ul>
+                        <li>Kevés várakozás</li>
+                        <ul>
+                            <li>Várakozási idő</li>
+                            <ul>
+                                <li>Az az idő amit nem a CPU-ban tölt</li>
+                            </ul>
+                            <li>Körbefordulási idő</li>
+                            <ul>
+                                <li>A program futásának összideje</li>
+                            </ul>
+                            <li>Válaszidő</li>
+                            <ul>
+                                <li>A felhasználói interakciókra való reakcióidő</li>
+                            </ul>
+                        </ul>
+                    </ul>
+                    <li>Nehézségek</li>
+                    <ul>
+                        <li>Nincs jövőbe látás</li>
+                        <ul>
+                            <li>Nem ismerjül előre a feladatok erőforrásigényeit</li>
+                        </ul>
+                        <li>Sok a feladat</li>
+                        <ul>
+                            <li>Sokfélék</li>
+                            <li>Másra kell optimalizálni</li>
+                            <li>Nagyon sok ilyennél a rendszer vergődni kezd</li>
+                        </ul>
+                    </ul>
+                </ul>
+            </ul>
+            <li>Operációs rendszer betöltése</li>
+            <ul>
+                <li>Áram alá helyezzük a gépet</li>
+                <ul>
+                    <li>Elindul a rendszerórajel</li>
+                </ul>
+                <li>Lemaradtam :(</li>
+            </ul>
+        </ul>
+        <h2>3. Előadás</h2>
+        <ul>
+            <li>A kernel</li>
+            <ul>
+                <li>Rétegek</li>
+                <ul>
+                    <li>A rétegek között jól meghatározott interface-ek</li>
+                    <ol>
+                        <li>Hardver réteg</li>
+                        <li>Hardver abszorpciós interface</li>
+                        <li>Kernel</li>
+                        <li>Rendszerhívás interface</li>
+                        <li>Felhasználói szintű programok</li>
+                    </ol>
+                    <li>Monolitikus</li>
+                    <ul>
+                        <li>A kernel részei egyetlen namespaceben</li>
+                        <li>A legalapvetőbb komponensek 1db modulban vannak</li>
+                    </ul>
+                    <li>Moduláris</li>
+                    <ul>
+                        <li>Nem érhető el mindig minden rész</li>
+                        <li>Egyes modulok például futásidőben töltődnek be (fordítani már nem kell)</li>
+                    </ul>
+                    <li>Elosztott rendszer</li>
+                    <ul>
+                        <li>A komponensek önállóak</li>
+                        <li>Külön címtérben helyezkednek el</li>
+                        <li>Van egy kommunikációs infrastruktúra adatcseréhez</li>
+                        <li>Üzenetalapú kommunikáció</li>
+                        <li>A windows és a Linux nem elosztott, hanem monolitikus</li>
+                    </ul>
+                </ul>
+                <li>Rendszerhívások működése</li>
+                <ul>
+                    <li>Rendszerhívás</li>
+                    <ul>
+                        <li>Látszólag egy függvényhívás</li>
+                        <li>Valójában több</li>
+                        <li>Rendszerhíváskor a CPU-nak védett módba kell váltani</li>
+                        <li>Védett módban a kernel hajtja végre a rendszerhívás implementációját</li>
+                        <li>Módváltáskor megszakítás (minden task megszakad és várakozik, a CPU kernel programokat futtat)</li>
+                    </ul>
+                    <div class="note">
+                        <ul>
+                            <li>Shell kezelés</li>
+                            <ul>
+                                <li>| pipe</li>
+                                <li>A | B esetén A kimenetét B bemenetére köti</li>
+                            </ul>
+                            <li>strace parancs</li>
+                            <ul>
+                                <li>Az összes rendszerhívás kilistázása egy parancshoz</li>
+                            </ul>
+                            <li>/dev/null</li>
+                            <ul>
+                                <li>Trash</li>
+                                <li>Bármit elnyel</li>
+                                <li>/dev/zero tetszőlegesen sok 0-t ad ki magából</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <li>Rendszerhívás UNIX alatt</li>
+                    <ul>
+                        <li>A végrehajtását rendszerkönyvtárak végzik</li>
+                        <li>Általában a libc könyvtár</li>
+                        <ol>
+                            <li>A libc előkészíti a rendszerhívást</li>
+                            <li>A libc adja ki a SYSCALL utasítást</li>
+                            <li>A SYSCALL megszakítást generál</li>
+                            <li>Végrehajtódik a rendszerhívás</li>
+                            <li>Újabb megszakítás a visszatéréshez</li>
+                            <li>A libc fut tovább, beállítja az outputot</li>
+                        </ol>
+                        <li>Probléma: </li>
+                        <ul>
+                            <li>Ez nagyon hosszadalmas</li>
+                            <li>Vannak nagyon egyszerű rövid, nem biztonságkritikus rendszerhívások</li>
+                            <li>Egyes hívásokat nagyon gyakran kell végrehajtani (Pl.: gettime 1800/msp)</li>
+                        </ul>
+                        <li>Megoldás</li>
+                        <ul>
+                            <li>Virtuális rendszerhívások</li>
+                        </ul>
+                    </ul>
+                </ul>
+            </ul>
+            <li>Kernel problémái</li>
+            <ul>
+                <li>Több millió sor (mai Linux 25 millió, csak a core kernel)</li>
+                <li>Jelenleg kb 2500 ember fejleszti, az emberek hibáznak</li>
+                <li>Átlag 100 soronként egy hiba</li>
+                <li>Mit lehet tenni?</li>
+                <ul>
+                    <li>Kernel sandboxing (armored OS)</li>
+                    <ul>
+                        <li>A kezelőfüggvényeket védőréteggel látja el</li>
+                        <li>A védőréteg érzékeli belülről a hibákat, és kilövi, ha történik</li>
+                    </ul>
+                    <li>Drawbridge concept</li>
+                    <ul>
+                        <li>Azon funkciókat amelyekre egy alkalmazásnak szüksége lesz becsomagoljuk és közel helyezzük az alkalmazáshoz</li>
+                        <li>Ezeken felül produkálható rendszerhívások számát minmálisra korlátozzuk</li>
+                        <li>A védendő rész így minimálisra csökken</li>
+                    </ul>
+                    <li>OS sandboxing</li>
+                    <ul>
+                        <li>Virtualizáció</li>
+                        <li>Konténer: egy kernelen belül független OS-ek</li>
+                        <li>Kritizált</li>
+                    </ul>
+                    <li>Dobjuk el a monolitikus felépítést</li>
+                    <ul>
+                        <li>Egy elosztott rendszert sokkal jobban lehet szétszeparálni</li>
+                        <li>Egy elosztott rendszer robosztusabb</li>
+                        <li>Implementáció: mikrokernel</li>
+                        <ul>
+                            <li>Védett módban csak a legszükségeseb részek futnak</li>
+                            <li>Rugalmas, megbízható, hibatűrő</li>
+                            <li>Jobb programozási szemlélet</li>
+                            <li>A kommunikációs interface nagyon lassúvá teszi</li>
+                            <li>Központosítás nélkül sokkal macerásabb a fejlesztés</li>
+                        </ul>
+                        <li>L4 mikrokernel</li>
+                        <ul>
+                            <li>Új generációs mikrokernel</li>
+                            <li>CPU regiszterekben is képes üzenetet átvinni</li>
+                            <li>10-20-szor gyorsabb mint a klasszik mikrokernel</li>
+                            <li>Nagyon kevés védett funkció</li>
+                            <li>A védett kernel nagyon kicsi (pár 10 000 sor)</li>
+                            <li>Nagyon hardverfügő</li>
+                        </ul>
+                        <li>Hibrid kernelek</li>
+                        <ul>
+                            <li>Vegyítik a monolitikus megközelítést a mikrokernelekével</li>
+                            <li>OS X pl. ilyen</li>
+                            <li>L4-gyel kísérleteznek</li>
+                            <li>Windows is tartalmaz 1-2 elosztott elemet</li>
+                        </ul>
+                    </ul>
+                </ul>
+            </ul>
+            <li>Összefoglalás</li>
+            <ul>
+                <li>A mai kernelek moduláris monolitikus kernelek</li>
+                <li>Az OS indulása egy komplex eljárás</li>
+                <li>OS felépítése (rendszerszolgáltatások, rendszerkönyvtárak, felhasználói appek)</li>
+            </ul>
+        </ul>
+        <h2>2019.03.14. EA</h2>
+        <ul>
+            <li>Ütemezések</li>
+            <ul>
+                <li>FCFS</li>
+                <ul>
+                    <li>Beérkezési sorrendben végrehajtja a taskokat</li>
+                    <li>Nem optimális várakozási iső szempontjából</li>
+                    <li>Könnyen implementálható</li>
+                    <li>Az ütemező egy várakozási sor végére helyezi az újonnan bekerülő taskokat</li>
+                    <li>FIFO ütemezőnek is hívják</li>
+                </ul>
+                <li>Round-Robin</li>
+                <ul>
+                    <li>Az érkező taskoknak mindig ugyanannyi időt ad</li>
+                    <li>Az idő lejártával a taskot visszatesszük a várakozási sorba</li>
+                    <li>Optimális válaszidőre (I/O intenzív taskokhoz)</li>
+                </ul>
+                <li>SJF</li>
+                <ul>
+                    <li>Legkisebb löketidejű</li>
+                    <li>Mindig azt a taszkot indtja legközelebb, amit a leghamarabb be tud fejezni</li>
+                </ul>
+                <li>SRTF</li>
+                <ul>
+                    <li>Megszakításos ütemező</li>
+                    <li>Ismerjük előre a taskok futásidejét</li>
+                    <ul>
+                        <li>Pl. statisztikákból / kódhosszból</li>
+                    </ul>
+                    <li>Ha A task fut és megjelenik B task, melynek löketideje kisebb, mint A hátralevő löketideje</li>
+                    <li>Akkor az ütemező megszakítja A-t és B-t futtatja</li>
+                </ul>
+                <li>Prioritásos ütemező</li>
+                <ul>
+                    <li>Taskokhoz egy prioritást rendel</li>
+                    <li>Prioritás szerint SJF</li>
+                    <li>Okosan újra kell néha számolni a prioritásokat</li>
+                    <li>Veszély</li>
+                    <ul>
+                        <li>Kiéheztetés</li>
+                        <li>Statikus prioritások esetén nem lehet megoldani</li>
+                        <li>Ha mindig nagy prioritású taskok érkeznek akkor a kis prioritásúak sosem futnak le</li>
+                    </ul>
+                    <li>Megoldás: öregítés</li>
+                    <ul>
+                        <li>A várakozási sorban lévő taskok prioritását lassan növelgetjük</li>
+                        <li>Pl.: minden ütemezési döntésnél</li>
+                    </ul>
+                </ul>
+                <li>Többszintű ütemező</li>
+                <ul>
+                    <li>A fent megismert ütemezőket kombináljuk</li>
+                    <li>Mindegyikhez külön várakozási sort tartunk fent és külön választó egységet</li>
+                    <li>Szintek között globális ütemezés</li>
+                    <li>Kiéheztetés?</li>
+                    <ul>
+                        <li>Átjárás a szintek között</li>
+                    </ul>
+                    <li>Többszintű statikus ütemező</li>
+                    <ul>
+                        <li>Érkezik egy taszk</li>
+                        <li>Ki kell választani melyik szintre kerüljön a task</li>
+                        <li>Adott szinten kiválasztjuk mi kerül a FIFO elejére</li>
+                        <li>A szintek FIFO-i közül is választunk</li>
+                    </ul>
+                    <li>Többszintű dinamikus ütemező</li>
+                    <ul>
+                        <li>Van átjárás a szintek között</li>
+                        <li>Upgrade / downgrade</li>
+                        <li>Többszintű visszacsolt sorok ütemező</li>
+                        <ul>
+                            <li>I/O műveletekért upgrade jár</li>
+                            <li>CPU műveletekért downgrade, ha nem tudta kihasználni a Round Robin időszeletét</li>
+                            <li>Hosszú távon ez megközelíti az SJF-et, ami ideális</li>
+                            <li>Turing díj járt az ötletért</li>
+                        </ul>
+                    </ul>
+                </ul>
+            </ul>
+        </ul>
+    </main>
+</body>
+</html>

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+    <title>Számítógép architektúrák</title>
+    <style media="screen">
+      ul, ol{
+        margin: 0px 0px 7px 0px;
+      }
+      li{
+        max-width: fit-content;
+      }
+      h2{
+        margin: 0.83em 0 5px 0!important;
+      }
+      .fontos{
+        background: rgba(235, 255, 50, .7);
+      }
+    </style>
+  </head>
+  <body style = "font-family: 'Encode Sans Expanded', sans-serif; font-size: 14px; line-height: 22px; padding: 30px 70px;">
+    <h1>Számítógép architektúrák</h1>
+    <h2>1. EA</h2>
+    <ul>
+      <li>Követelmények</li>
+      <ul>
+        <li>ZH: 40%, 55%, 70%, 85%</li>
+        <li>4/7 gyak</li>
+        <li>Vizsga (hosszabb, 90p)</li>
+      </ul>
+      <li>Tematika</li>
+      <ul>
+        <li>Információ feldolgozási modellek</li>
+        <li>Perifériakezelés</li>
+        <li>Memóriakezelés</li>
+        <li>CPU</li>
+        <li>Multiprocesszoros rendszerek</li>
+      </ul>
+      <li>Információ feldolgozási modellek</li>
+      <ul>
+        <li>Hogyan lehet egy problémát megfogalmazni?</li>
+        <ol>
+          <li>Vezérlésáramlásos modell</li>
+          <ul>
+            <li>SZÁJBARÁGÓS</li>
+            <li>pl. C programozás</li>
+            <li>Kap egy utasítássorozatot</li>
+            <li>Mozgatás: (implicit) egyet lép előre / (explicit) GOTO / (explicit) szubrutin / (explicit) "return"</li>
+            <li>Adatok: közös mem</li>
+            <li>Hiányosság: nem támogatja a párhuzamos utasításvégzést</li>
+          </ul>
+          <ul>
+            <li>FORK / JOIN modell</li>
+            <li>Fork több szálra választja az egy időben végezhető utasításokat</li>
+            <li>Join visszatereli egy szálra</li>
+            <li>Túl költséges!!!</li>
+          </ul>
+          <li>Adatáramlásos modell</li>
+          <ul>
+            <li>SZORGALMAS</li>
+            <li>Műveletek akkor párhuzamosíthatók, ha egymástól függetlenek</li>
+            <li>Nincs vezérlés, nincs közös memória, nincs Program Counter</li>
+            <li>A programozó az egymástól függő műveletek gráfját adja meg</li>
+          </ul>
+          <ul>
+            <li>A párhuzamosságot a hardware kiértékeli</li>
+            <li>Nem igazán terjedt el (a programozó számára túl bonyolult átlátni)</li>
+            <li>A megközelítés még él: táblázatkezelők, out of order utasításvégrahjtás</li>
+          </ul>
+          <li>Igényvezérelt</li>
+          <ul>
+            <li>LUSTA</li>
+            <li>Akkor hatja végre az utasítást, ha már nem lehet halogatni</li>
+            <li>Olyan mint az adatáramlásos, csak "visszafelé"</li>
+            <li>"Rekurzív" gondolkodásmód</li>
+            <li>Nem terjedt el</li>
+            <li>Az R például ilyen</li>
+          </ul>
+        </ol>
+        <li>A CPU-k vezéráramlásosan programozhatóak</li>
+      </ul>
+      <li>Vezéráramlásos architektúrák</li>
+      <ol>
+        <li>Neumann architektúra</li>
+        <ul>
+          <li>Utasítások és az adatok egyaránt a memóroában vannak</li>
+          <li>Könnyű a programot módosítani</li>
+          <li>Fordítóprogramok: Betöltik a programot a memóriába alacsony szinten</li>
+          <li>CPU -- MEMÓRIA -- PERIFÉRIÁK</li>
+          <li>Az adatok és az utasítások nincsenek "címkézve" a memóriában</li>
+          <li>Az adattípusuk nem a memóriában hanem az utasításokban vannak megkülönböztetve</li>
+          <li>HIBA: A MEMÓRIA DÖG LASSÚ</li>
+          <li>Önmódosító programok: mivel az utasítások a memóriában vannak, nyugodtan átírható egy memóriacímen lévő programutasítás</li>
+          <li>Modern oprendszerek tiltják a programok önmódosítását</li>
+        </ul>
+        <li>Harvard architektúra</li>
+        <ul>
+          <li>Külön van utasításmemória</li>
+          <li>Külön van adatmemória</li>
+          <li>Előny: Az utasítás és adatmemóriából async tud olvasni</li>
+        </ul>
+      </ol>
+    </ul>
+    <h2>2. EA</h2>
+    <ul>
+      <li>Perifériák</li>
+      <ul>
+        <li>Adatfolyam CPU-ból perifériába</li>
+        <ol>
+          <li>I/O kezelés</li>
+          <ul>
+            <li>Pl. 0x60 címen egyszerre létezik periféria és memóriacím</li>
+            <li>A CPU egy 1 bites kiválasztójellel dönti el, hogy perifériának vagy memóriának a címét olvassa / írja</li>
+            <li>Ezt használják a PC-k</li>
+          </ul>
+          <li>Közös memóriaterület</li>
+          <ul>
+            <li>0x60-hoz vagy csak periféria vagy csak memória tartozik</li>
+            <li>Hátrány: lyukak a memóriában (mert azok a perifériáknak vannak fenntartva)</li>
+            <li>Előny: Nagyon könnyű elérés magasabb szintű nyelveken is (egyszerű pointer címzés)</li>
+          </ul>
+        </ol>
+        <li>Adatfolyam perifériából CPU-ba</li>
+        <ul>
+          <li>Perfiéria nem tud műveletet kezdeményezni a CPU-nak, csak a CPU dönthet úgy, hogy olvasni akar</li>
+          <li>Megoldás: INTERRUPT</li>
+          <ul>
+            <li>Minden CPU-nak 1db INT lába van</li>
+            <li>Ha a periféria valami 'eventet' akar jelezni, akkor aktív jelet generál az interruptnak</li>
+            <li>A processzor lementi az folyamatban lévő műveleteit, eldob mindent és kiszolgálja az interruptot</li>
+            <ol>
+              <li>A processzor végignézi az összes perifériát, hogy eldöntse melyik adta az interruptot</li>
+              <li>Vektoros címzés: az interrupt kérésekor egy adatsínen a periféria elküldi a 'sorszámát'</li>
+              <ul>
+                <li>Daisy chaining</li>
+                <ul>
+                  <li>A processzor küld egy perifériakiszolgáló jelet az első perifériának</li>
+                  <li>Ha ő küldte az interruptot akkor elküldi a sorszámát az adatsínen</li>
+                  <li>Ha nem, akkor továbbítja a jelet a következő perifériának</li>
+                  <li>A prioritási sorrend hardweresen van meghatározva, minél előrébb van egy periféria, annál magasabb a prioritása INT esetén</li>
+                </ul>
+                <li>PIC (Programmable Interrupt Controller)</li>
+                <ul>
+                  <li>A CPU csak egy perifériával, a PIC-kel kommunikál</li>
+                  <li>Szoftveresen dönti el melyik periféria interruptját továbbítsa a CPU-nak</li>
+                  <li>Hátrány: mivel a PIC nem egy busz, így csak előre meghatározott számú perfiéria köthető rá</li>
+                </ul>
+              </ul>
+            </ol>
+            <li>Interrupt kezelés multiprocesszoros rendszereknél</li>
+            <ul>
+              <li>Egyszerű megoldás: Minden interrupt az egyik procihoz fut be (boot CPU-hoz)</li>
+              <ul>
+                <li>Hátrány: Nem tudjuk kihasználni a multiprocesszorosságát</li>
+              </ul>
+              <li>Advanced PIC</li>
+              <ul>
+                <li>Fejlett interrupt vezérlők</li>
+                <ul>
+                  <li>Nem csak a perifériák közül választ, hanem a processzorok közül is</li>
+                  <li>Nem dolgoz fel, csak egy router</li>
+                </ul>
+              </ul>
+            </ul>
+            <li>Probléma: Gigabit Ethernet</li>
+            <ul>
+              <li>A hálozati hívások (a hálózati kártya egy periféria) is interruptot használ</li>
+              <li>Egy Gigabites hálózat esetén túl sok túl nagy adatot kérő interrupt érheti a processzort</li>
+              <li>CPU nem tud más prifériákkal foglalkozni</li>
+              <li>A sok megszakítás miatt nagyon belassul</li>
+              <li>Megoldások</li>
+              <ul>
+                <li>Megszakítás kezelés egyszerű, rövid</li>
+                <li>Kritikus műveletekkor az interruptot hanyagolja a processzor</li>
+                <li>Interrupt moderáció: csak adott felgyűlő interrupt adat után (pl. 10KB) szakít meg a proc és oldja meg az összeset</li>
+              </ul>
+            </ul>
+          </ul>
+        </ul>
+        <li>Adatfolyam szervezése</li>
+        <ul>
+          <li>Forgalomszabályozás (ha a küldő és a fogadó sebessége eltér)</li>
+          <ol>
+            <li>Forgalomszabályozás elhagyása</li>
+            <ul>
+              <li>Túl egyszerű a periféria ahhoz, hogy szabályozzák</li>
+              <li>Nyomógomb, LED, kapcsoló stb.</li>
+            </ul>
+            <li>Egyoldali feltételes adatátvitel</li>
+            <ul>
+              <li>Az egyik oldal (általában a periféria) nem tudja kezelni a forgalmát</li>
+              <li>A periféria egy átmeneti tárolóba dobja az adatot</li>
+              <li>Egy állapotregiszter (flag) jelzi, ha a periféria írt az adattárolóba</li>
+              <li>A processzor így mindig érvényes adatot olvas</li>
+              <li>Ha a periféria túl gyors akkor adatvesztés</li>
+              <li>Pl. Mikrofonok</li>
+            </ul>
+            <li>Kétoldali feltételes adatátvitel</li>
+            <ul>
+              <li>Az állapotregiszter visszaküldi a perfiréiának is, hogy a CPU kiolvasta már-e az előzőt</li>
+              <li>Előny, se adathiány, se adatvesztés nem merülhet fel</li>
+              <li>Hátrány: mindenki vár a másikra: lassú</li>
+            </ul>
+            <li>Feltételes adatátvitel FIFO-val</li>
+            <ul>
+              <li>A periféria egy FIFO-ba dobja az adatát</li>
+              <li>Csak akkor áll le ha a FIFO megtelt</li>
+              <li>Ekközben a CPU állandóan ürítgeti a FIFO-t</li>
+              <li>Ideális megoldás</li>
+            </ul>
+          </ol>
+          <li>Ha nincs forgalomszabályozás</li>
+          <ul>
+            <li>Polling</li>
+            <ul>
+              <li>Egy ciklus állandóan olvas a perifériából, hogy van-e értelmes adat</li>
+              <li>Be kell állítani egy időtartamot az ellenőrzésekre: Adatvesztés / Túlzott leterhelés</li>
+            </ul>
+            <li>Interrupt</li>
+            <li>Példák</li>
+            <ul>
+              <li>Egér: 30 poll/s, 600órajel/poll: 1GHZ-es processzort 0.0012%-ban terhel le</li>
+              <li>Diszk: 12%-ban lefoglalná a CPU-t &rarr; kötelező interruptot használni</li>
+            </ul>
+          </ul>
+          <li>DMA</li>
+          <ul>
+            <li>Egy priféria</li>
+            <li>Egyes interruptok esetén, ha a perifériakezelés túl hosszú ideig tartana (pl. Diszk), a CPU felprogramozza a DMA egységet</li>
+            <li>Átadja azt amit ő kapott a perifériától, (pl. egy olvasási egy írási cím, és egy utasítás)</li>
+            <li>A CPU nem pazarolja a kapacitását írás olvasásra, a DMA azt elvégzi</li>
+            <li>A CPU és a DMA kontroller "veszekednek" a buszhasználat jogáért</li>
+            <li>DMA interrupttal jelzi ha végzett</li>
+            <li>Ma már adatlapon nem használjuk, a DISZKeknek van saját DMA-ja</li>
+          </ul>
+        </ul>
+        <li>Adatfolyam csatornája</li>
+        <ol>
+          <li>Busz</li>
+          <ul>
+            <li>Közös adatcsatorna</li>
+            <li>"Versenyezni kell" a buszhasználatért</li>
+            <li>Master Slave egységek határozzák meg a prioritást buszhasználatra</li>
+          </ul>
+          <li>Pont-pont kapcsolat</li>
+          <ul>
+            <li>Két egység között közvetlen összeköttetés</li>
+            <li>Nem kell versenyezni az adatküldés jogáért, legfeljebb az irányáért</li>
+          </ul>
+        </ol>
+        <ul>
+          <li>Adatcsatorna sávszélessége</li>
+          <ul>
+            <li>Szélesség: jelvezetékek száma</li>
+            <li>Párhuztamos adatátvitel: egyszerre több vezetéken, Soros adatátvitel, egy vezetéken egymás után</li>
+            <li>SOROS GYORSABB ÉS OLCSÓBB</li>
+            <ul>
+              <li>Párhuzamosnál a párhuzamos vezetékeken elcsúsznak az adatok, nem mintavételezhető állandóan</li>
+              <li>Meg kell várni amíg az elcsúszások is beérnek, és akkor feldolgozni az adatot</li>
+              <li>Sorosnál állandóan mintavételezhető, mindig értelmes adat van rajta</li>
+            </ul>
+          </ul>
+          <li>Időzítés</li>
+          <ol>
+            <li>Szinkron</li>
+            <ul>
+              <li>Közös órajel</li>
+              <li>Meg van adva hány órajelenként van értelmes adat</li>
+              <li>Minden órajelen ellenőrzés</li>
+            </ul>
+            <li>Aszinkron</li>
+            <ul>
+              <li>Nincs órajel</li>
+              <li>"Event orientált"</li>
+              <li>Akkor van olvasás ha generálva van egy vezérlőjel</li>
+            </ul>
+          </ol>
+          <ul>
+            <li>Melyik a jó? Egyik sem</li>
+            <li>Szinkron vezérlünk órajel nélkül</li>
+            <li>Nem használunk vezérlőjeleket</li>
+            <ul>
+              <h3>MIAFASZ?????</h3>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+    <h2>3. EA</h2>
+    <ul>
+      <li>Arbitráció</li>
+      <ul>
+        <li>Busz kontrollálása: versengés rendezése</li>
+        <li>Master és slave egységek</li>
+        <ul>
+          <li>Pl. egy periféria esetében nem maga a periféria verseng a buszért</li>
+          <li>Az egységekhez master egységek csatlakoznak amik versengenek "helyettük" a buszért</li>
+        </ul>
+        <li>Arbiter</li>
+        <ul>
+          <li>Centralizált arbitráció</li>
+          <li>Központi egység dönti el ki használhatja a buszt</li>
+          <li>Veszély: ha az arbiter tönkremegy senki nem használhatja a buszt!</li>
+          <li>És hát akkor szopacs van</li>
+          <li>Soros arbitráció</li>
+          <ul>
+            <li>Daisy chain</li>
+            <li>Arbiter kiadja a BUSGRANT jelet, a masterek passzolják tovább ezt a jelet ha nem ők kértek buszhasználatot</li>
+            <li>Könnyen bővíthető</li>
+            <li>Hátső egységek "soha" nem kapnak jogot a buszhoz</li>
+          </ul>
+          <li>Párhuzamos arbitráció</li>
+          <ul>
+            <li>Körben forog a buszhasználat</li>
+            <li>Nincs priorizálás</li>
+          </ul>
+        </ul>
+        <li>Elosztott arbitráció</li>
+        <ul>
+          <li>Önkiválasztó</li>
+          <ul>
+            <li>Minden master tudja mi a masterek prioritása</li>
+            <li>Ha egy náluk "fontosabb" master és használná a buszt, akkor átengedik</li>
+          </ul>
+          <li>Ütközésdetektálás</li>
+          <ul>
+            <li>Azonnal küldi az adatát a buszon</li>
+            <li>Ha zavaros az adása akkor visszavonja</li>
+          </ul>
+        </ul>
+        <li>Példák</li>
+        <ul>
+          <li>PCI: 1024 master, párhuzamos arbitráció</li>
+          <li>SCSI: Önkiválasztó</li>
+          <li>USB: 1 master van, async</li>
+        </ul>
+      </ul>
+      <li>Buszos rendszerek</li>
+      <ul>
+        <li>Egybuszos</li>
+        <ul>
+          <li>Perifériák és memória egyazon buszon</li>
+          <li>Lassú működés</li>
+          <li>Adatkódolások zavara</li>
+          <li>Egyszerű, megvalósítás</li>
+        </ul>
+        <li>Kétbuszos</li>
+        <ul>
+          <li>Memória és I/O külön buszokon, köztük híd</li>
+          <li>CPU a memória buszát olvassa, a perifériák busza a hídon továbbítja a másik buszra az adatot</li>
+          <li>A híd nem csak egy vezeték, hanem egy kombinációs logika ami jelet továbbít</li>
+        </ul>
+        <li>Hárombuszos</li>
+        <ul>
+          <li>Rendszerbusz, memóriabusz, I/O busz</li>
+          <li>2 híd van, egy a memóriabuszról, egy a perifériabuszról (PCI)</li>
+          <li>Ezt használják</li>
+        </ul>
+      </ul>
+      <li>Háttértárak</li>
+      <ul>
+        <li>Speciális periféria</li>
+        <li>Meghatározzák egy PC teljesítményét</li>
+        <li>HDD (Hard Disk Drive), SSD (Solid State Drive)</li>
+        <li>+Optikai lemez, pendrive, flash stb.</li>
+        <li>HDD</li>
+        <ul>
+          <li>IBM találta ki</li>
+          <li>1 col ~ 8GB</li>
+          <li>Működése</li>
+          <ul>
+            <li>Forgólemezes adattárolás</li>
+            <li>Forgó fej (írás olvasás)</li>
+            <li>Állandó, nagyon nagy szögsebességgel forog, nem lassít, nem áll meg</li>
+            <ul>
+              <li>Hátrány: adott sávban a kerületi sebesség (olvasási/írási sebesség) más</li>
+              <li>Megoldás: ZBR</li>
+              <ul>
+                <li>A HDD lemezek zónákra vannak osztva</li>
+                <li>Külső zónákban több szektor van</li>
+                <li>Adott zónákban minden sávon az adatsűrűség más, de az olvasási sebesség állandó (külső sávokon szélesebbek a szektorok)</li>
+                <li>Csak zónahatár átlépéskor kell változtatni a sebességet</li>
+              </ul>
+            </ul>
+            <li>A fej mágnezi a lemezt, ahol az örvényes mágneses mező iránya kódol egy bitet</li>
+            <li>Nem a mező irányát érzékeli, hanem annak megváltozását</li>
+            <li>A bit nem egy szekció mágneses tere, hanem két szekció közötti határ, ahol vagy van irányváltás, vagy nincs</li>
+            <li>Hátrány: 1 bit meegváltoztatása gyakorlatilag lehetetlen (nagyon macerás)</li>
+            <li>Következmény: bitek nem olvashatók külön, nem írhatók külön, csak szektorok írhatók/olvashatók</li>
+          </ul>
+          <li>Szektorok</li>
+          <ul>
+            <li>Minden szektor 512 byte (akkor is ha nagyobb / kisebb a fájlod)</li>
+            <li>Szektorok körkörös sávok a lemezen</li>
+            <li>Két szektor között jelző rés</li>
+            <li>Szektor felépítése</li>
+            <ul>
+              <li>Előtag: kalibrál (bitsűrűség, jelerősség)</li>
+              <li>Adat kezdődik jel: a végétől olvassa az adatokat a szektorban</li>
+              <li>Adatok</li>
+              <li>CRC: Detektálni képes a disken lévő adatok hibáit</li>
+              <li>ECC: a detektált hibákat (hibás biteket) javítani képes (kb. 20 bitet tud korrigálni)</li>
+              <li>Padding: kis késleltetés kényelmesebb működéshez (töltelék terület)</li>
+            </ul>
+            <li>Szektor címzése</li>
+            <ul>
+              <li>CHS (cylinder &rarr; head &rarr; sector)</li>
+              <ul>
+                <li>Cilinder: mekkora a sugár</li>
+                <li>Fej: Adott sugárnál milyen magasság</li>
+                <li>Szektor: Adott sugarú réteg melyik szektora</li>
+              </ul>
+              <li>Logikai címzés</li>
+              <ul>
+                <li>A fej számolja a CHS-t</li>
+                <li>A CPU csak egy szektor id-t küld (LDA: Logical block adress)</li>
+              </ul>
+            </ul>
+          </ul>
+          <li>Teljesítmény</li>
+          <ul>
+            <li>Kiszolgálási idő: Egy szektor írásához és olvasásához szükséges idő</li>
+            <li>Sorbanállási idő: Oprendszer régen késleltetve kérte le a HDD-ről az adatokat, ma már lead minden requestet, és disc szolgálja ki sorban, ha túl van terhelve</li>
+            <li>Válaszidő: sorbanállási + Kiszolgálási idő</li>
+            <li>IOPS: kérések végrehajtásának száma / sec</li>
+            <li>Adatátviteli sebesség: IOPS * átlagos adatmennyiség</li>
+            <li>A HDD kitalálja h a kapott requesteket hogyan a legparktikusabb végrehajtani (ha útbaesik egy másik szektor a requestek közt, előbb hajtja végre)</li>
+          </ul>
+          <li>Kiszolgálás</li>
+          <ul>
+            <li>Seek idő (adat megkeresése)</li>
+            <li>Forgási késleltetés (max 2&pi; fordulat várása a lemez aktuális helyzetétől függően)</li>
+            <li>Adatátvitel a hordozóból (1 / több egymás melletti szektor olvasása)</li>
+            <li>Adatátvitel az illesztőn (adat továbbítása: utolsó szektor átvitele 512B / átviteli sebesség)</li>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+    <h2>5. EA</h2>
+    <ul>
+      <li>USB</li>
+      <ul>
+        <li>Felépítés</li>
+        <ul>
+          <li>Fa topológia</li>
+          <li>USB Hub = USB portok (fa csomópontjai)</li>
+          <li>USB eszköz (fa levelei)</li>
+          <li>Perifériaként viselkedik</li>
+          <ul>
+            <li>Egyszerű eszközként</li>
+            <li>Összetett eszközként</li>
+            <ul>
+              <li>Egy fizikai eszköz összetett felépítéssel</li>
+              <li>Logikailag több eszköz</li>
+            </ul>
+          </ul>
+          <li>PC-n Root Hub</li>
+          <ul>
+            <li>Az USB fában egyedül ez indíthat kommunikációt (INT)</li>
+            <li>A Root Hub az egyetlen master</li>
+            <ul>
+              <li>Nem kell arbitráció, úgyis a root hub beszél</li>
+            </ul>
+            <li>Minden eszköz és USB Hub a Root Hubnak küld adatot</li>
+            <ul>
+              <li>Teljes üzenetszórás</li>
+              <li>USB Hubok nem különböztetnek meg input outputot</li>
+              <li>Amit ő megkap azt minden rácsatlakoztatott eszköz (és Hub) megkapja</li>
+            </ul>
+            <li>A root hub egyszerre egy USB eszközzel kommunikálhat</li>
+            <ul>
+              <li>Hátrány: minél több USB eszköz van csatlakoztatva annál lassabb a kommunikáció</li>
+            </ul>
+            <li>Tranzakciók</li>
+            <ul>
+              <li>Adott időközönként (USB verziótól függ) keretek indulnak</li>
+              <li>A tranzakciók a keretekben utaznak (1500 - 7500B rakomány)</li>
+              <li>Tranzakciókban a periféria azonosítója, I/O bit, adat</li>
+            </ul>
+          </ul>
+          <li>Adatátvitel</li>
+          <ul>
+            <li>Bulk</li>
+            <ul>
+              <li>Legáltalánosabb</li>
+              <li>Nem garantálunk késleltetést</li>
+              <li>Nagy adatok hibamentes átvitele</li>
+              <li>Winchester, pendrive, nyomtató</li>
+            </ul>
+            <li>Izokron</li>
+            <ul>
+              <li>Nem számít a hibamentesség</li>
+              <li>Csak a késleltetés számít</li>
+              <li>Adott időközönként adatot várunk</li>
+              <li>Mikrofonok, webkamerák</li>
+            </ul>
+            <li>Interrupt</li>
+            <ul>
+              <li>Nincs INT az USB-n</li>
+              <li>Valójában polling</li>
+              <li>Időközönként poll requestet kérünk, és hibamentes választ</li>
+              <li>Kis adat átvitel</li>
+              <li>Beviteli eszközök (egér, billentyűzet)</li>
+            </ul>
+            <li>Control</li>
+            <ul>
+              <li>Output eszközök pollingja</li>
+              <li>Hibamentesség + késleltetés</li>
+              <li>Struktúrált: a parancs formátuma rögzített</li>
+            </ul>
+          </ul>
+          <ul>
+            <li>Keretek</li>
+            <ul>
+              <li>Egy keretben egymás után utaznak rögzített adatkorláttal az egyes adatátviteli eszközök</li>
+              <li>Izokron &rarr; Interrupt &rarr; Bulk &rarr; Control</li>
+            </ul>
+          </ul>
+          <li>Interfacek</li>
+          <ul>
+            <li>Egy USB interfacenek több adatátviteli módja is lehet</li>
+            <li>Pl. webkamera izokron küld adatot a rajta lévő led-et Bulk módon vezérli a CPU</li>
+            <li>Alt Settings</li>
+            <ul>
+              <li>Alternatív beállítások</li>
+              <li>Egy interface több sávszélességű adatátvitelt támogathat</li>
+            </ul>
+            <li>Configuration settings</li>
+            <ul>
+              <li>Lehet több konfigurációja (Ethernet, USB, PCI stb.)</li>
+            </ul>
+            <li>Jellemzően 1 konfiguráció, 1 alt-set, 1 interface, több adatcsatorna</li>
+          </ul>
+          <li>Driverek</li>
+          <ul>
+            <li>Tranzakció struktúráját rögzíteni kell</li>
+            <li>CPU adatot akar küldeni / kapni, a periféria driver összeállítja belőle a megfelelő struktúrájú adatot</li>
+            <li>A kódolt adatot elküldi az USB drivernek ami tranzakcióként továbbítja tranzakcióként az USB Host Controller drivernek</li>
+            <li>Az USB host controller driver kódolja egy keretbe, és kiküldi a Root Hubnak</li>
+          </ul>
+          <ul>
+            <li>A driverek feladata a periféria konfigurációjának, alt settingjeinek PC-hez igazítása, beállítása</li>
+          </ul>
+          <ul>
+            <li>USB driver</li>
+            <ul>
+              <li>Időnként lekérdezgeta hubokról, hogy érkezett-e új periféria</li>
+              <li>Ha érkezett, akkor konfigurálja</li>
+              <ul>
+                <li>Reseteli a portot amin új periféria érkezett</li>
+                <li>Kiolvassa a periféria adatait (adatátviteli mód, gyártó, konfiguráció, alt-settings)</li>
+                <li>Rögzíti mennyi tápra van szüksége, ha többre mint amit nyújtani tud, akkor lekapcsolja</li>
+                <li>Egyébként perifériakódot ad neki, és beveszi az adatfolyamba</li>
+              </ul>
+            </ul>
+          </ul>
+          <li>USB verziók</li>
+          <ul>
+            <li>USB 1.1: Low speed, full speed</li>
+            <li>USB 2.0: High Speed: Több adat, gyakrabbi keretek</li>
+            <li>USB 3.0</li>
+            <ul>
+              <li>Nem busz</li>
+              <li>Megtartja a fa topológiát (Hubok)</li>
+              <li>Egy master van, de nincs szerepe, mert ez nem busz, hanem Pont-Pont kapcsolatok</li>
+              <li>Intelligens Hubok: tudják, célzottan kinek kell adatot küldeni</li>
+              <li>Ugyanúgy kell kommunikálni vele, ő kommunikál másképpen az eszközökkel</li>
+              <li>Superspeed</li>
+            </ul>
+          </ul>
+          <li>Tápok</li>
+          <ul>
+            <li>5V</li>
+            <li>0.5 - 0.9A</li>
+            <li>Konfigurációs fázisban 0.1A-t kapnak, közlik mennyi kell nekik</li>
+            <ul>
+              <li>Ha nincs annyi akkor off</li>
+              <li>USB hubok (a teljes fa) áramerőssége van korlátozva USB 2.0-ban 500mA-re</li>
+              <li>Túl sok tápigényes perifériát nem lehet hub-okra kötni</li>
+            </ul>
+          </ul>
+          <li>Csatlakozók</li>
+          <ul>
+            <li>USB 1</li>
+            <ul>
+              <li>Type A: input a Hub-ba</li>
+              <li>Type B: input a perifériába</li>
+            </ul>
+            <li>USB 2</li>
+            <ul>
+              <li>Mini USB, Mikro USB bejön</li>
+              <li>"A" és "B" csatlakozók egységesek lesznek, megjelenik az 5. láb: szerep</li>
+            </ul>
+            <li>USB 3</li>
+            <ul>
+              <li>Meghagyták az USB 2 lábait</li>
+              <ul>
+                <li>Ha USB 2-es portba dugják, tökéletesen működik</li>
+              </ul>
+              <li>Belerakták az új USB 3-mas lábakat, USB 3-mas portban azok is aktívak</li>
+            </ul>
+            <li>Type C</li>
+            <ul>
+              <li>Intelligens kábel</li>
+              <ul>
+                <li>A kábellel is lehet kommunikálni</li>
+                <li>CC (Configuration Channel)</li>
+                <li>A kábel tudja, hogy milyen perifériát kötnek hozzá</li>
+                <li>Tudja, hogy hányas USB verziókat támogat</li>
+              </ul>
+              <li>Properties</li>
+              <ul>
+                <li>24 láb</li>
+                <li>5A, 20V, 100W !!!</li>
+                <li>Le lehet kérdezni, mekkora feszültséget, áramerősséget visz</li>
+              </ul>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+    <li>Memória</li>
+    <ul>
+      <li>Memória technológiák</li>
+      <ul>
+        <li>Sokkal lassabban fejlődik mint a CPU</li>
+        <li>Bit tárolás</li>
+        <ul>
+          <li>SRAM</li>
+          <ul>
+            <li>Statikus RAM</li>
+            <li>Bit tárolási egység: Flip Flop</li>
+            <ul>
+              <li>6 tranzisztor</li>
+              <li>BL és ~BL kimenet</li>
+            </ul>
+            <li>Olvasás</li>
+            <ul>
+              <li>Flip flop-ot engedélyezzük, megnézzük a különbséget BL és ~BL negálton</li>
+            </ul>
+            <li>Írás</li>
+            <ul>
+              <li>Engedélyezzük, és aktív jelet küldünk a BL és ~BL-re</li>
+            </ul>
+          </ul>
+          <li>DRAM</li>
+          <ul>
+            <li>Dinamikus RAM</li>
+            <ul>
+              <li>Bit tárolása</li>
+              <ul>
+                <li>Kondenzátorban</li>
+                <li>1 tranzisztor, 1 kondenzátor</li>
+              </ul>
+              <li>Olvasás</li>
+              <ul>
+                <li>WL engedélyezése</li>
+                <li>BL feltöltése</li>
+                <ul>
+                  <li>Ha nőtt a kondenzátor töltése akkor 1</li>
+                  <li>Ha csökkent akkor 0</li>
+                </ul>
+                <li>A kiolvasás destruktív (BL lábak töltésével töröljük az adatot)</li>
+                <li>A kondenzátor magától is elveszti a töltését egy idő után</li>
+                <li>Minden olvasás után vissza kell írni</li>
+              </ul>
+              <li>Írás</li>
+              <ul>
+                <li>BL jelen töltjük a kondenzátort</li>
+              </ul>
+            </ul>
+          </ul>
+          <li>Előnyök, hátrányok</li>
+          <ul>
+            <li>SRAM gyorsabb, tartósabb</li>
+            <li>DRAM olcsóbb, nagyobb, jobb az adatsűrűsége</li>
+          </ul>
+          <ul>
+            <li>SRAM: Cache memória</li>
+            <li>DRAM: Rendszermemória</li>
+            <ul>
+              <li>A rendszermemóriában lévő adatok amúgy is gyorsan változnak</li>
+              <li>Nem nagy áldozat néha újraírni, magunktól is megtennénk</li>
+            </ul>
+          </ul>
+        </ul>
+        <li>DRAM típusú rendszermemória</li>
+        <ul>
+          <li>Hierarchikus felépítés</li>
+          <ul>
+            <li>DRAM cella: 4-8 tároló bit</li>
+            <li>DRAM bank, cellák mátrixa</li>
+            <li>DRAM chip: bankokat tárol</li>
+            <li>DRAM modul: chipek (ezt helyezzük be a PC-be)</li>
+            <li>DRAM csatorna: egy csatornát több nagy modul is használ</li>
+          </ul>
+          <li>DRAM BANK</li>
+          <ul>
+            <li>Sordekóder, oszlopmultiplexer</li>
+            <li>Sordekóderrel egy teljes sor minden cellájának WL jelét 1-esbe állítjuk</li>
+            <li>Az érzékelő jeleken megjelenik a teljes sor adata</li>
+            <li>Egy oszlopmultiplexer kiválasztja melyik érzékelőjeleken lévő adat lesz hasznos</li>
+          </ul>
+          <ul>
+            <li>Parancsok</li>
+            <ul>
+              <li>ACTIVATE</li>
+              <ul>
+                <li>Aktiváljunk egy sort</li>
+              </ul>
+              <li>READ / WRITE</li>
+              <ul>
+                <li>Egy kijelölt oszlop írása / olvasása</li>
+              </ul>
+              <li>REFRESH</li>
+              <ul>
+                <li>A kondenzátorokat újra kell tölteni</li>
+                <li>REFRESH parancs újraírja a következő oszlopot (auto inkremens)</li>
+              </ul>
+              <li>PRECHARGE</li>
+              <ul>
+                <li>ACTIVATE ellentétje, leszedi az aktív WL-t (nem kér paramétert)</li>
+              </ul>
+            </ul>
+            <li>Időzítés</li>
+            <ul>
+              <li>T<sub>RCD</sub>: ACTIVATE ideje</li>
+              <li>T<sub>CAS</sub>: (CL) oszlopkiválasztás utáni olvasási / írási idő</li>
+              <li>T<sub>RP</sub>: PRECHARGE ideje</li>
+              <li>T<sub>RAS</sub>: Minimális sornyitvatartási idő (min. késleltetés ACTIVATE és PRECHARGE között)</li>
+            </ul>
+            <ul>
+              <li>Mértékegység: órajel</li>
+            </ul>
+          </ul>
+          <li>Memória modul</li>
+          <ul>
+            <li>DRAM időzítési paramétereit tudja lekérdezni a CPU</li>
+          </ul>
+          <li>Burst átvitel</li>
+          <ul>
+            <li>A kérést a CPU korábban elindítja, tudván, hogy az adott parancs lassan hajtódik végre</li>
+            <li>Miközben olvas a DRAM, a PRECHARGE parancs már ki van adva, csak adott órajel múlva hajtódik végre</li>
+          </ul>
+          <li>DRAM Chip</li>
+          <ul>
+            <li>Címvezetéken kódolva, hogy hányas bankot, hányadik sort akarják elérni, milyen parancsot akarnak továbbítani</li>
+            <li>Minden bank megnyitja a kért sort</li>
+            <li>Csak a kért bank által visszatért adatot az adatsínre helyezi</li>
+            <li>Nem várja meg amíg az előző bank olvasása megtörtént, ráhelyezi a következő bank adatát a sínre</li>
+            <li>Kiszámolja mekkora a minimális késleltetés, hogy minden adat olvasható legyen</li>
+          </ul>
+          <li>DRAM memóriamodul</li>
+          <ul>
+            <li>Parancsín (bank kiválasztás)</li>
+            <li>Osztott címsín</li>
+            <li>A modul minden chipje megnyitja a kért bankot és válaszol</li>
+            <li>Ha szükség van a többi chip adatára akkor 8x-oztuk a sebességet</li>
+            <li>Ha nem, akkor csak kiolvassuk a szükségeset az adatsínről</li>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+    <h2>6.EA</h2>
+    <ul>
+      <li>DRAM folytatás</li>
+      <ul>
+        <li>Igények</li>
+        <ul>
+          <li>Késleltetés (kicsi)</li>
+          <li>Átviteli sebesség (nagy)</li>
+        </ul>
+        <li>DRAM Rank-ek</li>
+        <ul>
+          <li>Modulokban van (modul elülső, hátulsó lapja)</li>
+          <li>Mindegyiknek közös busza van</li>
+          <li>Minden modul külön rá van kötve a buszra Slave-ként</li>
+          <li>Chip select választ ki DRAM chip-et</li>
+          <li>Egyetlen Master van a buszon: a Memóriavezérlő, ez küld és fogad minden adatot</li>
+        </ul>
+        <li>DRAM csatornák</li>
+        <ul>
+          <li>Többcsatornás rendszerek (nem minden DRAM töbcsatornás)</li>
+          <li>3-4 közös csatornája lehet moduloknak</li>
+          <li>Szinkron: Minden csatorna a memóriavezérlőre csatlakozik, az választ</li>
+          <li>Független: Minden csatornának saját párhuzamos Memóriavezérlője van</li>
+        </ul>
+        <li>Memóriavezérlő</li>
+        <ul>
+          <li>A CPU része</li>
+          <li>Memóriakérések kiszolgálása a CPU-nak és perifériáknak</li>
+          <li>Címek leképzése</li>
+          <ul>
+            <li>Csatorna</li>
+            <li>Rank</li>
+            <li>Bank</li>
+            <li>Sor</li>
+            <li>Oszlop</li>
+            <li>Byte (a bank visszatér 8db byte-tal, ki kell választani melyiket kell továbbítani)</li>
+          </ul>
+          <li>Sorrend optimalizálása</li>
+          <ul>
+            <li>ACTIVATE és PRECHARGE költségesek</li>
+            <li>Lehetőleg minél kevebbszer akarunk külön sorból olvasni</li>
+            <li>Kérdés: ha végeztünk, bezárjuk-e az utolsó sort</li>
+            <ul>
+              <li>Adaptív megoldás: Megtippeli, hogy onnan fog-e jönni a következő kérés</li>
+            </ul>
+          </ul>
+        </ul>
+        <li>DDRAM technológiák</li>
+        <ul>
+          <li>Ma szinkron RAM</li>
+          <li>SDR &rarr; DDR &rarr; DDR2 &rarr; DDR3</li>
+          <ul>
+            <li>Mindig egyre több egyre kisebb adategységek az adatsínen</li>
+            <li>Lefutó és felfutó élre is adat, órajel többszörözés (belső és külső órajel összefügg)</li>
+            <li>1 byte-ot kértünk, 64-et kaptunk, hátha jól jön</li>
+            <li>Nő az adatátvitelui sebesség, de felesleges adatok jönnek</li>
+          </ul>
+          <li>DDR2-800: 200MHz-es órajel de lefutó élre is küld adatot és órajel duplázása is van (200 × 2 × 2)</li>
+          <li>DDR4</li>
+          <ul>
+            <li>Nem a külső, hanem a belső órajelet növeli</li>
+            <li>Csökken a késleltetés, nő az adatátvitel</li>
+            <li>Viszont nem lehet biztonságosan olvasni belőle, mert nem vár eleget</li>
+            <li>Több bank, nő az egyszerre megnyitható sorok száma</li>
+            <li>Hibaszűrő</li>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+    <h2>7. EA</h2>
+    <ul>
+      <li>Virtuális memória</li>
+      <ul>
+        <li>Címfordítás</li>
+        <ul>
+          <li>DRAM-ban laptábla tárolja a címekhez tartozó fizikai címet</li>
+          <li>Egy memóriaeléréshez 2 művelet: laptábla olvasása, címfordításból kapott fizikai memória kezelése</li>
+          <li>Megoldás: TLB</li>
+          <ul>
+            <li>CPU-ban egy szűkített laptábla a gyors eléréshez</li>
+            <li>A legtöbbet használt kereteket tárolja</li>
+            <li>512 bejegyzés</li>
+          </ul>
+        </ul>
+        <li>Laptábla struktúrák</li>
+        <ul>
+          <li>Egyszintű laptábla</li>
+          <ul>
+            <li>Tömb szerű rendezés</li>
+            <li>Keresés 1db összeadás</li>
+            <li>A kért cím az index, a tartalma a fizikai cím</li>
+            <li>Gyors keresés</li>
+            <li>Túl nagy laptábla kell (64 bites rendszerben 32PB)</li>
+          </ul>
+          <li>Hierarchikus laptábla</li>
+          <ul>
+            <li>Keresőfa elvén működik</li>
+            <li>Első szinten pár bit megcímez egy kisebb laptáblát</li>
+            <li>Abból kiolvassa a második szintű laptábla helyét, abból a fizikai címet</li>
+            <li>32 bites esetben kétszintű laptábla: 2 művelet, gyors, kevés memóriát foglal</li>
+            <li>64 bitnél: 6 memóriaművelet!, dög lassú</li>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+  </body>
+</html>

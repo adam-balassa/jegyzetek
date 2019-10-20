@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+    <title>Programozás alapjai</title>
+    <style media="screen">
+      ul, ol{
+        margin: 0px 0px 7px 0px;
+      }
+      h2{
+        margin: 0.83em 0 5px 0!important;
+      }
+    </style>
+  </head>
+  <body style = "font-family: 'Encode Sans Expanded', sans-serif; font-size: 14px; line-height: 22px; padding: 30px 70px;">
+    <h1>Programozás alapjai 2</h1>
+    <h2>1. EA</h2>
+    <ul>
+      <li>Típusok</li>
+      <ul>
+        <li>Logikai típus</li>
+        <ul>
+          <li>bool b = true;</li>
+          <li>Értéke true / false</li>
+          <li>Konvertálható int-ből bool</li>
+        </ul>
+        <li>Struktúra</li>
+        <ul>
+          <li>struct Nev{};</li>
+          <li>Nev ilyenkor már típus név is</li>
+        </ul>
+        <li>Konstansok</li>
+        <ul>
+          <li>#define</li>
+          <li>const int</li>
+          <li>const int*</li>
+          <li>const int*-be nem tehető int változó címe, csak const int változó címe</li>
+        </ul>
+        <li>Enumerációk</li>
+        <ul>
+          <li>enum Szinek</li>
+          <li>Szinek már típusnév</li>
+        </ul>
+        <li>Referencia</li>
+        <ul>
+          <li>tipus& nev = valtozo;</li>
+          <li>Egy alternatív név</li>
+          <li>int i = 0; int& r = i;</li>
+          <li>Most r minden értelemben i-ként viselkedik</li>
+          <li>Függvényfejlécben átadva pointereket helyettesíthet</li>
+          <li><div>
+            void inc(int& a){<br>
+              &nbsp;&nbsp;&nbsp;a++<br>
+            }<br>
+          </div>
+          =
+          <div>
+            void inc(int* a){<br>
+              &nbsp;&nbsp;&nbsp;(*a)++<br>
+            }<br>
+          </div></li>
+        </ul>
+      </ul>
+      <li>Inline függvények</li>
+      <ul>
+        <li>Úgy viselkedik mint egy makró</li>
+      </ul>
+      <li>Túlterhelt függvények</li>
+      <ul>
+        <li>Adható két ugyanolyan nevű függvény</li>
+        <li>Fordítóprogram a paraméterlistából kitalálja, hogy melyiket használja</li>
+      </ul>
+      <li>IOSTREAM</li>
+      <ul>
+        <li>cin, cout, cerr, clog</li>
+        <li>#include &#60;iostream&#62;</li>
+        <li><< és >> operátorok túlterhelése</li>
+        <li>&ostream operator>>(&ostream, int / double / stb. variable);</li>
+        <li>cout << "Hello World" << endl;</li>
+        <li>cout egy &ostream referencia az std namespaceben, a << operátor első paramétere</li>
+      </ul>
+    </ul>
+  </body>
+</html>

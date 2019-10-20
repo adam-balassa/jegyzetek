@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+  <title>Adatbázisok gyak</title>
+  <style>
+    :root {
+      --dark-blue: #4c7783;
+      --white: #f2f0f6;
+      --pink: #e67b82;
+      --dark-pink: #c26168;
+      --blue: #65cbc3;
+      --red: rgb(190, 50, 50);
+      --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      background-color: var(--white);
+      margin: 0 !important;
+      padding: 0;
+    }
+
+    *,
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: inherit;
+    }
+
+    h2 {
+      color: var(--dark-pink);
+      position: relative;
+      padding-bottom: 0.6rem;
+      font-size: 1.6rem;
+    }
+
+    h2::after {
+      position: absolute;
+      bottom: 0;
+      margin-top: 10px;
+      content: ' ';
+      background-color: var(--dark-pink);
+      width: 100%;
+      height: 1px;
+      left: 0;
+    }
+
+    .header {
+      padding: 5vh 5vw;
+      background-color: var(--dark-blue);
+      color: var(--white);
+    }
+
+    main {
+      padding: 10vh 10vw;
+      font-weight: 400;
+      color: #333;
+      font-size: 0.9em;
+    }
+
+    ul {
+      margin-bottom: 0.3rem;
+    }
+
+    ul>li>ul>li>ul {
+      color: #555;
+    }
+
+    a,
+    a:hover {
+      color: var(--dark-blue);
+      text-decoration: none;
+      transition: all ease-in-out .12s;
+    }
+
+    a:hover {
+      color: var(--blue);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>AdatB gyakorlat</h1>
+  </div>
+  <main>
+    <h2>ER modellezés - Adatmodellek</h2>
+    <ul>
+      <li>Követelmények</li>
+      <ul>
+        <li>A ZH-k trükkösek</li>
+        <li>Nem elég tudni, érteni kell az anyagot</li>
+      </ul>
+      <li>Tippek</li>
+      <ul>
+        <li>ISA</li>
+        <ul>
+          <li>Nem olyan mint programozásban a származtatás</li>
+          <li>A PARENT IS EGYEDI</li>
+          <li>Ez több, minthogy csak a gyerek megörökli a szülő tulajdonságait</li>
+        </ul>
+        <li>Az ER modellezés nem táblaleírás</li>
+        <ul>
+          <li>Ez koncepcionális tervezés</li>
+          <li>Ne lássunk bele logikai és fizikai szintű tervezést</li>
+        </ul>
+        <li>Egyed / egyedhalmaz, kapcsolat / kapcsolattípus, attribútum / attribútum típus </li>
+        <li>Ternális kapcsolatok</li>
+        <ul>
+          <li>Film - szerep - színész</li>
+          <li>Lehet, hogy egy színész több szerepet játszik</li>
+          <li>Lehet, hogy 1 karakter több formában is szerepel</li>
+          <li>Lehet h egy karaktert több színész is játszik, de lehet h több szerepét ugyanannak a karakternek ugyanaz a színész játsza</li>
+          <li>Pl.: Avengers - Endgame</li>
+        </ul>
+        <li>KisZH</li>
+        <ul>
+          <li>Ha valaki ezt nem tudja megírni 2-nél több pontosra, akkor hiába van ott</li>
+          <li>Nagyon gyorsan új fogalmakat használunk, új módszereket</li>
+          <li>Jelenlét ellenőrzés</li>
+          <li>Ez nekik visszajelzés: ha nem megy a kisZH, akkor nem vagy képben a tárggyal, ne várd, hogy a gyakorlaton majd megérted az előadást</li>
+          <li>Azért nem számoljuk be, mert jóarcok vagyunk</li>
+        </ul>
+      </ul>
+    </ul>
+  </main>
+</body>
+</html>

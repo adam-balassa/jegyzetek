@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+  <title>IT eszközök technológiája</title>
+  <style>
+    :root {
+      --dark-blue: #4c7783;
+      --white: #f2f0f6;
+      --pink: #e67b82;
+      --dark-pink: #c26168;
+      --blue: #65cbc3;
+      --red: rgb(190, 50, 50);
+      --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      background-color: var(--white);
+      margin: 0 !important;
+      padding: 0;
+    }
+
+    *,
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: inherit;
+    }
+
+    h2 {
+      color: var(--dark-pink);
+      position: relative;
+      padding-bottom: 0.6rem;
+      font-size: 1.6rem;
+    }
+
+    h2::after {
+      position: absolute;
+      bottom: 0;
+      margin-top: 10px;
+      content: ' ';
+      background-color: var(--dark-pink);
+      width: 100%;
+      height: 1px;
+      left: 0;
+    }
+
+    .header {
+      padding: 5vh 5vw;
+      background-color: var(--dark-blue);
+      color: var(--white);
+    }
+
+    main {
+      padding: 10vh 10vw;
+      font-weight: 400;
+      color: #333;
+      font-size: 0.9em;
+    }
+
+    ul {
+      margin-bottom: 0.3rem;
+    }
+
+    ul>li>ul>li>ul {
+      color: #555;
+    }
+
+    a,
+    a:hover {
+      color: var(--dark-blue);
+      text-decoration: none;
+      transition: all ease-in-out .12s;
+    }
+
+    a:hover {
+      color: var(--blue);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>IT eszközök technológiája</h1>
+  </div>
+  <main>
+    <h2>A technológia trendjei</h2>
+    <ul>
+      <li>Tranzisztorok</li>
+      <ul>
+        <li>Olcsó alkatrész</li>
+        <li>Rengeteget rakunk az eszközeinkbe</li>
+        <li>Van egy elméleti határa a felületre helyezhető tranzisztorok számának</li>
+        <ul>
+          <li>Jelenleg 10nm-enként van egy tranzisztor</li>
+          <li>2033-ra 1nm-enként várható</li>
+          <li>Eddig minden tranzisztort felrakták a felületre</li>
+          <li>Terv: tranzisztorokat merőlegesen, majd több rétegben (3D)</li>
+        </ul>
+        <li>Moore törvénye</li>
+        <ul>
+          <li>A tranzisztorok száma idővel exponenciálisan nő</li>
+          <li>Durva becslés, de bejött</li>
+          <li>Az eszközök teljesítménye viszont nem nőtt exponenciálisan!</li>
+          <ul>
+            <li>2005: Power wall!</li>
+            <li>Az órajel frekvencia növekedése megállt</li>
+            <li>Nő a tranzisztorok száma, de az időegységre és egy szálra jutó teljesítmény stagnálni kezdett</li>
+            <li>Teljesítmény &rarr; hő</li>
+            <ul>
+              <li>A hűtést nem lehetett már megoldani</li>
+            </ul>
+            <li>Megoldás: több processzor mag</li>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+    <h2>Félvezetők</h2>
+    <ul>
+      <li>Nem vezet, de nem is szigetel</li>
+      <li>Körülményfüggő az ellenállásuk</li>
+      <ul>
+        <li>Fémek: pozitív hőmérsékleti együtthatü</li>
+        <li>Félvezetők: negatív ~</li>
+        <ul>
+          <li>Ha nő a hőmérséklet, nekik CSÖKKEN az ellenállásuk</li>
+        </ul>
+      </ul>
+      <li>Anyagok</li>
+      <ul>
+        <li>Si, Ge</li>
+        <ul>
+          <li>IC-k, eszközök</li>
+        </ul>
+        <li>GaAs, GaAsP, GaN, SiC</li>
+        <ul>
+          <li>LED, HEMT (nagy frekvenciás eszközök)</li>
+          <li>SiC: jó hőmérséklet tűrés, de minden másban rosszabb, mint a Si kristály</li>
+        </ul>
+        <li>amorf Si</li>
+        <li>szerves anyagok (pl. OLED tech)</li>
+      </ul>
+      <li>Mitől lesz vmi félvezető?</li>
+      <ul>
+        <li>Kvantummechanikai okok</li>
+        <li>Az atomban az elektronok letséges energiája kvantált</li>
+        <li>Egy energiaállapotban max 2 (ellentétes spinű) elektron</li>
+        <li>Kristályok esetében</li>
+        <ul>
+          <li>Nem teljesen diszkrét energiaállapotok</li>
+          <li>Energia sávok vannak (köztük tiltott sávok)</li>
+          <li>Létezik 2 olyan energiasáv, melyek közül az alacsonyabbikban még az elektronok egy atom vegyértékelektronjai</li>
+          <li>A magasabbikban viszont delokalizálódik és vezet</li>
+        </ul>
+        <li>Félvezetők</li>
+        <ul>
+          <li>Vegyértéksávból energia (hő) hatására tőb elektron tud a vezetési sávba kerülni</li>
+          <li>Nő egy elektron vezetési képességének valószínűsége</li>
+          <li>A vezetési sávban az elektron a térerősséggel szembe, a vegyértéksávban az elektron hiány a térerősség irányába mozdul el</li>
+        </ul>
+        <li>Technológia</li>
+        <ul>
+          <li>A tiszta félvezető rosszul vezet!</li>
+          <li>Adalék anyagot teszünk bele</li>
+          <ul>
+            <li>N típusú adalék (pl.: As)</li>
+            <ul>
+              <li>Lepasszol egy felesleges elektront a rendszerbe (a másik 4 elektronjával beköt a kristályrácsba)</li>
+              <li>Vezető elektron többlet</li>
+            </ul>
+            <li>P typusú adalék (pl.: B)</li>
+            <ul>
+              <li>Ellop egy elektront a Si kristálytól (datív kötés)</li>
+              <li>Vegyérték elektron hiány (az elektron hiány elmozdulása is vezet)</li>
+            </ul>
+          </ul>
+          <li>Félvezető diódák</li>
+          <ul>
+            <li>N és P típusú félvezetőt teszünk egymás mellé</li>
+            <ul>
+              <li>Egyenirányító dióda</li>
+              <li>Egyik irányból nagyon jól vezet</li>
+              <li>Másik irányból majdnem tökéletesen szigetel</li>
+            </ul>
+            <li>MOS tranzisztor</li>
+            <ul>
+              <li>20. század elején rájöttek, hogy ilyet lehetne, de nem tudták megcsinálni</li>
+              <li>1957: az első MOS tranzisztor</li>
+              <li>Source elektróda, Drain elektróda, Gate szabályozó</li>
+              <ul>
+                <li>A Gate-en lévő potenciál szabályozza a tranzisztor ellenállását</li>
+              </ul>
+              <li>nMOS, pMOS tranzisztor</li>
+              <ul>
+                <li>nMOS: source és drain n félvezető, köztes tér p félveztető</li>
+                <li>pMOS: fordítva</li>
+                <li>nMOS működése</li>
+                <ul>
+                  <li>Ha a Gate-en feszültség van, a Gate alatt nagy lesz a térerősség</li>
+                  <li>A Gate alatt lévő p félvezető elkezd elektronokat leadni, és n jellegűvé válik</li>
+                  <li>A Gate alatt megszűnik (elvékonyodik) az N-P átmenet ami szigetel &rarr; az anyag vezetővé válik</li>
+                </ul>
+                <li>pMOS: alacsony feszültségen nyit, magas feszültségen zár</li>
+              </ul>
+            </ul>
+            <li>Digitális technika</li>
+            <ul>
+              <li>Legyen a magasabb feszültség a logikai 1, és az alacsony a logikai 0</li>
+              <li>nMOS tranzisztor 0 gate feszültséggel szigetel, a pMOS vezet</li>
+              <li>nMOS logikai 1-nél vezet, a pMOS ott zár</li>
+              <li>Ez már alkalmas logikai kapuk készítésére</li>
+              <li>Adott az UL (low voltage) és az UH (high voltage)</li>
+              <li>A zaj elkerülése végett az UL és az UH 2 össze nem érő intervallum a feszültség skálán</li>
+              <li>Jelregeneráció</li>
+              <ul>
+                <li>Érkezik egy zavaros jel</li>
+                <li>A digitális logikai áramkörök pár lépésből tökéletesen helyreállytják</li>
+                <li>Csökkentik a zajt, azonnal beállítják a megfelelő feszültség értékeket</li>
+              </ul>
+              <li>Vagyis a digitális logikai áramkör ROBOSZTUS</li>
+              <li>Logikai kapuk késleltetése</li>
+              <ul>
+                <li>A végtelen segebességű logikai kapu lenne az ideális</li>
+                <li>A felfutó jel és a lefutó jel késleltetése is különbözik</li>
+                <li>A késleltetés értéke legyen a kettő átlaga</li>
+                <li>Az órajelet állítsuk be úgy, hogy a kritikus út késleltetése ne okozzon gondot</li>
+              </ul>
+              <li>Digitális hálózat teljesítménye</li>
+              <ul>
+                <li>Átlagos / csúcsteljesítmény</li>
+                <li>P = VDD / T * <sub>0</sub>&int;</sup>T</sup> I(T) dt</li>
+                <li>Teljesítmény késleltetés szorzat</li>
+                <li>"1 bit feldolgozásához szükséges energia"</li>
+              </ul>
+              <li>VH = VDD, VL = 0V</li>
+              <li>Úgy oldjuk meg, hogy az állandósult állapotban ne vegyen fel áramot (minimális áramot vegyeen fel) a rendszer</li>
+            </ul>
+            <li>Inverter</li>
+            <ul>
+              <li>f(UL) = UH és f(UH) = UL</li>
+              <li>2db tranzisztorból áll</li>
+              <li>Vin legyen a 2 tranzisztor gate-je</li>
+              <li>Legyen egy pMOS VDD felé és egy nMOS 0V felé, a 2 tranzisztor között mintavételezzük a Vout-ot</li>
+              <li>Vin = HIGH esetén a pMOS nyit, az nMOS zár, vagyis Vout rá lesz kötve a 0V-ra</li>
+              <li>Vin = LOW esetén nMOS nyit, pMOS zár, Vout = VDD</li>
+              <li>Késleltetés</li>
+              <ul>
+                <li>A késleltetést a vezeték hossza határozza meg</li>
+                <li>A vezetékeknek van kapacitása, ami tehetetlenül változtat áramerősséget</li>
+                <li>Nagyobb tápfesz segít csökkenti a késleltetést (gyorsabban tudjuk kisütni a "kondenzátort")</li>
+              </ul>
+              <li>Töltés pumpálás</li>
+              <ul>
+                <li>Ez viszi el az áram fogyasztás nagy részét</li>
+                <li>P ~ f*VDD^2</li>
+                <li>Vagyis, ha csökkenteni szeretném a késleltetést, akkor növelni akarom a tápfeszültséget, amivel négyzetesen nő a teljesítmény</li>
+                <li>Ez adja a technológiai korlátot az órajelfrekvenciára</li>
+                <li>Nem tudom tetszőlegesen nagy frekvenciát, mert ahhoz kis késleltetés kéne, amihez nagy tápfesz, ami négyzetesen dobja meg a hőt</li>
+                <li>Nem tudunk lépést tartani a négyzetesen növő hűtés igénnyel</li>
+              </ul>
+            </ul>
+            <li>Dynamic Voltage Scaling</li>
+            <ul>
+              <li>Az OS dinamikusan változtatja a processzor magok órajelét</li>
+              <li>Felesleges nagy órajelet adni használatlan magoknak</li>
+              <li>A nagyon használt magnak viszont fel lehet tolni az órajelét</li>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+  </main>
+</body>
+</html>

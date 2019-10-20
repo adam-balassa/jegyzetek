@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+  <title>Üzleti jog</title>
+  <style>
+    :root {
+      --dark-blue: #4c7783;
+      --white: #f2f0f6;
+      --pink: #e67b82;
+      --dark-pink: #c26168;
+      --blue: #65cbc3;
+      --red: rgb(190, 50, 50);
+      --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      background-color: var(--white);
+      margin: 0 !important;
+      padding: 0;
+    }
+
+    *,
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: inherit;
+    }
+
+    h2 {
+      color: var(--dark-pink);
+      position: relative;
+      padding-bottom: 0.6rem;
+      font-size: 1.6rem;
+    }
+
+    h2::after {
+      position: absolute;
+      bottom: 0;
+      margin-top: 10px;
+      content: ' ';
+      background-color: var(--dark-pink);
+      width: 100%;
+      height: 1px;
+      left: 0;
+    }
+
+    .header {
+      padding: 5vh 5vw;
+      background-color: var(--dark-blue);
+      color: var(--white);
+    }
+
+    main {
+      padding: 10vh 10vw;
+      font-weight: 400;
+      color: #333;
+      font-size: 0.9em;
+    }
+
+    ul {
+      margin-bottom: 0.3rem;
+    }
+
+    ul>li>ul>li>ul {
+      color: #555;
+    }
+
+    a,
+    a:hover {
+      color: var(--dark-blue);
+      text-decoration: none;
+      transition: all ease-in-out .12s;
+    }
+
+    a:hover {
+      color: var(--blue);
+    }
+
+    .code {
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Üzleti jog</h1>
+  </div>
+  <main>
+    <h2>Alapismeretek</h2>
+    <li>Jogfogalom</li>
+    <ul>
+      <li>Társadalom magatartásirányítási rendszere</li>
+      <ul>
+        <li>Tabuk, magatartásiminták, szokások</li>
+        <li>Eszközök</li>
+        <ul>
+          <li>Jogszabályok</li>
+          <li>Erkölcsi normák</li>
+          <li>Vallási normák</li>
+          <li>SZubkulturális normák</li>
+        </ul>
+      </ul>
+      <li>Jog</li>
+      <ul>
+        <li>Csak a legfontosabb viszonyokat szabályozza</li>
+        <li>Kapcsolatban van az állammal</li>
+        <ul>
+          <li>Jogalkotó szervek hozzák létre</li>
+          <li>Végrehajtó szervek kényszerítik ki</li>
+          <li>Bíróságok értelmezik</li>
+        </ul>
+        <li>Fogalma</li>
+        <ul>
+          <li>A társadalom magatartásirányítási rendszerének része</li>
+          <li>Hipotetikus magatartási szabályok</li>
+          <li>Kötelező követni</li>
+        </ul>
+        <li>Célja</li>
+        <ul>
+          <li>A társadalom rendezettségének biztosítása</li>
+          <li>A társadalom kiszámíthatóságának növelése</li>
+          <li>Az egyén szabadságának korlátozása, a társadalom szabdságának biztosításáért</li>
+        </ul>
+      </ul>
+      <li>Szerkezete</li>
+      <ul>
+        <li>Hipotézis</li>
+        <ul>
+          <li>A szituáció leírása</li>
+          <li>Ekkor kell alkalmazni az előírt magatartást</li>
+        </ul>
+        <li>Diszpozíció</li>
+        <ul>
+          <li>Az elvárt magatartás</li>
+          <li>Tevés vagy nem tevés</li>
+          <li>Típusai</li>
+          <ul>
+            <li>Imeratív: közjogban kötelező</li>
+            <li>Kógens: magánjogban kötelező</li>
+            <li>Diszpozitív: ajánlott</li>
+          </ul>
+        </ul>
+        <li>Jogkövetkezmény</li>
+        <ul>
+          <li>Az előírt magatartás következménye</li>
+          <li>Megszegés / betartás</li>
+          <li>Szankciók / jutalmak</li>
+        </ul>
+      </ul>
+      <li>Hatályosság és érvényesség</li>
+      <ul>
+        <li>Érvényesség</li>
+        <ul>
+          <li>A jog és nem-jog határa</li>
+          <li>Feltételei</li>
+          <ul>
+            <li>Megalkossák: állami jogalkotó szerv létrehozza</li>
+            <li>Kihirdessék: az érdekeltek tudósítása</li>
+            <li>Ellentmondásmentesség</li>
+            <ul>
+              <li>Nem mondhat ellent magasabb szintű jogszabálynak</li>
+              <li>Alkotmánybíróság dönti el</li>
+            </ul>
+          </ul>
+        </ul>
+        <li>Hatályosság</li>
+        <ul>
+          <li>A működő jogok határait jelöli ki</li>
+          <li>Időbeli hatály</li>
+          <ul>
+            <li>Mettől meddig</li>
+            <li>Kezdete</li>
+            <ul>
+              <li>A kihirdetés pillanata</li>
+              <li>A kihirdetés után</li>
+              <li>A kihirdetés előtt (visszamenőleges hatály &rarr; nagyon ritka, csak kivételes esetekben)</li>
+            </ul>
+            <li>Vége</li>
+            <ul>
+              <li>Amíg későbbi jogszabály felül nem írja</li>
+              <li>A jogszabály rendelkezik a saját végéről</li>
+            </ul>
+          </ul>
+          <li>Személyi hatály</li>
+          <ul>
+            <li>Kire vonatkozik a jogszabály</li>
+            <li>Általános: mindenkire</li>
+            <li>Különös: szűkebb személyi kör</li>
+          </ul>
+          <li>Területi hatály</li>
+          <ul>
+            <li>Országos</li>
+            <ul>
+              <li>Központi szervek alkotják meg</li>
+              <li>Állampolgárságtól független (Magyarországon belül mindenkire érvényes)</li>
+              <li>Magyarokra külföldön is vonatkozik</li>
+              <li>Kivéve: diplomáciai mentességet élvező személyek</li>
+            </ul>
+            <li>Területi: önkormányzati rendeletek</li>
+          </ul>
+        </ul>
+      </ul>
+      <li>Jogviszony</li>
+      <ul>
+        <li>Ez az amit a jog szabályoz</li>
+        <li>Részei</li>
+        <ul>
+          <li>Alanya</li>
+          <ul>
+            <li>Akire a jogszabályban valami vonatkozik</li>
+            <li>Meghatározot magatartást tanusít</li>
+            <li>Jogok illetik meg</li>
+            <li>Kötelezettségek terhelik</li>
+            <li>Típusai</li>
+            <ul>
+              <li>Természetes személy: mindenkire egyenlőkép</li>
+              <li>Állam: kitüntetett jogai vannak</li>
+              <li>Jogi személy: pl. szervezet</li>
+              <li>Nem jogi személy, de jogi képességekkel fel van ruházva: kivételes eset</li>
+            </ul>
+          </ul>
+          <li>Tárgya: magatartás / dolog</li>
+          <li>Tartalma: Jogok / kötelezettségek az alanyokra</li>
+        </ul>
+        <li>Jogi tények</li>
+        <ul>
+          <li>Események (születés, házasság, életkor betöltése, halál, stb.)</li>
+          <li>Magatartások: tiltott / megengedett</li>
+        </ul>
+        <li>Szerkezete</li>
+        <ul>
+          <li>Abszolút</li>
+          <ul>
+            <li>Csak jogosult van</li>
+            <li>Pl. tulajdonjog</li>
+            <li>A kötelezett csak nem-tevésre van felszólítva, és nincs konkrét személye</li>
+          </ul>
+          <li>Relatív</li>
+          <ul>
+            <li>Jogosult és kötelezett is van</li>
+            <li>Mindketten név szerint szerepelnek</li>
+            <li>A kötelezett tevésre van felszólítva</li>
+            <li>Pl: szerződési jog</li>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+    <h2>Államszervezet</h2>
+    <ul>
+      <li>Tagolása</li>
+      <ul>
+        <li>Horizontális</li>
+        <ul>
+          <li>Törvényhozás</li>
+          <li>Végrehajtás</li>
+          <li>Igazságszolgáltatás</li>
+          <li>+1: ügyészi szerv</li>
+        </ul>
+        <li>Vertiális</li>
+        <ul>
+          <li>Országos</li>
+          <li>Regionális</li>
+          <li>Megyei</li>
+          <li>Járási</li>
+          <li>Városi / községi</li>
+        </ul>
+      </ul>
+      <li>Szervek</li>
+      <ul>
+        <li>Államhatalmi képviseleti szervek</li>
+        <ul>
+          <li>Törvényhozó funkció</li>
+          <li>Közvetlenül választják</li>
+          <li>Alárendelt szerveket választják meg</li>
+          <li>Döntéshozatal</li>
+          <li>Országgyűlés</li>
+          <ul>
+            <li>199 képviselő (106 + 93)</li>
+          </ul>
+          <li>Önkormányzatok</li>
+          <ul>
+            <li>Megyei, fővárosi</li>
+            <li>Helyi</li>
+          </ul>
+        </ul>
+        <li>Államigaztgatási szervek</li>
+        <ul>
+          <li>Végrahajtó hatalom</li>
+          <li>Kormányzás, közigazgatás</li>
+          <li>Jogalkotás</li>
+          <li>Jogalkalmazás</li>
+          <li>Szervezlés</li>
+        </ul>
+        <li>Bírósági szervrendszer</li>
+        <ul>
+          <li>Igazságszolgáltatás</li>
+          <li>Jogalkalmazás</li>
+          <li>A bíróságok függetlenek, felsőbb szintek választják az alsókat</li>
+          <li>Kúria</li>
+          <ul>
+            <li>Legmagasabb szint</li>
+            <li>Felülvizsgálati kérelmek</li>
+            <li>Jogegységi határozatok</li>
+          </ul>
+          <li>Ítélőtáblák</li>
+          <ul>
+            <li>Budapest, Debrecen, Győr, Pécs, Szeged</li>
+            <li>Másodfok</li>
+          </ul>
+          <li>Törvényszékek</li>
+          <ul>
+            <li>Első + másodfok</li>
+          </ul>
+          <li>Járásbíróságok</li>
+          <ul>
+            <li>Elsőfok</li>
+            <li>Közigazgatási és munkaügyi bíróságok</li>
+          </ul>
+        </ul>
+        <li>Ügyézségi szervezetrendszer</li>
+        <ul>
+          <li>Törvényességi ellenrzési funkció</li>
+          <li>Centralizáltság, hierarchia</li>
+          <li>Legfőbb Ügyézség</li>
+          <li>Fellebbviteli főügyézségek</li>
+          <li>Megyei főügyészségek</li>
+          <li>Járási ügyészségek</li>
+        </ul>
+        <li>Köztársasági elnök</li>
+        <ul>
+          <li>Kifejezi a nemzet egységét</li>
+          <li>Őrködik a demokrácia felett</li>
+          <li>Fegyveres erők főparancsnoka</li>
+          <li>Személye</li>
+          <ul>
+            <li>35 éves</li>
+            <li>5 évre választják közvetve</li>
+          </ul>
+          <li>Feladatai</li>
+          <ul>
+            <li>Állam képvistele</li>
+            <li>Kezdeményezési jogok</li>
+            <li>Személyi jogok</li>
+            <li>Kegyelmi jog</li>
+            <li>Állampolgársági ügyek</li>
+          </ul>
+        </ul>
+        <li>Alkotmánybíróság</li>
+        <ul>
+          <li>15 fő, 15 évre</li>
+          <li>Az országgyűlés választja</li>
+          <li>Normakontrollt végez, ellenőrzi a jogszabályok alkotmánnyal való ütközését</li>
+        </ul>
+        <li>Ombudsman</li>
+        <ul>
+          <li>Alapvető állampolgári jogok védelme</li>
+          <li>Tekintély alapú</li>
+        </ul>
+        <li>Állami Számvevőszék</li>
+        <ul>
+          <li>Állami pénzügyek, költségvetés</li>
+        </ul>
+        <li>Költségvetési Tanács</li>
+        <ul>
+          <li>Vétójog költségvetési törvényekben</li>
+          <li>Ellenőrzi az éllami költségvetést</li>
+        </ul>
+        <li>Nemzeti Bank</li>
+        <ul>
+          <li>Jegybank, monetáris politika felelőse</li>
+        </ul>
+        <li>Nemzeti Média és Hírközlési Hatóság</li>
+        <ul>
+          <li>Sajtótermékek ellenőrzése</li>
+        </ul>
+      </ul>
+      <li>Jogforrás</li>
+      <ul>
+        <li>Jogalkatói - jogalkalmazói (írott vs precedensjog)</li>
+        <li>Alaki - anyagi</li>
+        <li>Külső szerv - belső szerv</li>
+        <li>Írott - íratlan</li>
+        <li>Hierarchia</li>
+        <ul>
+          <li>Országgyűlés</li>
+          <ul>
+            <li>Alkotmány (Alaptörvény)</li>
+            <li>Sarkalatos törvény (kétharmad)</li>
+            <li>Törvény</li>
+          </ul>
+          <li>Kormány: rendelet</li>
+          <li>Minisztériumok: miniszteri rendelet</li>
+          <li>Önkormányzatok: önkormányzati rendelet</li>
+        </ul>
+        <li>Speciális jogforrások</li>
+        <ul>
+          <li>Nemzetközi egyezmények</li>
+          <li>EU jogforrásai (rendeletek, irányelvek)</li>
+          <li>Államirányítás egyéb eszközei (határozat, utasítás, irányelv, tájékoztató)</li>
+        </ul>
+      </ul>
+    </ul>
+    <h2>Jogrendszer, jogágak</h2>
+    <ul>
+      <li>Jogrendszer</li>
+      <ul>
+        <li>Az adott állam jogszabályainak összessége</li>
+        <li>Felosztások</li>
+        <ul>
+          <li>Történelmi: (ókori, középkori, újkori, legújabbkori)</li>
+          <li>Jogrendszer csoportok (R. Davis)</li>
+          <ul>
+            <li>Kontinentális</li>
+            <ul>
+              <li>Törvényi jog</li>
+            </ul>
+            <li>Szocialista</li>
+            <li>Common Law (alngolszász országok)</li>
+            <ul>
+              <li>Precedensjog</li>
+              <li>Korábbi esetek alapján történő ítélkezés</li>
+              <li>Hatalmas számú precedensek</li>
+              <li>Bonyolultabb jogászképzés</li>
+            </ul>
+            <li>Vallási + tradicionális jogrendszerek</li>
+          </ul>
+          <li>Közjog - magánjog</li>
+          <ul>
+            <li>Közjog</li>
+            <ul>
+              <li>Államjog (alkotmányjog)</li>
+              <li>Államigazgatási jog (közigazgatási)</li>
+              <li>Büntetőjog</li>
+              <li>Eljárásjog</li>
+              <li>Egyázjog</li>
+              <li>Nemzetközi jog</li>
+            </ul>
+            <li>Magánjog</li>
+            <ul>
+              <li>Vagyonjog</li>
+              <li>Családjog</li>
+              <li>Öröklési hog</li>
+              <li>Kereskedelmi jog</li>
+              <li>Szerzői jog</li>
+              <li>Szaadalmi jog</li>
+            </ul>
+            <li>Vegyes szakjogok</li>
+            <ul>
+              <li>Gazdasági jog</li>
+              <li>Munkajog</li>
+              <li>Versenyjog</li>
+              <li>Pénzügyi jog</li>
+            </ul>
+          </ul>
+          <li>Anyagi jog - alaki jog (eljárás jog)</li>
+          <ul>
+            <li>Anyagi jog</li>
+            <ul>
+              <li>Jogokat és kötelességeket állapít meg</li>
+            </ul>
+            <li>Alaki jog</li>
+            <ul>
+              <li>A jogok és kötelességek kikényszerítésének módját határozza meg</li>
+              <li>Vagyis: eljárásokat dolgoz ki</li>
+              <li>Büntető eljárásjog</li>
+              <li>Polgári eljárásjog</li>
+              <li>Közigazgatési eljárás</li>
+            </ul>
+          </ul>
+        </ul>
+        <li>Jogágak</li>
+        <ol>
+          <li>Alkotmányjog</li>
+          <ul>
+            <li>Az államszervezet működésének elvei</li>
+            <li>Állam - állapolgár viszonya</li>
+            <li>Pl.: választójog, éllampolgárság</li>
+          </ul>
+          <li>Közigazgatási jog</li>
+          <ul>
+            <li>Közigazgatási szervek működése</li>
+            <li>Közigazgatási alanyi jog</li>
+            <ul>
+              <li>A szervek feladatai</li>
+              <li>Szervek hatáskörei</li>
+              <li>Jogalanyok jogai, kötelezettségei</li>
+            </ul>
+            <li>Közigazgatási eljárásjog</li>
+            <ul>
+              <li>A szervek létrehozása és megszüntetése</li>
+              <li>Közigazgatási eljárások (alapeljárás &rarr; jogorvoslati eljárás &rarr; végrehajtási eljárás)</li>
+            </ul>
+          </ul>
+          <li>Büntetőjog</li>
+          <ul>
+            <li>Jogsértések elbírálásának szabályai</li>
+            <li>Bűncselekmények és következményeik</li>
+            <li>Általánosan (minden bűncyelekményre vonatkozóan)</li>
+            <li>Különös rész (specifikus bűncselekményekre vonatkozóan)</li>
+          </ul>
+          <li>Büntető eljárásjog</li>
+          <ul>
+            <li>Büntetőjog alaki joga</li>
+            <li>Bűncselekmény felderítése (nyomozás &rarr; gyanusított)</li>
+            <li>Büntetés kiszabása (bírósági eljárás &rarr; vádlott)</li>
+            <li>Büntetés végrehajtása (&rarr; elítélt)</li>
+          </ul>
+          <li>Polgári jog</li>
+          <ul>
+            <li>Vagyoni és ezzel összefüggő személyi viszonyaik</li>
+            <li>Tulajdonjog (jogok, kötelezettségek, szerződések, kártérítések)</li>
+            <li>Kötelmi jog</li>
+            <li>Öröklési jog</li>
+            <li>Személyi jogok</li>
+            <ul>
+              <li>Személyek polgárjogi védelme</li>
+              <li>Szellemi alkotások joga (szerzői védelem, iparvédelem)</li>
+            </ul>
+          </ul>
+          <li>Polgári eljárásjog</li>
+          <ul>
+            <li>Polgári jog alaki joga</li>
+            <li>Felperes &LeftRightArrow; alperes</li>
+            <li>Keresetindítás, tárgyalás, fellebbezés, perorvoslatok, végrehajtás</li>
+          </ul>
+          <li>Munkajog</li>
+          <ul>
+            <li>Szerződési jogból önállósolt szakjogág</li>
+            <li>Kollektív &LeftRightArrow; Individuális</li>
+          </ul>
+          <li>Családjog</li>
+          <ul>
+            <li>Hazássag (megkötése, megszűnése, jog és kötelezettség vonzata)</li>
+            <li>Család (szülő-gyermek viszony, szülői felügyelet, örökbefogadás, rokontartás)</li>
+            <li>Gyámság (keletkezés, ellátás, megszűnés)</li>
+          </ul>
+          <li>Pénzügyi jog</li>
+          <ul>
+            <li>Közigazgatási jogból önállósult</li>
+            <li>Állami szervek pénzügyi tevékenységei és a természetes személyek ezzel kapcsolatos magatartása</li>
+            <li>Pénzrendszer, köponti költségetés, állami bevételek, pénzforgalom, hitelrendszer, pénzügyi ellenőrzés</li>
+          </ul>
+          <li>Mezőgazdasági jog</li>
+          <ul>
+            <li>Termőfölddel kapcsolatos viszonyok</li>
+            <li>Földtulajdon, földhasználat, földvédelem, földigazgatás</li>
+          </ul>
+          <li>Nemzetközi magánjog</li>
+          <ul>
+            <li>Olyan jogok melyekben külföldi elem van</li>
+            <li>Kollíziós jog: több állam jogai ütközésének feloldása</li>
+            <li>Alanyai: állampolgárok</li>
+            <li>Tárgya: magánjog, polgári jog, családi és kereskedelmi jog</li>
+            <li>Indirekt jogrendezés: rendelkezés arról h melyik nemzeti jogot használjuk</li>
+            <li>Direkt jogrendezés: közvetlen nemzeti viszonyok meghatározása</li>
+          </ul>
+          <li>Nemzetközi jog</li>
+          <ul>
+            <li>Államok közti szabályrendszer</li>
+            <li>Államok keletkezése, megszűnése</li>
+            <li>Államterület, állampolgárság</li>
+            <li>Nemzetközi kapcsolatok (szerződések, szervek, ENSZ)</li>
+            <li>Vitás ügyek rendezése (háború, béke, semlegesség)</li>
+          </ul>
+        </ol>
+      </ul>
+    </ul>
+    <h2>Európai Unió</h2>
+    <ul>
+      <li>Kialakulása</li>
+      <ul>
+        <li>II. vh után 2 nagyhatalom</li>
+        <li>Szükséges egy egységes Nyugat-Európa a gazdasági szerep megőrzéséhez</li>
+        <li>BeNeLux szerződés - 1948</li>
+        <ul>
+          <li>Benelux államok egyesülése</li>
+        </ul>
+        <li>OEEC - 1948</li>
+        <ul>
+          <li>Európai ujjáépítés szervezete</li>
+        </ul>
+        <li>NATO - 1949</li>
+        <li>EGK - 1957</li>
+        <ul>
+          <li>EURATOM szerződés (Európai Atomenergiai Közösség)</li>
+          <li>BENELUX + Francao. + NSZK + Olaszország</li>
+          <li>Célkitűzések</li>
+          <ul>
+            <li>Vámunió, vámhatárok megszüntetése</li>
+            <li>Közös kereskedelem, mezőgazdaság, versenypolitika</li>
+            <li>Szabad munkaerő, tőke és áruáramlás</li>
+            <li>Jogharmonizáció, közös intézmények</li>
+          </ul>
+        </ul>
+        <li>Bővülés - 1970-1973</li>
+        <ul>
+          <li>UK, Dánia, Írország, Norvégia tárgyalnak, majd Norvégia kivételével csatlakoznak</li>
+          <li>Dinamikus árucsere, megnövekedett gazdasági szerep</li>
+          <li>Viszont: lelassul a belső intergráció, ellentétek a tagok közt</li>
+          <li>Gazdasági nehézségek: olajválság, Bretton-Woods-i összeomlás</li>
+        </ul>
+        <li>Bővülés - 1981, 1986</li>
+        <ul>
+          <li>Görögország, Portugália, Spanyolország</li>
+          <li>Mind3 ország fejletlenebb volt &rarr; 1985: program a mediterrán fejlesztésre</li>
+          <li>A Bizottság Fehér könyve</li>
+        </ul>
+        <li>Maastrichti szerződés - 1992</li>
+        <ul>
+          <li>Gazdasági és monetáris unió</li>
+          <li>Közös valuta (1999-ig), közös kül- és biztonságpolitika, közös bel- és igazságügypolitika</li>
+          <li>Integráció a közlekedés (teljes körű szabad mozgás), környezetvédelem, KFI, kultúra terén</li>
+          <li>Parlament súlya megnövekszik, hatáskörök letisztázódása</li>
+          <li>Kialakul az Európai Unió</li>
+          <li>Hárompilléres szerkezet</li>
+          <ol>
+            <li>Európai Közösség</li>
+            <ul>
+              <li>Közös ügyek (pl. vámok, belső piac, kereskedelem, KFI, menekültügy, állampolgárság)</li>
+            </ul>
+            <li>Közös kül és biztonságpolitika</li>
+            <li>Belügy és igazságszolgáltatás</li>
+          </ol>
+        </ul>
+        <li>Amszterdami Szerződés - 1997</li>
+        <ul>
+          <li>Még áttekinthetőb szerződések, némi újraszerkesztés</li>
+        </ul>
+        <li>Nizzai Szerződés - 2000-2003</li>
+        <ul>
+          <li>Szervezeti és döntéshozatali kérdések (egyszerűbb döntéshozatal)</li>
+          <li>Lehetővé teszi a keleti bővítést</li>
+        </ul>
+        <li>Magyar csatlakozás - 2004</li>
+        <li>Lisszaboni szerződés - 2007-2009</li>
+        <ul>
+          <li>Megszünteti a hárompilléres szerkezetet</li>
+          <li>Rögzíti az EU célját és irányelveit</li>
+          <li>Egységes jogi személy az Unió számára</li>
+          <li>Alapvető Jogok Chartaja</li>
+          <li>Rögzíti az EU hatáskörét, és szervezeti rendszerét</li>
+        </ul>
+      </ul>
+      <li>EU intézménrendszere</li>
+      <ul>
+        <li>Miniszterek Tanácsa - Council Of The European Union</li>
+        <ul>
+          <li>Változó összetétel (az adott téma miniszterei)</li>
+          <li>A miniszterek nyilván felelősséggel tartoznak a saját parlamentjüknek is</li>
+          <li>Feladatai</li>
+          <ul>
+            <li>Jogalkotás - legfőb jogalkotó szerv</li>
+            <li>Gazdaságpolitika, büntetőjog és nemzeti bíróságok, rendőrségek összehangolása</li>
+            <li>Nemzetközi szervezetek létrehotzása</li>
+            <li>Költségvetés (közösen az EP-vel)</li>
+            <li>Közös kül és biztonságpolitika</li>
+          </ul>
+          <li>Elnöke</li>
+          <ul>
+            <li>Soros elnök</li>
+            <li>Felváltva tölti be 1-1 tagállam félévente</li>
+            <li>Összehívja a Tanácsot, elnököl az ülésen, előkészíti az ügyeket</li>
+          </ul>
+        </ul>
+        <li>Európai Tanács</li>
+        <ul>
+          <li>Az EU csúcsszerve</li>
+          <li>Állam és kormányfők üléseznek (2x28 = 56 tag)</li>
+          <li>Évi 4 csúcstalálkozó</li>
+          <li>Feladata</li>
+          <ul>
+            <li>Stratégiai döntések</li>
+            <li>Általános politikai elvek</li>
+            <li>Kényes ügyek eldöntése</li>
+            <li>Külpolitikai, bővítési irányvonalak meghatározása</li>
+            <li>!!!Nincs hatásköre jogalkotásra!!!</li>
+          </ul>
+          <li>Elnöke</li>
+          <ul>
+            <li>Az Európai Tanács maga választja, 2.5 évente, egyszer meghosszabítható mandátummal</li>
+            <li>Jelenleg Donald Tusk (Lengyelo.)</li>
+            <li>Az EU és a kormányfők feladatait könnyíti meg</li>
+            <li>Képviseli az EU-t, elnököl az ET üléseken</li>
+          </ul>
+        </ul>
+        <li>Európai Bizottság</li>
+        <ul>
+          <li>Legfőbb végrehajtó szerv</li>
+          <li>28 független tag (országonként 1)</li>
+          <li>Tagjait a Tanács választja és az EP hagyja jóvá az elnököt és a tagokat (5 évente)</li>
+          <li>Felügyeli a töbi szervet, betartatja az EP és a Tanács rendeleteit</li>
+          <li>Döntéselőkészíti, javaslattevő szerep</li>
+          <li>Nemzetközi szinten képviseli az EU-t</li>
+          <li>Tagjai nem felelnek a nemzeti kormányoknak, csak az EU-nak</li>
+          <li>Kormányszerűen műköik, de nem kormány</li>
+          <ul>
+            <li>Élén a Bizottságok Kollégiuma</li>
+            <li>Minden tagnak (biztosnak) saját szakterület</li>
+          </ul>
+          <li>Hetnte ülésezik</li>
+          <li>Elnöke</li>
+          <ul>
+            <li>Az EP-vel hagyja jóvá a Tanács által jelölt biztosokat</li>
+            <li>Elosztja a biztosok közt a szerepeket</li>
+            <li>Követelheti egy biztos lemondását</li>
+            <li>Jelenleg Ursula von der Leyen</li>
+          </ul>
+        </ul>
+        <li>Kül- és Biztonságpolitikai főképviselő</li>
+        <ul>
+          <li>A Bizottság alelnöke</li>
+          <li>Elnököl a Külügyek Tanácsán</li>
+          <li>Irányítja a külpolitikát és az Európai Külügyi Szolgálatot</li>
+          <li>Jelnleg: Catherine Ashton</li>
+        </ul>
+        <li>Európai Parlament</li>
+        <ul>
+          <li>Az állampolgárok közvetlenül választják 5 évre</li>
+          <li>A bekerülő pártok Európai Pártokkal alkotnak frakciót</li>
+          <li>2 nagy párt: Néppárt (EPP), Szociáldemokraták (S&D)</li>
+          <li>Feladata</li>
+          <ul>
+            <li>Az állampolgárok képviselete</li>
+            <li>Társjogalkotó (a Tanács jóváhagyásával dönthet)</li>
+            <li>Felügyeli a többi szerv demokratikus működését</li>
+            <li>Költségvetés (közösen a Tanáccsal)</li>
+            <li>Hozzájárul az Európai Tanács üléseihez gontolataival</li>
+          </ul>
+        </ul>
+        <li>Európai Bíróság</li>
+        <ul>
+          <li>Tagországonként 1, vagyis 28 bíró</li>
+          <li>Közösségi jog értelmezése</li>
+          <ul>
+            <li>Egyéges értelmezés biztosítása minden tagállamban</li>
+            <li>Felügyeli a betartását</li>
+            <li>Ellenőrzi a hatáskörök szerinti eljárásokat</li>
+          </ul>
+          <li>Közösségi és nemzeti jog kollíziója</li>
+          <ul>
+            <li>Tagállamok jogainak véleményezése a közösségi joghoz való viszonyáról</li>
+          </ul>
+          <li>Munkájukat főtanácsnokok segítik</li>
+          <li>A bírákat és tanácsnokokat az kormányok közösen nevezik ki, minden tagországból 1-et</li>
+          <li>Tetszőlegesen sokszor meghosszabbítható mandátummal</li>
+        </ul>
+        <li>Európai Számvevőszék</li>
+        <ul>
+          <li>28 ftlen tag</li>
+          <li>Az EU pénzgazdálkodását ellenőrzi</li>
+        </ul>
+        <li>Európai Gazdasági és Szociális Bizottság</li>
+        <ul>
+          <li>Civiltársadalom érdekképviselete</li>
+          <li>Szakszervezetek, munkaadók, fogyasztók képviselete</li>
+          <li>Feladata: szakpolitikai tanácsadás</li>
+        </ul>
+        <li>Régiók Bizottsága</li>
+        <ul>
+          <li>Helyi önkormányzatok képviselete</li>
+          <li>Városokat, régiókat képvisel</li>
+          <li>Feladata: szakpolitikai tanácsadás</li>
+        </ul>
+        <li>Európai Központi Bank</li>
+        <ul>
+          <li>Kormányoktól független</li>
+          <li>Kamatlábakat határoz meg, felügyeli az pénzkínálatot, árstabilitásért felel</li>
+        </ul>
+        <li>EU köztisztviselői</li>
+        <ul>
+          <li>Az Európai Bizottság 23 000 köztisztviselőt foglalkoztat</li>
+        </ul>
+      </ul>
+      <li>Hatáskörök és jogalkotás</li>
+      <ul>
+        <li>Jogalkotás lépései</li>
+        <ul>
+          <li>Köztisztviselők, szaktanácsadók és polgárok konzultációja az Európai Bizottsággal</li>
+          <li>A Bizottság hívatalos javaslatot tesz</li>
+          <li>Az EP és a Tanács dönt róla</li>
+          <li>Az országos és regionális hatóságok végrehajtják</li>
+          <li>Az Európai Bizottság és Bíróság ellenőrzi a végrehajtást</li>
+        </ul>
+        <li>Hatáskörök</li>
+        <ul>
+          <li>Közös politikák</li>
+          <ul>
+            <li>Az EU kizárólagos hatáskörrel rendelkezik</li>
+            <li>Ilyen ügyekben csak az EU alkothat és fogadhat el jogot</li>
+            <li>A tagállamok csak akkor, ha</li>
+            <ul>
+              <li>Az EU felruházza</li>
+              <li>Ha a jog célja az EU-s aktusok végrehajtása</li>
+            </ul>
+            <li>Területek</li>
+            <ul>
+              <li>Vámunió</li>
+              <li>Belső piac versenyszabályai</li>
+              <li>€ zóna monetáris politikája</li>
+              <li>Tengeri biológiai erőforrások és halászat</li>
+              <li>Közös kereskedelem</li>
+              <li>Nemzetközi egyezmények</li>
+              <ul>
+                <li>Feltéve, hogy összefüggésbe hozható EU-s jogokkal</li>
+              </ul>
+            </ul>
+          </ul>
+          <li>Közösségi politikák</li>
+          <ul>
+            <li>Az EU hatásköre a tagállamokkal megosztott</li>
+            <li>Az Unió és a tagállamok is hozhatnak jogokat</li>
+            <li>Uniós jogok magasabbrendűek</li>
+            <li>Területek</li>
+            <ul>
+              <li>Belső piac, gazdaság és társadalmi kohézió</li>
+              <li>Szociálpolitika</li>
+              <li>Környezet- és fogyasztó- védelem</li>
+              <li>Közelekedés, transzeurópai hálózatok</li>
+              <li>Energiaügy</li>
+              <li>Közegészségügy</li>
+              <li>KFI</li>
+              <li>Segélynyújtás</li>
+            </ul>
+            <li>Támogató intézkedések</li>
+            <ul>
+              <li>Olyan közösségi politikák, ahol a nemzeti jogok a magasabbrendűek</li>
+              <li>Ipar, kultúra, oktatás, idegenforgalom, igazgatás, polgári védelem</li>
+            </ul>
+          </ul>
+        </ul>
+        <li>Uniós jogforrások</li>
+        <ul>
+          <li>Elsődleges: szerződések</li>
+          <li>Másodlagos: rendeletek, irányelvek, határozatok, ajánlások vélemények</li>
+        </ul>
+      </ul>
+    </ul>
+  </main>
+</body>
+</html>

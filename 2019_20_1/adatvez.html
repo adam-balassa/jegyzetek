@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+  <title>Adatvezérelt rendszerek</title>
+  <style>
+    :root {
+      --dark-blue: #4c7783;
+      --white: #f2f0f6;
+      --pink: #e67b82;
+      --dark-pink: #c26168;
+      --blue: #65cbc3;
+      --red: rgb(190, 50, 50);
+      --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      background-color: var(--white);
+      margin: 0 !important;
+      padding: 0;
+    }
+
+    *,
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: inherit;
+    }
+
+    h2 {
+      color: var(--dark-pink);
+      position: relative;
+      padding-bottom: 0.6rem;
+      font-size: 1.6rem;
+    }
+
+    h2::after {
+      position: absolute;
+      bottom: 0;
+      margin-top: 10px;
+      content: ' ';
+      background-color: var(--dark-pink);
+      width: 100%;
+      height: 1px;
+      left: 0;
+    }
+
+    .header {
+      padding: 5vh 5vw;
+      background-color: var(--dark-blue);
+      color: var(--white);
+    }
+
+    main {
+      padding: 10vh 10vw;
+      font-weight: 400;
+      color: #333;
+      font-size: 0.9em;
+    }
+
+    ul {
+      margin-bottom: 0.3rem;
+    }
+
+    ul>li>ul>li>ul {
+      color: #555;
+    }
+
+    a,
+    a:hover {
+      color: var(--dark-blue);
+      text-decoration: none;
+      transition: all ease-in-out .12s;
+    }
+
+    a:hover {
+      color: var(--blue);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Adatvezérelt rendszerek</h1>
+  </div>
+  <main>
+    <h2>Bevezetés</h2>
+    <ul>
+      <li>Adatvezérelt rendszer</li>
+      <ul>
+        <li>Nagy adatbázis tartozik hozzá</li>
+        <li>Nyilvántartja az adatokat, amit esetleg felhasználóknak megjelenít</li>
+        <li>Pl.</li>
+        <ul>
+          <li>Neptun</li>
+          <li>Facebook</li>
+          <li>airbnb</li>
+        </ul>
+        <li>Nem adatvezérelt rendszer pl.:</li>
+        <ul>
+          <li>Játékok</li>
+          <li>Tisztán kliens oldali alkalmazások</li>
+          <li>Az adatokat nem tartja nyilván, csak adott sessionben bevitt adatokkal dolgozik</li>
+        </ul>
+        <li>Mi kell egy adatvezérelt rendszerhez?</li>
+        <ul>
+          <li>Fejlesszünk Gmailt</li>
+          <li>Weboldal, mobil app, POP3 kliens, csatolmányok, többnylevűség stb.</li>
+          <li>Keressünk design patternt, a már létező hasonló alkalmazások alapján</li>
+          <ul>
+            <li>Háromrétegű architektúra</li>
+            <li>Ez egy jellemző pattern adatvezérelt rendszereknél</li>
+          </ul>
+          <li>Presentation: HTML CSS JS | Android components</li>
+          <li>Services: REST interface</li>
+          <li>Business Layer: basic functionality</li>
+          <li>Data Access Layer: üzenetek, felhasználók, csatolmányok</li>
+          <li>Database: adtabázis, Google Drive csatolmányok</li>
+        </ul>
+        <li>Háromrétegű architektúra</li>
+        <ul>
+          <li>Prezentation layer</li>
+          <ul>
+            <li>Összeköti az üzleti logikát a userrel</li>
+            <li>Kliens oldali alkalmazás</li>
+            <li>Weboldal, applikáció stb.</li>
+          </ul>
+          <li>Business logics layer</li>
+          <ul>
+            <li>Szerver oldal</li>
+            <li>API jellegű</li>
+          </ul>
+          <li>Data layer</li>
+          <ul>
+            <li>Data access layer</li>
+            <li>Csatlakozik adatbázishoz</li>
+            <li>Csatlakozik külső szolgáltatásokhoz</li>
+            <li>Egy absztrakciós réteg az adatok fölé</li>
+            <ul>
+              <li>Cserélhetővé teszi a szolgáltatásokat és adatbázist</li>
+              <li>Absztrakt utasításokat fogad, melyeket közvetít API hívással, vagy SQL querykkel</li>
+            </ul>
+          </ul>
+          <li>Kiegészítés: Services layer</li>
+          <ul>
+            <li>Többrétegű architektúra</li>
+            <li>Prezentációs és üzleti réteg közé</li>
+            <li>Akár tekinthető a Business layer input output interface deklarációjává</li>
+            <li>Rögzített üzenettípusokká konvertálja a szerver válaszát</li>
+            <li>Rögzíti az input interfacet</li>
+          </ul>
+          <li>Cross cutting concernes</li>
+          <ul>
+            <li>Rétegen kívüli komponensek</li>
+            <li>Pl.: security issues</li>
+            <ul>
+              <li>Autentikáció, autorizáció</li>
+            </ul>
+            <li>Naplózás</li>
+            <li>Kommunikáció</li>
+            <ul>
+              <li>Rétegek közt</li>
+              <li>Szinkron, aszinkron</li>
+              <li>Hálózati hívások / fv hívások / alkalmazások közti hívások</li>
+            </ul>
+          </ul>
+        </ul>
+        <li>Frontend vs backend</li>
+        <ul>
+          <li>Frontend: prezentációs layer</li>
+          <li>Backend: minden ami nem a prezentációs layer</li>
+        </ul>
+      </ul>
+      <li>Félév szerkezete</li>
+      <ul>
+        <li>Adatkapcsolati réteg</li>
+        <ul>
+          <li>MS SQL Server, PL/SQL</li>
+          <li>MongoDB</li>
+          <li>Párhuzamos adathozzáférés (tranzakciók)</li>
+          <li>Platform specifikus adatforrás</li>
+          <li>Adatstruktúrák (XML, JSON)</li>
+        </ul>
+        <li>Business layer</li>
+        <ul>
+          <li>Java, .NET</li>
+          <li>O/R lekérdezések</li>
+          <li>Entity Framework, JPA</li>
+          <li>REST WebAPI</li>
+        </ul>
+      </ul>
+    </ul>
+    <h2>Tranzakció kezelés</h2>
+    <ul>
+      <li>Tranzakció</li>
+      <ul>
+        <li>Olyan logikai lépések, melyek végrehajtása csak együtt értelmes</li>
+        <li>ACID elvek</li>
+        <ul>
+          <li>Atomicitás, konzisztencia</li>
+          <ul>
+            <li>A köztes állapotokat senki nem láthatja</li>
+            <li>A lépés sorozat kívülről 1 egységes lépésként látszik</li>
+          </ul>
+          <li>Izoláció</li>
+          <ul>
+            <li>A tranzakció ne tudja, hogy más tranzakció is fut</li>
+          </ul>
+          <li>Durability</li>
+          <ul>
+            <li>Ami COMMITolt, az úgy is marad</li>
+          </ul>
+        </ul>
+        <li>Csak az izoláció a probléma</li>
+        <ul>
+          <li>Dirty reading, phantom reading, lost modification, nem megismételhető olvasás</li>
+          <li>Megoldás: helyes ütemezés, várakoztatás</li>
+          <ul>
+            <li>Helyes ütemezés: minden lekért és módosított rekord olyan, mintha soros ütemezés történt volna</li>
+          </ul>
+          <li>2PL</li>
+          <ul>
+            <li>WR lockok</li>
+            <li>Elképzelhető Deadlock</li>
+          </ul>
+          <li>4 izolációs szint</li>
+          <ul>
+            <li>Read uncommitted</li>
+            <ul>
+              <li>Minden tranzakció azt csinál amit akar</li>
+            </ul>
+            <li>Read committed (default)</li>
+            <ul>
+              <li>Dirty read megoldódik, de a többi nem</li>
+            </ul>
+            <li>Repeatable read</li>
+            <ul>
+              <li>Nincs se dirty, se unrepeatable read</li>
+            </ul>
+            <li>Serializable</li>
+            <ul>
+              <li>Egyik probléma se fordulhat elő</li>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+  </main>
+</body>
+</html>

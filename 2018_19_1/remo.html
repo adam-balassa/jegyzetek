@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+    <title>Rendszermodellezés</title>
+    <style media="screen">
+      ul, ol{
+        margin: 0px 0px 7px 0px;
+      }
+      h2{
+        margin: 0.83em 0 5px 0!important;
+      }
+    </style>
+  </head>
+  <body style = "font-family: 'Encode Sans Expanded', sans-serif; font-size: 14px; line-height: 22px; padding: 30px 70px;">
+    <h1>Rendszermodellezés</h1>
+    <h2>1. EA</h2>
+    <ul>
+      <li>Modell</li>
+      <ul>
+        <li>Egy világ (valós / hipotetikus) egy részének egyszerűsített képe</li>
+        <li>Egy rendszer "releváns" részét helyettesíti</li>
+        <li>Haszna: kisebb, áttekinthetőbb</li>
+        <li>Melyik részeket érdeme kiemelni? Melyikeket elhagyni?</li>
+        <li>Egy modell egyféle kérdés megválaszolásának eszköze</li>
+      </ul>
+      <li>Validációja</li>
+      <ul>
+        <li>Jó rendszert építek?</li>
+        <li>Extra funkcionális tulajdonságok (pl. kellően gyors, felhasználói hibakezelés)</li>
+      </ul>
+      <li>Verifikáció</li>
+      <ul>
+        <li>Jól építem-e a rendszert?</li>
+      </ul>
+    </ul>
+    <h2>2. EA</h2>
+    <ul>
+      <li>Statikus modellalkotás</li>
+      <ul>
+        <li>Nem folyamatokat ábrázol</li>
+        <li>Cél: rendezettség áttekinthetőség</li>
+        <li>Struktúrális modell</li>
+        <ul>
+          <li>Statikus modell</li>
+          <li>Kiindulópontja egy rendszer</li>
+          <li>Elemei a "része" relációval kötődnek egymáshoz</li>
+          <li>Alkotórészek: részrendszerek (bonthatóak), komponensek (elemi egységek)</li>
+          <li>Alkotórészek tulajdonságai, szerepe, viszonya</li>
+          <li>Pl. Építészeti modellek</li>
+          <li>Célja</li>
+          <ul>
+            <li>Rendszer részekrebontása</li>
+            <ul>
+              <li>Kisebb egységeket könnyű tervezni</li>
+              <li>Általános komponensek</li>
+              <li>Részegységek újrafelhasználása</li>
+            </ul>
+            <li>Dokumentálás</li>
+            <li>Adatszerkezet ábrázolása</li>
+          </ul>
+        </ul>
+        <li>Felépítési, viselkedési modellek</li>
+        <ul>
+          <li>Statikus</li>
+          <li>Állapotgépek állapotainak rögzítése</li>
+        </ul>
+      </ul>
+      <li>Struktúrális dekompozíció</li>
+      <ul>
+        <li>Egyösszetett rendszer részekrebontása (modellezés / munkamegosztás stb.)</li>
+        <li>Hierarchikus dekompozíció: rész-egész viszony</li>
+        <li>Fizikai (milyen alkatrész?), logikai (milyen funkció?) dekompozíció stb.</li>
+        <li>Dekompozíció helyessége</li>
+        <ul>
+          <li>Csak olyan elemekre bontható amik az eredeti rendszerben is voltak</li>
+          <li>A rendszer minden eleméhez találok dekomponált elemet</li>
+        </ul>
+      </ul>
+    </ul>
+    <h2>3. EA (alap)</h2>
+    <ul>
+      <li>Viselkedési modellek</li>
+      <ul>
+        <li>Azt írják le hogy reagál a rendszer a külvilágra</li>
+        <li>Eseményalapú, állapotalapú stb.</li>
+        <li>Állapotmodellek</li>
+        <ul>
+          <li>A rendszer különböző lehetséges állapotait és azok viselkedését írják le</li>
+          <li>Események: azonnali változások</li>
+          <li>Eseménytér: lehetséges események halmaza</li>
+        </ul>
+      </ul>
+    </ul>
+  <h2>4. EA</h2>
+  <ul>
+    <li>Viselkedésmodellek</li>
+    <ul>
+      <li>Mit "csinál"?</li>
+      <ul>
+        <li>Eseményalapú</li>
+      </ul>
+      <li>Mit "fog csinálni"?</li>
+      <ul>
+        <li>Állapotmodellek</li>
+        <li>Állapottér: állapotok összessége</li>
+        <ul>
+          <li>Olyan állapotok melyek közül pontosan egyben van benne a rendszer</li>
+          <li>Egy rendszernek több állapottere is van</li>
+        </ul>
+        <li>Állapotfinomítás</li>
+        <ul>
+          <li>Absztrakció</li>
+          <li>Egy újabb állapottér létrehozása egyes állapotok kibontásával, mások összevonásával</li>
+        </ul>
+        <li>Állapottér direkt (véges) szorzata</li>
+        <ul>
+          <li>Több állapottér együttes felírása táblázatban / koordinátarendszerben stb.</li>
+          <li>Könnyű absztrahálni, egy ilyen táblázat celláinak vetítése az egyik "tengelyre" az absztakció</li>
+          <li>Ha az adott több állapottér állapotai nem függetlenek ehymástól: DEKOMPOZÍCIÓ</li>
+        </ul>
+      </ul>
+      <li>Mealy féle állapotgép</li>
+      <ul>
+        <li>A kimenet a bemenettől és az állapottól függ</li>
+        <li>Moore modell esetén csak attól függ mi az aktuális állapot</li>
+        <li>Kiegészíthető elmekkel (nemdeterminisztikus átmenetek, inputok, stb.)</li>
+      </ul>
+      <li>Hierarchikus modellfinomítás</li>
+      <ul>
+        <li>Egy állapotgép modellje nagyon összetetté válhat</li>
+        <li>Egyes állapotokat és átmeneteket összevonunk (összetartozó egységekké) és azokat ábrázoljuk</li>
+        <li>Állapotok és részállapotok hierarchia kiépítése esetleg több szinten</li>
+      </ul>
+      <li>Állaptgépek szorzata</li>
+      <ul>
+        <li>Szinkron szorzat</li>
+        <ul>
+          <li>Két esemény bekövetkezik, mindkét állapot egyszerre változik</li>
+        </ul>
+        <li>Aszinkron szorzat</li>
+        <li>Vegyes szorzat</li>
+      </ul>
+    </ul>
+  </ul>
+  <h2>5. EA</h2>
+  <ul>
+    <li>Folyamatmodellezés</li>
+    <ul>
+      <li>Korábbi modellek</li>
+      <ul>
+        <li>Struktúrális modellek</li>
+        <li>Viselkedési modellek</li>
+        <li><b>Folyamat alapú modellek</b></li>
+      </ul>
+      <li>Folyamat</li>
+      <ul>
+        <li>Lépések sorozata</li>
+        <li>Logikus sorrendben végrehajtva célra vezet</li>
+        <li>Példák</li>
+        <ul>
+          <li>Programok vezérlése</li>
+          <li>Gyártási folyamatok ütemezése</li>
+          <li>Logisztikai folyamatok</li>
+        </ul>
+      </ul>
+      <li>Folyamatmodellek</li>
+      <ul>
+        <li>Vannak elemi lépések</li>
+        <ul>
+          <li>Nem modellezük őket részletesebben</li>
+          <li>Csak a végrehajtási idejükkel jellemezzük őket</li>
+        </ul>
+        <li>Lépések közt függőségek</li>
+        <li>Folyamatmodellezési nyelvek (általános célú)</li>
+        <li>Folyamatábra</li>
+        <ul>
+          <li>Flow</li>
+          <li>Folyamatok modellezése irányított gráfok</li>
+          <li>CGF = Control Flow Graph</li>
+          <li>GANTT diagram</li>
+          <ul>
+            <li>Folyamatok ábrázolása azok időigényével</li>
+          </ul>
+          <li>WCET = Worst Case Execution</li>
+        </ul>
+        <li>Folyamat vezérlés</li>
+        <ul>
+          <li>Döntési pontok (elágazások)</li>
+          <ul>
+            <li>Lehet nemdeterminisztikus</li>
+            <li>Egy programnál ez lehetetlen, máskor a véletlen dönt</li>
+            <li>A végén egyesítés van (Merge)</li>
+            <li>Mindig 1 kimenetet választ (akár determinisztikus akár nem)</li>
+          </ul>
+          <li>Párhuzamos végrehajtás</li>
+          <ul>
+            <li>Független eseményszálak</li>
+            <li>Megadható, hol kell bevárnia egymást a párhuzamos szálaknak</li>
+            <li>Fork / Join</li>
+            <ul>
+              <li>Fork kettéválasztja a folyamatszálakat</li>
+              <li>Az egységnek akkor van vége, ha mindkét szál végzett, erre vár a Join</li>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+  <h2>6. EA</h2>
+  <ul>
+    <li>Modellek ellenőrzése</li>
+    <ul>
+      <li>Fejlesztési folyamat</li>
+      <ul>
+        <li>Specifikáció</li>
+        <ul>
+          <li>Transzformáció</li>
+        </ul>
+        <li>Fejlesztés</li>
+        <li>Ellenőrzés</li>
+      </ul>
+      <li>Munkafolyamat</li>
+      <ol>
+        <li>Tranzíció</li>
+        <ul>
+          
+        </ul>
+        <li>Validíció</li>
+        <ul>
+
+        </ul>
+        <li>Verifikáció</li>
+        <ul>
+
+        </ul>
+        <li>Integráció</li>
+        <ul>
+
+        </ul>
+        <li>Implementáció</li>
+        <ul>
+
+        </ul>
+        <li>Kiviteli tervezés</li>
+        <ul>
+
+        </ul>
+        <li>Funkcionális analízis</li>
+        <ul>
+
+        </ul>
+        <li>Követelmény analízis</li>
+        <ul>
+
+        </ul>
+      </ol>
+    </ul>
+  </ul>
+  </body>
+</html>

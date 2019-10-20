@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <title>Szoftvertechnikák</title>
+    <style>
+        :root{
+            --dark-blue: #4c7783;
+            --white: #f2f0f6;
+            --pink: #e67b82;
+            --dark-pink: #c26168;
+            --blue: #65cbc3;
+            --red: rgb(190, 50, 50);
+            --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+        }
+        body{
+            background-color: var(--white);
+            margin: 0!important;
+            padding: 0;
+        }
+        *, body{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: inherit;
+        }
+        h2{
+            color: var(--dark-pink);
+            position: relative;
+            padding-bottom: 0.6rem;
+            font-size: 1.6rem;
+        }
+
+        h2::after{
+            position: absolute;
+            bottom: 0;
+            margin-top: 10px;
+            content: ' ';
+            background-color: var(--dark-pink);
+            width: 100%;
+            height: 1px;
+            left: 0;
+        }
+
+        .header{
+            padding: 5vh 5vw;
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+
+        main {
+            padding: 10vh 10vw;
+            font-weight: 400;
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        ul{
+            margin-bottom: 0.3rem;
+        }
+        ul > ul > ul > ul{
+            color: #555;
+        }
+
+        a, a:hover{
+            color: var(--dark-blue);
+            text-decoration: none;
+            transition: all ease-in-out .12s;
+        }
+        a:hover{
+            color: var(--blue);
+        }
+
+        .code{
+            font-family: 'Menlo';
+            color: var(--dark-blue);
+            font-size: 0.8rem;
+            white-space: pre;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Szoftvertechnikák</h1>
+    </div>
+    <main>
+        <h2>1. Előadás</h2>
+        <ul>
+            <li>Futtatókörnyezetek</li>
+            <ul>
+                <li>Előnyei</li>
+                <ul>
+                    <li>Hordazhatóbb alkalmazás</li>
+                    <li>Több platformon fut</li>
+                    <li>GC</li>
+                    <li>stb.</li>
+                </ul>
+            </ul>
+            <li>.NET</li>
+            <ul>
+                <li>.NET framework</li>
+                <ul>
+                    <li>Klasszikus keretrendszer</li>
+                    <li>CLR</li>
+                    <ul>
+                        <li>Common Language Runtime</li>
+                        <li>FUttatómotor (mint a Java JRE)</li>
+                    </ul>
+                    <li>BCL</li>
+                    <ul>
+                        <li>Base Class Library</li>
+                        <li>Előre kitalált alaposztályok</li>
+                    </ul>
+                    <li>NuGet</li>
+                    <ul>
+                        <li>Package maneger</li>
+                        <li>Külső szolgáltatások beépítése</li>
+                    </ul>
+                </ul>
+                <li>.NET technológiák</li>
+                <ul>
+                    <li>Web + backaned</li>
+                    <li>Windows Application</li>
+                    <li>Mobil alkalmazás</li>
+                    <li>Játékfejlesztés (Unity)</li>
+                    <li>stb.</li>
+                </ul>
+                <li>Problémák</li>
+                <ul>
+                    <li>.NET framework csak Windowson fut</li>
+                    <li>Megoldás: .NET Core</li>
+                    <ul>
+                        <li>Szűkebb (de bővülő) funkcionalitás</li>
+                        <li>Windows, Linux, Max</li>
+                        <li>Multiplatform</li>
+                        <li>Még OO-bb, még gyorsabb</li>
+                        <li>Open Source</li>
+                    </ul>
+                </ul>
+                <li>.NET Mono</li>
+                <ul>
+                    <li>Keresztplatformos implementáció</li>
+                    <li>Funkciójában fejlettebb a Core-nál, de nem éri el a Full-ét</li>
+                </ul>
+                <li>.NET Standard</li>
+                <ul>
+                    <li>.NET-es szabvány</li>
+                    <li>A .NET platformok közötti könnyű mozgatást biztosít a betartása</li>
+                </ul>
+                <li>CLR</li>
+                <ul>
+                    <li>A virtuális gép a .NET mögött</li>
+                    <li>Egyszerűbb fejlesztés</li>
+                    <ul>
+                        <li>Objektumorientált környezet</li>
+                    </ul>
+                    <li>Szálkezelés, GC, fordító stb.</li>
+                    <li>Garbage Collector</li>
+                    <ul>
+                        <li>Java-hoz hasonló</li>
+                        <li>Komplex algoritmus</li>
+                        <li>Nem tudjuk mikor fut le</li>
+                        <li>Memória fregmentálást tömörítéssel oldja meg</li>
+                        <li>Overhead &rarr; LOH (Large Object Heap)</li>
+                    </ul>
+                    <li>Nem kötött a C#-hoz</li>
+                    <ul>
+                        <li>C#, F#, VisualBasic, C++</li>
+                        <li>.NET nyelvekben írt komponensek felhasználhatók más nelvi .NET környezetben</li>
+                    </ul>
+                    <li>Felügyelt kód</li>
+                    <ul>
+                        <li>Nincs tömb túlindexelés</li>
+                        <li>Kisebb a kiszámíthatatlan hibalehetőség</li>
+                    </ul>
+                    <li>Fordítás</li>
+                    <ol>
+                        <li>Forrás kód</li>
+                        <li>Nyelvi fordítás</li>
+                        <li>Köztes kód + meta (.dll, .exe)</li>
+                        <li>JIT fordító (Just in time)</li>
+                        <li>Natív kód CLR-nek</li>
+                    </ol>
+                    <li>Szerelvény szintű metaadat</li>
+                    <ul>
+                        <li>Név, verzió információk</li>
+                    </ul>
+                </ul>
+            </ul>
+        </ul>
+        <h2>2. Előadás</h2>
+        <ul>
+            <li>Properties</li>
+            <ul>
+                <li>C# nyelvi elem</li>
+                <li>Propertyk egy getter-setter függvénypár és egy tagváltozó összevonása</li>
+                <li>A tagváltozó deklarálásakor nyitunk egy blokkot</li>
+                <li>A blokkba írHATunk get és set "függvényeket"</li>
+                <ul>
+                    <li>A get blokkba egy return statement kötelező</li>
+                    <li>A set blokkban a "value" kulcsszóval érjük el az új értéket</li>
+                    <div class="code">
+public string MyProperty{
+    get {
+        return this.someValue * 2;
+    } 
+    set {
+        this.someValue = value;
+    } 
+}
+                    </div>
+                    <li>Ha kihagyjuk a set ágat, akkor readOnly property-t kapunk</li>
+                </ul>
+                <li>Autoproperty</li>
+                <ul>
+                    <li>A propertyk létrehozása sok kód</li>
+                    <li>Egy private tagváltozó, egy public Property, get, set...</li>
+                    <div class="code">
+public string MyAutoProperty{
+    get;
+    private set;
+}
+                    </div>
+                    <li>A C# automatikusan létrehoza a default implementációkat</li>
+                </ul>
+            </ul>
+            <li>Delegates</li>
+            <ul>
+                <li>Hasonló a cél, mint a függvénypointeré</li>
+                <li>C#-ban nincs pointer, csak referencia</li>
+                <li>Megoldás: delegált</li>
+                <li>Példa: komparátor</li>
+                <div class="code">
+delegate bool MyComparatorDelegate(object a, object b);
+                </div>
+                <li>Megvalósítás</li>
+                <ul>
+                    <li>A delegált egy típust fog definiálni (mint a class)</li>
+                    <li>Lehet delegált típusú tagváltozót csinálni függvényparaméterként átadni stb.</li>
+                    <li>Általános típus: object</li>
+                    <li>A delegált egy függvény szignatúrát definiál csak</li>
+                </ul>
+                <li>Delegáltnak eleget tevő függvény</li>
+                <ul>
+                    <li>static tagfüggvény</li>
+                    <ul>
+                        <li>A paraméterezés semmilyen módon nem térhet el a delegált paraméterezésétől</li>
+                        <li>Helyette: cast</li>
+                        <div class="code">
+
+static bool Foo(object a, object b){
+    return ( (Cast)a ).prop &leq; ( (Cast)a ).prop
+}
+
+static OtherFoo(MyDelegate comparator){
+    ////
+}
+
+////
+
+Vmi.OtherFoo(new MyDelegate(Vmi.Foo));
+vagy:
+Vmi.OtherFoo(Vmi.Foo)
+                        </div>
+                        <li>Alternatív megoldás</li>
+                        <ul>
+                            <li>Generikus delegáltak</li>
+                            <div class="code">
+delegate bool MyComparatorDelegate&lt;Type> (Type a, Type b);
+
+public static void sort&lt;T>(List&lt;T> list, MyComparatorDelegate&lt;T> cmp){
+    ///
+}
+
+public static bool MyComparator(Complex a, Complex b){
+    ///
+}
+
+///
+
+Vmi.sort(list, Vmi.MyComparator);
+                            </div>
+                            <li>.NET kitalálja a list és MyComparator-ból a sort generikus típusát, így nem kell kiírni</li>
+                        </ul>
+                    </ul>
+                    <li>Nem statikus tagfüggvény</li>
+                    <ul>
+                        <li>Átadáskor példány tagfüggvényét adjuk át</li>
+                    </ul>
+                </ul>
+                <li>Delegált lista</li>
+                <ul>
+                    <li>Delegáltak nem csak 1, hanem több függvényre is mutathatnak (fv. pointer ilyet nem tudott)</li>
+                    <li>+= operátorral egy delegált példány listájába új függvényeket tehetünk</li>
+                </ul>
+            </ul>
+            <li>Eventek</li>
+            <ul>
+                <li>Objektumok publikálnak eseményeket</li>
+                <li>Más objektumok erre feliratkoznak</li>
+                <li>Az esemény tulajdonosa emittál eseményeket, vagyis értesíti a feliratkozókat</li>
+                <li>Pont, mint TypeScript Observables</li>
+                <li>Megvalósítás</li>
+                <ul>
+                    <li>Delegáltakkal</li>
+                    <li>Az eseményt publikáló osztály definiál egy delegáltat</li>
+                    <li>A subscribe meghívásakor ebbe a delegáltba beletölti a saját "callback"-jét</li>
+                    <li>Event emission esetén, a delegate meghívja az összes regisztrált callbacket</li>
+                </ul>
+                <li>Pl.</li>
+                <ul>
+                    <li>Mappákat másolunk</li>
+                    <li>DirCopy osztály srcDir és targetDir másolást végzi el</li>
+                    <li>A DirCopy eventeket küld minden fájl másolásánál, így értesülünk a státuszról</li>
+                    <div class="code">
+class DirCpy{
+    delegate void Subscribtion(int fileCount, string fileName, int currentFile);
+    Folder from;
+    Folder to;
+    public event Subscribtion allSubscribtions;
+
+    public void Run(){
+        int i = 0;
+        foreach(File f in from){
+            File.Copy(file, to, true);
+            if(allSubscribtions != null)
+                allSubscribtions(from.size, f.name, i);
+            i++;
+        }
+    }
+}
+
+///
+
+DirCpy dc = new DirCpy(/**/);
+dc.allSubscribtions += TraceFileCopy;
+dc.Run();
+dc.allSubscribtions -= TraceFileCopy;
+                    </div>
+                    <li>Ha nincs unsubscribe, az memory leak</li>
+                    <li>Fontos az event kulcsszó, jelzi, hogy ez az osztály "outputja"</li>
+                    <ul>
+                        <li>Enélkül is működne</li>
+                        <li>Az event letiltja a delegált =operátorát</li>
+                        <li>Az event megakadályozza a delegált kívülről való meghívását</li>
+                    </ul>
+                </ul>
+            </ul>
+            <li>Attribútumok</li>
+            <ul>
+                <li>Nem összekeverendő a field-del, vagyis taggal (tagváltozó)</li>
+                <li>Ezek annotationök (mint Javaban és TypeScriptben a @Override stb.)</li>
+                <li>Gyenge modifier-ek</li>
+                <li>Futás közben is lekérdezhetőek</li>
+                <li>Syntax: [MyAnnotation]</li>
+                <li>Lehet vele címkézni bármit</li>
+                <li>Fontosabbak:</li>
+                <ul>
+                    <li>Serialisable</li>
+                    <li>NonSerialised</li>
+                </ul>
+            </ul>
+        </ul>
+    </main>
+</body>
+</html>

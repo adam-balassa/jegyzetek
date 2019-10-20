@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+  <title>Mobil és webes szoftverfejlesztés</title>
+  <style>
+    :root {
+      --dark-blue: #4c7783;
+      --white: #f2f0f6;
+      --pink: #e67b82;
+      --dark-pink: #c26168;
+      --blue: #65cbc3;
+      --red: rgb(190, 50, 50);
+      --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      background-color: var(--white);
+      margin: 0 !important;
+      padding: 0;
+    }
+
+    *,
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: inherit;
+    }
+
+    h2 {
+      color: var(--dark-pink);
+      position: relative;
+      padding-bottom: 0.6rem;
+      font-size: 1.6rem;
+    }
+
+    h2::after {
+      position: absolute;
+      bottom: 0;
+      margin-top: 10px;
+      content: ' ';
+      background-color: var(--dark-pink);
+      width: 100%;
+      height: 1px;
+      left: 0;
+    }
+
+    .header {
+      padding: 5vh 5vw;
+      background-color: var(--dark-blue);
+      color: var(--white);
+    }
+
+    main {
+      padding: 10vh 10vw;
+      font-weight: 400;
+      color: #333;
+      font-size: 0.9em;
+    }
+
+    ul {
+      margin-bottom: 0.3rem;
+    }
+
+    ul>li>ul>li>ul {
+      color: #555;
+    }
+
+    a,
+    a:hover {
+      color: var(--dark-blue);
+      text-decoration: none;
+      transition: all ease-in-out .12s;
+    }
+
+    a:hover {
+      color: var(--blue);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Mobil és webes szoftverfejlesztés</h1>
+  </div>
+  <main>
+    <h2>Android projekt felépítése</h2>
+    <ul>
+      <li>R.java</li>
+      <ul>
+        <li>Az erőforrásokat építi fel, és ad hozzáférést java-ban</li>
+        <li>Nem a package-ünk mappájában van, de a root package-ünkben (csak másik mappában)</li>
+        <li>import nélkül elérjük a root package-ből</li>
+      </ul>
+      <li>Telepítés</li>
+      <ul>
+        <li>.apk állományok</li>alkalmazáshoz
+        <li>A Play store is apk-katalkalmazáshoz tárol</li>
+        <li>Az apk-k tartalmazzák aalkalmazáshoz forráskódot resourceokat stb.</li>
+        <li>Package Manager Servicealkalmazáshoz</li>
+        <ul>alkalmazáshoz
+          <li>Nem a play store telealkalmazáshozpít, hanem a PMS</li>
+          <li>A Package neve nem csalkalmazáshozak egy név, hanem egy azonosító</li>
+        </ul>
+      </ul>
+      <li>Fordítás</li>
+      <ul>
+        <li>Erőforrások, eszközök, manifeszt legenerálódnak az R.java-ba</li>
+        <li>A forráskódunk, a könyvtárak, és az R.java lefordítódnak JavaC-vel</li>
+        <li>A fordító kimenete a classes.dex, ami bytekódokat tartalmaz</li>
+        <li>Maguk az erőforrások, és a lefordított bytekód csomagolódnak be az apk-ba</li>
+        <li>Az apk valójában egy zip, ha átnevezzük, bele is lehet lépni</li>
+        <li>Az apk aláíródik a titkos kulcsunkkal (digitális aláírás)</li>
+      </ul>
+      <li>Android alkalmazás felépítése</li>
+      <ul>
+        <li>Komponensek</li>
+        <ul>
+          <li>Ezek mind belépési pontjai az alkalmazásnak</li>
+          <li>Activityk</li>
+          <ul>
+            <li>Ez gyakorlatilag a képernyő</li>
+            <li>Több, de akár 0 is lehet belőle</li>
+            <li>Ha úgy tetszik "az aloldalak"</li>
+            <ul>
+              <li>Pl. főképernyő, beállítások, névjegy, stb.</li>
+            </ul>
+          </ul>
+          <li>Servicek</li>
+          <ul>
+            <li>A háttérben fut, a felhasználó nem tud róla</li>
+            <li>Pl. Szinkronizáló, zenelejátszó, GPS stb.</li>
+            <li>Lekérhetők a futó servicek</li>
+          </ul>
+          <li>Content Providerek</li>
+          <ul>
+            <li>Beépített alkalmazásokhoz lehet hozzáférést adni a mi alkalmazásunknak</li>
+            <li>A háttérben a beépített alkalmazás content provider-e elindul felhasználói felület nélkül</li>
+            <li>Lekérhetők adatok amiket csak a beépített alkalmazás érne el</li>
+            <li>Az én alkalmazásomhoz is lehet content providert írni más alkalmazások számára</li>
+          </ul>
+          <li>Broadcast recieverek</li>
+          <ul>
+            <li>Rendszereseményeket lehet figyelni</li>
+            <li>Pl. Lemerülő aksi, bejövő, kimenő hívások</li>
+          </ul>
+        </ul>
+        <li>Manifest</li>
+        <ul>
+          <li>Ez egy XML fájl</li>
+          <li>A Manifest fájl írja le, milyen komponenseket hogyan használ az app</li>
+          <li>Benne van a package név is</li>
+          <li>Egy induló alkalmazásnál az android ezt a fájlt nézi meg először</li>
+          <li>Van benne egy application</li>
+          <li>Azon belül vannak az activityk, servicek stb.</li>
+          <li>Leírják, az adott komponenst melyik class írja le</li>
+          <li>Kivéve: Broadcast reciever</li>
+          <ul>
+            <li>Lehet manifestben is</li>
+            <li>De elérhető statikusan</li>
+          </ul>
+        </ul>
+        <li>Erőforrások</li>
+        <ul>
+          <li>Legenerálódnak statikusan az R class-ba</li>
+          <ul>
+            <li>Ha bármi szintaktikai hiba van bennük, már nem fordítható le az R</li>
+            <li>Minden R-re való hivatkozás hibát dob</li>
+          </ul>
+          <li>Az id-jukon keresztül érhetők el, melyeket mi adhatunk meg kézzel</li>
+          <li>src/res/.... mappában vannak</li>
+          <ul>
+            <li>pl.: strings.xml</li>
+            <ul>
+              <li>Szöveges erőforrások</li>
+              <li>Standard szövegeket lehet megadni, melyekre más erődorrásokból @strings/string-neve módon lehet hivatkozni</li>
+              <li>Legszebb módszer: Megadom a stringet egy erőforrásban androd:text-ként, majd alt+return &rarr; Extract to string resource</li>
+              <li>Paraméterezhető</li>
+              <ul>
+                <li>%1$d minutes ago = 1. paraméter ami egy szám + "minutes ago"</li>
+              </ul>
+            </ul>
+            <li>Többnyelvűség</li>
+            <ul>
+              <li>A resource-ok neve után kötőjellel lehet modifiereket rakni</li>
+              <li>Add Resource funkcióban new Locale ami legenerál egy új values mappát (pl.: values-hu), bele lehet rakni új string resourceokat</li>
+              <li>Az Android tudja milyen nyelvű resource-t töltsön be</li>
+            </ul>
+            <li>Resource modifierekből többet is lehet</li>
+          </ul>
+        </ul>
+        <li>Activityk</li>
+        <ul>
+          <li>Paraméterek</li>
+          <ul>
+            <li>Vannak bemeneti és kimeneti paraméterei</li>
+            <li>Egy dátum választó activity meghaphat valamilyen többletadatot (pl.: default dátum)</li>
+            <li>Majd a létrehozója számára visszaadhatja a kiválasztott időt</li>
+          </ul>
+          <li>Életciklus</li>
+          <ul>
+            <li>OnCreate: amikor elindul az activity</li>
+            <li>OnStart: Oncreate után, vagy onRestart után</li>
+            <li>OnResume: OnStart után</li>
+            <li>OnPause: ha egy másik activity került előtérbe</li>
+            <li>OnStop: amikor már nem is látszik az activity</li>
+            <li>OnRestart: Ha újra látszik az alkalmazás (OnRestart után OnStart)</li>
+            <li>OnDestroy: Ha ki is ment a memóriából (teljesen bezárult)</li>
+          </ul>
+          <li>A mainfesztben MAIN-ként feltüntetett activity OnCreate függvénye az alkalmazás általános belépési pontja</li>
+          <li>Egy Activity osztálya leszármazik az AppCompatActivityből</li>
+          <li>Minden Lifecycle esemény függvényét override-olni lehet, majd kötelezően meghívni a super függvényét</li>
+          <li>Képernyőelforgatás</li>
+          <ul>
+            <li>Az activity megsemmisül és egy új jön létre</li>
+            <li>Le kell menteni az előző állapotot OnStop-ban</li>
+            <li>Vagy: OnInstanceSave függvény felüldefiniálása</li>
+            <li>Különböző képernyőorientációkban különböző layoutokat lehet</li>
+            <ul>
+              <li>res mappában -land modifier a layout mappára</li>
+            </ul>
+          </ul>
+          <li>Új Activity indítása</li>
+          <ol>
+            <li>new Intent</li>
+            <ul>
+              <li>Androidnak csak szándékot lehet jelezni</li>
+              <li>Az android majd elindítja, ha akarja</li>
+            </ul>
+            <li>SetClass</li>
+            <ul>
+              <li>A szándéknak be lehet állítani a hívó és a hívott classt</li>
+            </ul>
+            <li>PuExtra</li>
+            <ul>
+              <li>Adatok, amiket át akarok adni a második activitynek</li>
+            </ul>
+            <li>startActivity(intent)</li>
+          </ol>
+          <li>Activity BackStack</li>
+          <ul>
+            <li>Az Android megjegyszi mi volt az előző Activity</li>
+            <li>Van egy Activity Back Stack, a visszagomb csupán ebből pop-ol</li>
+            <li>Ez nem biztos, hogy jó (pl.: alkalmazás indulásakor reklám rész amíg töltődik, vagy bejelentkezés)</li>
+            <li>Felüldefiniálható</li>
+            <ul>
+              <li>finish()</li>
+              <ul>
+                <li>Az activity kidobja magát a BackStackből</li>
+                <li>finish() előtt nyilván érdemes elindítani egy másik activityt</li>
+              </ul>
+              <li>onBackPressed</li>
+              <ul>
+                <li>A visszagomb megnyomásának felüldefiniálása</li>
+                <li>Ha nem hív super.onBackPressed-et akkor nem dobódik ki a BackStackből</li>
+              </ul>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+      <li>Fontos fogalmak</li>
+      <ul>
+        <li>Képernyő méret</li>
+        <ul>
+          <li>Képátló mérete</li>
+          <li>small, normal, large, extra large</li>
+        </ul>
+        <li>Képernyő sűrűség</li>
+        <ul>
+          <li>DPI (dots per inch)</li>
+          <li>Low, medium, high, extra high</li>
+          <li>Megoldás: dp, mint mértékegység</li>
+          <ul>
+            <li>A rendszer átszámolja a dp-t px-be a dpi alapján</li>
+            <li>Vagy sp: be lehet állytani rosszul látók számára</li>
+          </ul>
+        </ul>
+        <li>Orientáció</li>
+        <li>Lokalizáció</li>
+        <ul>
+          <li>Többnyelvűséghez</li>
+        </ul>
+      </ul>
+    </ul>
+  </main>
+</body>
+</html>

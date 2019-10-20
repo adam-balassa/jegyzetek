@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <title>Kommhál 2</title>
+    <style>
+        :root{
+            --dark-blue: #4c7783;
+            --white: #f2f0f6;
+            --pink: #e67b82;
+            --dark-pink: #c26168;
+            --blue: #65cbc3;
+            --red: rgb(190, 50, 50);
+            --shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.5);
+        }
+        body{
+            background-color: var(--white);
+            margin: 0!important;
+            padding: 0;
+        }
+        *, body{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: inherit;
+        }
+        h2{
+            color: var(--dark-pink);
+            position: relative;
+            padding-bottom: 0.6rem;
+            font-size: 1.6rem;
+        }
+
+        h2::after{
+            position: absolute;
+            bottom: 0;
+            margin-top: 10px;
+            content: ' ';
+            background-color: var(--dark-pink);
+            width: 100%;
+            height: 1px;
+            left: 0;
+        }
+
+        .header{
+            padding: 5vh 5vw;
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+
+        main {
+            padding: 10vh 10vw;
+            font-weight: 400;
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        ul{
+            margin-bottom: 0.3rem;
+        }
+        ul > ul > ul > ul > ul{
+            color: #555;
+        }
+
+        a, a:hover{
+            color: var(--dark-blue);
+            text-decoration: none;
+            transition: all ease-in-out .12s;
+        }
+        a:hover{
+            color: var(--blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Kommhál 2</h1>
+    </div>
+    <main>
+        <h2>2. Előadás</h2>
+        <ul>
+            <li>Előzmények</li>
+            <ul>
+                <li>Klasszikus vezetékes telefonhálózat</li>
+                <ul>
+                    <li>Minden vezetékes telefon a hálózat levele ("végberendezés")</li>
+                    <li>Minden node egy kapcsolóközpont</li>
+                    <li>Végberendezés</li>
+                    <ul>
+                        <li>Egy telefonkészülék (vag fax vagy modem)</li>
+                    </ul>
+                    <li>Kapcsolóközpont</li>
+                    <ul>
+                        <li>"Kapcsolóközpontok hálózata</li>
+                        <li>Általában: 1 kapcsolóközpont / körzet (vagy város)</li>
+                        <li>Hierarchikus rendszer</li>
+                    </ul>
+                    <li>Átviteli utak</li>
+                    <ul>
+                        <li>Levelekbe vezető élek ("előfizetőtől a legelső központig")</li>
+                        <ul>
+                            <li>Local loop</li>
+                            <li>Egy réz érpár</li>
+                            <li>0m - 10km</li>
+                            <li>Rettenetesen drága (a lerakás és a nyersanyag)</li>
+                        </ul>
+                        <li>Trunk (a többi él, "gerinc hálózat")</li>
+                        <ul>
+                            <li>Vezetékes / mikrohullámú</li>
+                        </ul>
+                        <li>Analóg (jó 100 évig) / digitális (1960-70től)</li>
+                    </ul>
+                </ul>
+            </ul>
+            <li>A jelen távközlő hálózata</li>
+            <ul>
+                <li>NGN (Next generation networks)</li>
+                <ul>
+                    <li>2004 óta koncepció</li>
+                </ul>
+                <li>Megvalósítás</li>
+                <ul>
+                    <li>Egyetlen UDP / IP gerinchálózat</li>
+                    <li>A gerinchálózathoz lehet csatlakozni</li>
+                    <ul>
+                        <li>ADSL-lel</li>
+                        <li>kábelTV-vel</li>
+                        <li>Mobiltelefonnal</li>
+                    </ul>
+                    <li>1 hálózatban alkalmazásszerverek (különböző szolgáltatsokhoz)</li>
+                    <li>A külön mobiltelefonhálózat, kábelTV hálózat stb. kezd összenőni</li>
+                </ul>
+                <li>Gerinchálózat</li>
+                <ul>
+                    <li>Optikai eszközök és IP routerek</li>
+                    <li>Ehhez csatlakoznak egyik oldalról az alkalmazásszerverek, másikról a hozzáférési hálózatok</li>
+                    <li>IP / MPLS core belül</li>
+                    <li>IP / MPLS edge kifelé</li>
+                </ul>
+                <li>Hozzáférési hálózat</li>
+                <ul>
+                    <li>Ehhez csatlakoznak a készülékek, otthoni hálózatok</li>
+                    <li>Csatlakozás módja (Pl.)</li>
+                    <ul>
+                        <li>ADSL</li>
+                        <li>Vezetéknélkül</li>
+                        <li>kábelTV</li>
+                        <li>Optikai kábel</li>
+                    </ul>
+                </ul>
+            </ul>
+            <li>Beszédátvitel</li>
+            <ul>
+                <li>Számozás</li>
+                <ul>
+                    <li>Hívószám</li>
+                    <ul>
+                        <li>Azonosítja a felhasználó helyét</li>
+                        <li>Ma már azonosítja a felhasználót</li>
+                    </ul>
+                    <li>ITU-T szabvány / ajánlás (International Telecommunication Unit)</li>
+                    <li>Max 15 számjegy</li>
+                    <ul>
+                        <li>1-3 jegy az országhívószám</li>
+                        <li>1: Észak-Amerika</li>
+                        <li>2: Afrika, Grönland</li>
+                        <li>3-4: Európa</li>
+                        <ul>
+                            <li>36 Magyarország</li>
+                        </ul>
+                        <li>stb.</li>
+                    </ul>
+                    <li>Országon belül</li>
+                    <ul>
+                        <li>Rendeltetési szám</li>
+                        <ul>
+                            <li>Körzetszám (földrajzi számok, Bp.: 1)</li>
+                            <ul>
+                                <li>Körzeten belül nem kell kiírni</li>
+                                <li>Ha 06 1-es a hívó és a fogadó száma, elég csak az utolsó 7-et tárcsázni</li>
+                            </ul>
+                            <li>Hálózatkijelölő szám (30: Telekom, 70: Vodafon)</li>
+                            <li>Szolgáltatáskijelölő szám (pl. 90: emeltdíjas)</li>
+                        </ul>
+                        <li>Előfizetői szám</li>
+                        <li>A telefonszámok prefixek!</li>
+                        <ul>
+                            <li>Nincs 2 olyan telefonszám, amely a másik folytatása lehetne</li>
+                        </ul>
+                        <li>Előtét számok</li>
+                        <ul>
+                            <li>00 vagy +: nemzetközi előtét</li>
+                            <li>06: belföldi előtét</li>
+                            <li>104, 105, 106, 112: segélyhívó számok</li>
+                            <li>stb.</li>
+                        </ul>
+                    </ul>
+                    <li>Nyílt számozási rendszer</li>
+                    <ul>
+                        <li>Körzeten belül nem kell kiírni a 06 + körzetazonosítót</li>
+                    </ul>
+                    <li>Zárt rendszer</li>
+                    <ul>
+                        <li>Nincs különbség a körzeten belüli és kívüli tárcsázás közt</li>
+                        <li>Nem kéne kiírni a 06-ot</li>
+                    </ul>
+                    <li>Magyarországon 2010-ben lezárták a számmezőt</li>
+                    <ul>
+                        <li>Ki kell írni a hálózatkijelölő számokat</li>
+                        <li>A prefix tulajdonság miatt több a kiadható telefonszám</li>
+                        <li>Komplikációk voltak hálózatváltáskor</li>
+                    </ul>
+                </ul>
+            </ul>
+        </ul>
+        <h2>3. Előadás</h2>
+        <ul>
+            <li>Analóg és digitális beszédátvitel</li>
+            <ul>
+                <li>Analóg</li>
+                <ul>
+                    <li>A jel egy folytonos függvény</li>
+                    <li>Könnyen zajos lesz</li>
+                    <li>Hány Hz széles legyen a csatorna?</li>
+                    <ul>
+                        <li>300-3400 Hz</li>
+                        <li>Ezt a sávot lehet a legjobban hallani</li>
+                    </ul>
+                    <li>Pont-pont analóg kapcsolat</li>
+                </ul>
+                <li>Digitális technika</li>
+                <ul>
+                    <li>Előnyök</li>
+                    <ul>
+                        <li>Egyszerű, megbízható, olcsó</li>
+                        <li>Kisebb hely igény, tápigény</li>
+                        <li>A zaj mértéke nem függ a hálózat méretétől</li>
+                        <ul>
+                            <li>Biteket viszünt át</li>
+                            <li>Egy zajos négyszögjelből nagyon könnyű négyszögjelet csinálni</li>
+                        </ul>
+                        <li>Nem kell mozgó alkatrész</li>
+                        <li>Kifinomultabb jelzésátvitel</li>
+                        <li>Magasabb hálózati intelligencia</li>
+                        <li>Adat és beszéd egységes</li>
+                    </ul>
+                    <li>Digitális telefonhálózat kialakítása</li>
+                    <ul>
+                        <li>60-70es években</li>
+                        <li>Mo.-on csak 2000-ig</li>
+                        <li>A vezetékes telefonok analógok maradtak</li>
+                    </ul>
+                </ul>
+                <li>Beszéd digitalizálása</li>
+                <ul>
+                    <li>A/D - D/A átalakítás</li>
+                    <div style="display: none">
+                        <ol id="task">
+                            <li>D+</li>
+                            <li>A+</li>
+                            <li>A+</li>
+                            <li>D+</li>
+                            <li>A+</li>
+                            <li>D+</li>
+                            <li>A-</li>
+                            <li>A+</li>
+                            <li>D+</li>
+                        </ol>
+                        <script>
+                            const list = document.getElementById('task')
+                            for (const listItem of list.children) {
+                                const content = listItem.innerHTML
+                                const res = content.charAt(content.length - 1) === '+'
+                                listItem.innerHTML = content.substr(0, 1)
+                                listItem.style.color = res ? 'green' : 'red'
+                            }
+                            
+                        </script>
+                    </div>
+                    <li>PCM - Pulse Code Modulation</li>
+                    <ul>
+                        <li>kodek (kódoló-dekódoló)</li>
+                        <li>II. vh.-ban már titkosításnak használták</li>
+                        <li>A jel egy U(t) függvény</li>
+                        <li>Időben és feszültségben is folytonos</li>
+                        <li>A cél egy bitsorozat készítése</li>
+                    </ul>
+                    <li>Módszer</li>
+                    <ol>
+                        <li>Sávszűrő</li>
+                        <ul>
+                            <li>300-3400kHz</li>
+                            <li>Valójában 300-4000KHz (véfő frekvencia)</li>
+                            <li>Output: analóg folytonos idejű jel</li>
+                        </ul>
+                        <li>Mintavételezés</li>
+                        <ul>
+                            <li>Minél több mintát kell venni</li>
+                            <li>Nyquist-Shannon tétel: Tudunk elég mintát venni a tökéletes visszaállíthatósághoz</li>
+                            <li>4kHz-es max analóg frekvencia esetén 8kHz-es mintavételezés</li>
+                            <li>Output: analóg diszkrét idejű jel</li>
+                        </ul>
+                        <li>Kvantálás</li>
+                        <ul>
+                            <li>Már időben diszkrét a jelünk, de feszültségben folytonos</li>
+                            <li>Kerekítsük véges sok értékre a feszültségértékeket</li>
+                            <li>Minél több szintre kell kvantálni</li>
+                            <li>Nincs tökéletes kvantálási tartomány</li>
+                            <li>Legyen mondjuk 256 szint (1 Byte-os minták)</li>
+                            <li>Használjunk logaritmikus karakterisztikát (nem egyenletesek a távolságok)</li>
+                            <li>Output: diszkrét, diskrét idejű jel</li>
+                        </ul>
+                        <li>Kódolás</li>
+                        <ul>
+                            <li>8000 minta / s</li>
+                            <li>8 bit / minta</li>
+                            <li>64 kbit / s</li>
+                            <li>Output: Digitális (bináris) jel</li>
+                        </ul>
+                    </ol>
+                    <li>D/A átalakítás</li>
+                    <ul>
+                        <li>Digitális jel &rarr; analóg jel &rarr; analóg sávhatárolt jel</li>
+                        <li>CD: 44kHz minta, 16bit/minta</li>
+                    </ul>
+                    <li>CODEC-ek</li>
+                    <ul>
+                        <li>Egyelőre fekete doboz szemlélet (a PCM egy lehetőség)</li>
+                        <li></li>
+                    </ul>
+                </ul>
+            </ul>
+        </ul>
+        <h2>4. Előadás</h2>
+        <ul>
+            <li>CODEC jellemzők</li>
+            <ul>
+                <li>Bitsebesség: 2.4 - 64 kb/s</li>
+                <li>Beszédminőség</li>
+                <ul>
+                    <li>Nehéz objektíven mérni</li>
+                    <li>MOS (Mean Opinion Score)</li>
+                    <ul>
+                        <li>15-40 ember pontozza a minőséget</li>
+                    </ul>
+                </ul>
+                <li>Kódolási késleltetés</li>
+                <ul>
+                    <li>Nagy adat jobban tömöríthető</li>
+                    <li>0.125 - 80ms-es adatok</li>
+                </ul>
+                <li>Komplexitás</li>
+                <ul>
+                    <li>Mértékegysége: MIPS</li>
+                </ul>
+                <li>Robosztusság</li>
+                <ul>
+                    <li>Nincs idő elveszett csomagok újraadására</li>
+                    <li>Rádió hibaaránya ~10<sup>-3</sup></li>
+                    <li>Hibajavító kódolás</li>
+                </ul>
+                <li>Átkódolhatóság</li>
+                <ul>
+                    <li>Több CODEC egymás után csatolása mennyire rontja a minőséget</li>
+                </ul>
+                <li>Átlátszóság</li>
+                <ul>
+                    <li>Ezt nem vágom mi</li>
+                    <li>Talán, hogy felismerjük milyen frekin viszünk át hangot</li>
+                </ul>
+                <li>Adaptivitás</li>
+                <ul>
+                    <li>Nagy terhelés esetén kisebb jelsebességet választ</li>
+                </ul>
+            </ul>
+            <li>Kódolók</li>
+            <ul>
+                <li>Hullámforma kódoló</li>
+                <ul>
+                    <li>A PCM is ilyen</li>
+                    <li>Jó minőség</li>
+                    <li>Nagy bitsebesség</li>
+                </ul>
+                <li>Vokóder</li>
+                <ul>
+                    <li>Adó oldalon: beszéd felismerése</li>
+                    <li>Vevő oldalon: beszéd szintetizálás</li>
+                    <li>Nem jó minőségű</li>
+                </ul>
+                <li>Hibrid kódoló</li>
+                <ul>
+                    <li>Megcsinálja mind2 kódolást és a különbségét is átküldi</li>
+                    <li>Legjobb minőségű</li>
+                </ul>
+            </ul>
+            <li>"HD hang"</li>
+            <ul>
+                <li>Sokáig nem volt jobb a PCM-nél</li>
+                <li>AMR-WB (Adaptive Multirate Wideband)</li>
+                <ul>
+                    <li>3G hálózatokban</li>
+                    <li>Hálózatok közt nem működik</li>
+                    <li>Kis sebességgel elég jó minőség</li>
+                </ul>
+            </ul>
+            <li>Mobil hálózatok</li>
+            <ul>
+                <li>2G, G, E, H, 3G (GSM), 4G (LTE), [5G]</li>
+                <li>Cellás elv</li>
+                <ul>
+                    <li>Felosztjuk a frekvenciatartományt 7 részre</li>
+                    <li>Ugyanolyan tartományú cellák nem lehetnek szomszédosak</li>
+                    <li>Cellák mérete</li>
+                    <ul>
+                        <li>Kicsi előnyei</li>
+                        <ul>
+                            <li>Kis adóteljesítmény (olcsóbb, kisebb élettani kockázat, kisebb fogyasztás)</li>
+                            <li>Nagyobb forgalomsűrűség (1 cellával adott mennyiségő ember tud kommunikálni)</li>
+                        </ul>
+                        <li>Nagy előnyei</li>
+                        <ul>
+                            <li>Kevesebb állomás kell</li>
+                        </ul>
+                    </ul>
+                </ul>
+            </ul>
+            <li>1G</li>
+            <ul>
+                <li>Bejövő hívásokért is fizetni kellett</li>
+                <li>Sok nem kompatibilis hálózat (nincs roaming)</li>
+                <li>Gyenge minőség</li>
+                <li>Készülékhez kötött telefonszám (nincs SIM)</li>
+                <li>Hackelhető volt :D</li>
+                <li>Analóg vezeték nélküli</li>
+                <li>Buzi nagy cellák</li>
+            </ul>
+            <li>2G</li>
+            <ul>
+                <li>Digitális</li>
+                <ul>
+                    <li>Telefon készülékben A/D CODEC</li>
+                    <li>Adat és beszédre is alkalmas</li>
+                </ul>
+                <li>GSM (Van más implementációja is, ez a leghíresebb)</li>
+                <ul>
+                    <li>Global System for Mobile (eredetileg Groupe Spéciale Mobile)</li>
+                    <li>Egységes európai szabvány &rarr; Roaming</li>
+                    <li>Csak a hívó fél fizet</li>
+                    <li>SIM kártya</li>
+                    <li>SMS</li>
+                    <li>Titkosított csatornák</li>
+                    <li>Adaptív sugárzás: max 2W</li>
+                </ul>
+                <li>Cellák</li>
+                <ul>
+                    <li>0.5 - 35km</li>
+                    <li>A mérete tervezői döntés</li>
+                    <li>Mekkora a forgalom</li>
+                    <li>Domborzat és frekvencia függő</li>
+                </ul>
+                <li>GSM900: FDMA, TDMA</li>
+                <ul>
+                    <li>Egyszerre frekvencia és időosztás</li>
+                    <li>Frekvencia: 124 vivő / sáv</li>
+                    <li>Idő: 8 időrés / vivő</li>
+                    <li>2 sáv van egy fel és egy le (25 MHz)</li>
+                    <li>Mobil adó az alacsonabb frekis sávon</li>
+                    <ul>
+                        <li>Akkumulátor kímélés</li>
+                        <li>Kisebb a csillapítás így a szükséges sugárzási telj.</li>
+                    </ul>
+                    <li>Minden szolgáltató ezen a 25 MHz-en osztozik</li>
+                    <ul>
+                        <li>Mo.: 3 szolgáltató &rarr; kb 40 vivő / szolgáltató</li>
+                        <li>10 különböző cella frekvencia</li>
+                        <li>Egy cellában egy szolgáltatóhoz 40 * 8 / 10 = 32db csatorna</li>
+                    </ul>
+                    <li>32 csatorna / cella elég kevés (mondjuk van 3 szolgáltató, de még így is)</li>
+                </ul>
+                <li>GSM 1800</li>
+                <ul>
+                    <li>1800Hz körüli 75MHz-es sávok</li>
+                    <li>3-szoros kapacitás</li>
+                    <li>Nagyobb csillapodás</li>
+                </ul>
+                <li>Handover</li>
+                <ul>
+                    <li>Átjárás cellák között</li>
+                    <li>Új bázisállomáshoz kell csatlakozni</li>
+                    <li>Nem szeretnénk, ha megszakadna a kapcsolat</li>
+                    <li>Megoldások: </li>
+                    <ul>
+                        <li>Mobil keresi a legerősebb jelet</li>
+                        <li>A hálózat (bázisállomások) választják ki kihez csatlakozzon</li>
+                        <ul>
+                            <li>Cellák leterheltsége alapján pl.</li>
+                        </ul>
+                        <li>Vegyes (Ez van a GSM-ben)</li>
+                        <ul>
+                            <li>A mobil mér (kérésre)</li>
+                            <li>A hálózat dönt</li>
+                        </ul>
+                    </ul>
+                </ul>
+                <li>Alkotóelemek</li>
+                <ul>
+                    <li>Végberendezés</li>
+                    <li>BSS (Base Station Subsystem)</li>
+                    <ul>
+                        <li>Bázisállomások (BTS)</li>
+                        <li>Vezérlők (BSC)</li>
+                        <ul>
+                            <li>Handover</li>
+                            <li>Létrehozza a kapcsolatokat, rádiófrekihez rendeli</li>
+                            <li>Áramkörkapcsolás</li>
+                        </ul>
+                    </ul>
+                    <li>NSS (Network Swithing Subsystem)</li>
+                    <ul>
+                        <li>MSC (Mobil kapcsoló központ)</li>
+                        <ul>
+                            <li>Telefonközpont</li>
+                            <li>Telefon helyi adtainak egy része</li>
+                            <li>Barangolás</li>
+                            <li>Autentikáció</li>
+                        </ul>
+                        <li>HLR (Helyregiszter)</li>
+                        <ul>
+                            <li>Felhasználók összes helyi adata</li>
+                            <li>1 db</li>
+                        </ul>
+                        <li>AuC (Authentication center)</li>
+                    </ul>
+                </ul>
+                <li>Azonosítók</li>
+                <ul>
+                    <li>MSISDN</li>
+                    <ul>
+                        <li>Telefonszám</li>
+                        <li>Egyedi a világon</li>
+                    </ul>
+                    <li>IMSI</li>
+                    <ul>
+                        <li>SIM kártyát azonosít</li>
+                        <li>HLR adatbázis kulcsa</li>
+                    </ul>
+                    <li>IMEI: Készüléket azonosítja</li>
+                    <li>MSRN: Roaming azonosító (utal a földrazi heyre)</li>
+                </ul>
+                <li>Tartózkodási hely követés</li>
+                <ul>
+                    <li>Cella szinten: túl gyakori a cellaátlépés</li>
+                    <li>Ország szinten: túl sok ember broadcastolódik bejövő híváskor</li>
+                    <li>Megoldás Location Area</li>
+                    <ul>
+                        <li>Pár (20-30) cella méretű</li>
+                        <li>A hálózat annyit tud h melyik LA-ban vagyok</li>
+                        <li>Híváskor mindenki broadcast üzenetet kap az LA-ban</li>
+                        <li>LA átlépéskor adatbázis frissítés</li>
+                    </ul>
+                </ul>
+                <li>GSM szolgáltatások</li>
+                <ul>
+                    <li>Beszédátvitel</li>
+                    <ul>
+                        <li>Gyenge hangminőség, jó freki kihasználás</li>
+                        <li>13 kbps (a kevesebb jobb)</li>
+                    </ul>
+                    <li>SMS</li>
+                    <li>Adat</li>
+                    <ul>
+                        <li>9.6 kbps majd 14.4 kbps</li>
+                    </ul>
+                    <li>MMS</li>
+                </ul>
+                <li>GPRS</li>
+                <ul>
+                    <li>GSM továbbfejlesztése (2.5G)</li>
+                    <li>Áramkör kapcsolás helyett csomagkapcsolás (de asszem még nem IP)</li>
+                    <li>60-80 kbps</li>
+                    <li>Áramkörkapcsolás</li>
+                    <ul>
+                        <li>Garantált minőség dedikált csatornán</li>
+                        <li>Hívás felépítés majd leépítés</li>
+                        <li>A csatornát csak a két végpont használja</li>
+                        <li>Új hálózati alkotóelem: GMSC</li>
+                        <ul>
+                            <li>Átjáró más áramkörkapcsolt hálózatba</li>
+                        </ul>
+                    </ul>
+                    <li>Csomagkapcsolás</li>
+                    <ul>
+                        <li>PS alrendszer</li>
+                        <li>Kisebb a minőséggarancia</li>
+                        <li>Alacsony terheltségű hálózatra irányítunk más forgalmat &rarr; robosztus, skálázható</li>
+                        <li>A QoS külön feladat</li>
+                        <li>Új alkotelemek</li>
+                        <ul>
+                            <li>SGSN (GPRS Switching Node)</li>
+                            <ul>
+                                <li>Útvonalválasztó a PS alrendszerben</li>
+                                <li>A CS rendszer MSC-it, HLR-jét használja</li>
+                            </ul>
+                            <li>GGSN: Gateway a csomgkapcsolt hálózatba</li>
+                        </ul>
+                    </ul>
+                </ul>
+                <li>Edge</li>
+                <ul>
+                    <li>Okosabb moduláció</li>
+                    <li>3 bit / szimbólum</li>
+                    <li>3-szoros adatsebesség</li>
+                </ul>
+            </ul>
+        </ul>
+        <h2>3G hálózatok</h2>
+        <ul>
+            <li>UMTS</li>
+            <ul>
+                <li>Célok:</li>
+                <ul>
+                    <li>Jobb hagminőség</li>
+                    <li>Jobb freki kihasználás</li>
+                    <li>Nagyobb átvitelisebesség</li>
+                    <li>Kompatibilitás</li>
+                </ul>
+                <li>Szolgáltatások</li>
+                <ul>
+                    <li>Beszédátvitel</li>
+                    <ul>
+                        <li>Új kodek: AMR</li>
+                    </ul>
+                    <li>Adat</li>
+                    <ul>
+                        <li>IP internet elérés</li>
+                        <li>Sokkal nagyobb adatsebesség</li>
+                    </ul>
+                    <li>Multimédia</li>
+                    <ul>
+                        <li>Senki nem használta</li>
+                    </ul>
+                </ul>
+                <li>Alkotóelemei</li>
+                <ul>
+                    <li>USIM (új fajta UMTS SIM)</li>
+                    <li>Végberendezés</li>
+                    <li>Node B</li>
+                    <ul>
+                        <li>Ugyanaz mint a BTS</li>
+                        <li>Új fajta kódolást alkalmaz más frekvenciatartományban</li>
+                    </ul>
+                    <li>RNC (=BSC)</li>
+                    <li>Minden más maradt (MSC, HLR, SGSN, GGSN, GMSC)</li>
+                </ul>
+                <li>Újítások</li>
+                <ul>
+                    <li>Külön FDD és TDD</li>
+                    <li>FDD</li>
+                    <ul>
+                        <li>Nagyobb freki tartomány lefele irányban</li>
+                    </ul>
+                    <li>TDD</li>
+                    <ul>
+                        <li>Ugyanaz a frekvenciasáv</li>
+                        <li>Kihasználtság függvényében dinamikusan beállítható</li>
+                    </ul>
+                    <li>Külön frekvenciatartomány FDD és TDD alapú kommunikációra</li>
+                    <li>Kis méretű cellák</li>
+                    <ul>
+                        <li>Aránylag magas frekvencia miatt</li>
+                        <li>3-5km mértű cellák</li>
+                    </ul>
+                    <li>Minden freki tartományban 5MHz-es csatornák</li>
+                    <li>Csatornán belül CDMA</li>
+                </ul>
+                <li>CDMA</li>
+                <ul>
+                    <li>Sok szétkent kisteljesítményű jel összemosva</li>
+                    <li>Hibajavító kódolás</li>
+                    <li>Csatornázási kód</li>
+                    <ul>
+                        <li>NXOR szorzás egy szorzó kóddal</li>
+                        <li>A szóró kód sokkal nagyobb bitsebességű</li>
+                        <li>Minden adatfolymhoz külön szórókód</li>
+                        <li>A szorókódok ortogonálisak</li>
+                        <li>Az így kapott folyamokat összeadjuk</li>
+                        <li>Dekódolás</li>
+                        <ul>
+                            <li>Megint NXOR szorzunk a szórókóddal</li>
+                            <li>Az agy kapott jelet átlagoljuk bitidőre</li>
+                            <li>Elvileg az összes többi jel a szorzás és átlagolás után kinullázódik</li>
+                            <li>Egyedül a korábbi jel marad</li>
+                        </ul>
+                        <li>Bizonyítás</li>
+                        <ul>
+                            <li>1 db bit kódolása (b)</li>
+                            <li>1 bitidőben érkezik n db bit (B1, B2, B3, Bn), ezek mindegyike egy Ci szórókóddal szorzódik</li>
+                            <li>C1, C2, ... Cn ortogonális bináris vektorok</li>
+                            <li>A vett vektor = B1C1 + B2C2 + B3C3... + BnCn</li>
+                            <li>C1 magával vett skalár szorzata n</li>
+                            <li>C1 bármely más CI-vel vett skalár szorzata 0</li>
+                            <li>Ha ezt megszorozzuk C1-gyel és átlagoljuk (elosztjuk n-nel)</li>
+                            <li>(B1C1C1 + B2C2C1 + B3C3C1...) / n = nB1/n + 0 + 0 + 0 = Bn</li>
+                        </ul>
+                        <li>Ahhoz, hogy ortogonálisak legyenek, 1 fázisban kell lenniük</li>
+                        <li>Közös órajel kéne (de végberendezések között ilyen nincs)</li>
+                        <li>CDMA használata</li>
+                        <ul>
+                            <li>Node B CDMA-val küld a különböző végberendezéseknek</li>
+                            <li>A végberendezések CDMA-val kódolják a saját adatfolyamaikat (beszédhang és jelzés folyamok elkülönítése)</li>
+                        </ul>
+                        <li>Szórókód</li>
+                        <ul>
+                            <li>Könnyen generálható ortogonálisan</li>
+                            <li>SF (korábban n) 4 és 512 közt változhat</li>
+                            <ul>
+                                <li>felfele csak 4 - 256 (nem is kell több)</li>
+                            </ul>
+                            <li>SF = hány bit szórókód jut 1 bit adatra = szórókódok száma</li>
+                            <li>A Chipsebesség fixen 3 840 000 bit / s</li>
+                        </ul>
+                    </ul>
+                    <li>Keverő kódolás (Scrambling)</li>
+                    <ul>
+                        <li>Kb ortogonálisak, de az eltoltjaik is kb ortogonálisak</li>
+                        <li>Nem kell közös órajel, de nem lesz tökéletes az átvitel</li>
+                        <li>A többi kódolt folyam pszeudo zaj lesz</li>
+                        <li>Végberendezések elkülönítése</li>
+                        <li>Cellák elkülönítése</li>
+                        <li>SF = 38 400 (vagy spéci Node B-k esetén 256)</li>
+                    </ul>
+                </ul>
+                <li>Teljesítményszabálozás</li>
+                <ul>
+                    <li>Készülékek között a keverőkódolás zajossá teszi a cellát</li>
+                    <li>Ha egy telefon túl "hangos", az tönkreteheti a teljes a cellát</li>
+                    <li>Node B mondja a készüléknek mekkora sugárteljesítményt használjon</li>
+                    <ul>
+                        <li>1500 felszólítás / s</li>
+                        <li>GSM-ben is van ilyen, csak ott 2 / s</li>
+                    </ul>
+                </ul>
+                <li>Cellalégzés</li>
+                <ul>
+                    <li>A cellák mérete nem fix</li>
+                    <li>Forgalom függvényében változhat</li>
+                </ul>
+                <li>Handover</li>
+                <ul>
+                    <li>Hard handover</li>
+                    <ul>
+                        <li>Olyan gyors amilyen gyors csak lehet</li>
+                        <li>Hiszterézis: 2 cella határán mozgó végberendezés csak ritkán vált cellát</li>
+                    </ul>
+                    <li>Soft handover</li>
+                    <ul>
+                        <li>Egyszerre 3 Node B-vel lehet kapcsolat</li>
+                        <li>Egy adatot több Node B is megkap, 1 végberendezés 1 adatot többször is megkap</li>
+                        <li>Több teljesítmény üzenetet is kap: a legkisebbet választja</li>
+                    </ul>
+                </ul>
+            </ul>
+            <li>HSPA</li>
+            <ul>
+                <li>UMTS továbbfejlesztése</li>
+                <li>Nagyobb adatsebességű csomagkapcsolt hálózat</li>
+                <li>HSPA+</li>
+            </ul>
+        </ul>
+        <h2>4G mobilhálózat</h2>
+        <ul>
+            <li>LTE</li>
+            <ul>
+                <li>Nagy sebességű internet</li>
+                <li>"Csak internet"</li>
+                <li>Beszédátvitelhez VoLTE</li>
+                <li>Felhasználók számára gyors net</li>
+                <li>Operátorok számára új szolgáltatások és előfizetők</li>
+                <li>Gyártók számára új készülékek</li>
+                <li>Szabványosítás</li>
+                <ul>
+                    <li>GSM SIM alapú</li>
+                    <li>CDMA típusú szabványok (pl. UMTS): ESN alapú (~IMEI)</li>
+                    <li>LTE: Egységes SIM alapú szabvány</li>
+                </ul>
+                <li>Újítások</li>
+                <ul>
+                    <li>3G javítások</li>
+                    <li>Optimalizálás csomagkapcsolásra</li>
+                    <li>Mindent IP-n keresztül (áramkörkapcsolás teljes eldobása)</li>
+                    <li>Teljesítmény</li>
+                    <ul>
+                        <li>max 5ms késleltetés</li>
+                        <li>Még kisebb (1-5km) cellák</li>
+                        <li>FDD (bár van TDD is) terjedt el</li>
+                        <li>OFDMA frekvenciaosztás</li>
+                        <li>LTE Advanced-től vivő aggregáció</li>
+                    </ul>
+                    <li>MIMO</li>
+                    <ul>
+                        <li>Multiple In - Multiple out</li>
+                        <li>Bázisállomásban és telefonban is több antenna</li>
+                        <li>Párhuzamos adatfolyam ugyanazon frekvencián</li>
+                        <li>MU-MIMO: bázisállomás nem csak 1 user több csatornáját, hanem több user csatornáját is kiszolgálja</li>
+                    </ul>
+                    <li>Beamforming</li>
+                    <ul>
+                        <li>Irányított sugárzás</li>
+                        <li>Kevesebb zaj, jobb kihasználás, jobb hatótávolság</li>
+                    </ul>
+                    <li>HetNet</li>
+                    <ul>
+                        <li>Heterogén cellák</li>
+                        <li>Cella a cellában</li>
+                        <li>Több cellatípus és cellaméret kombinálása</li>
+                        <li>ICIC: interferencia szabályozás (teljesítményszabályozással,frekvenciaosztással, vagy időosztással)</li>
+                    </ul>
+                    <li>Vivőaggregáció</li>
+                    <ul>
+                        <li>Több vivő összefogása a nagyobb adatsebesség érdekében</li>
+                    </ul>
+                    <li>Handover</li>
+                    <ul>
+                        <li>Csak hard handover, mert nincs RNC</li>
+                        <li>Mivel nincs RNC, így a mobil mér, az eNode B dönt</li>
+                        <li>Intra eNodeB: cellaváltás eNodeB-n belül</li>
+                        <li>Inter eNodeB: eNodeB-k között X2 kapcsolat</li>
+                        <li>S1 handover: SGW és MME váltás</li>
+                    </ul>
+                </ul>
+                <li>Alkotóelemek</li>
+                <ul>
+                    <li>eNode B</li>
+                    <ul>
+                        <li>Nincs báziskontroller, mostantól az ő felelőssége</li>
+                    </ul>
+                    <li>Relay eNodeB</li>
+                    <ul>
+                        <li>Small cell-ek határán kis fogyasztású elem</li>
+                        <li>Átjátszás igazi eNodeB-nek jelkorrekcióval</li>
+                    </ul>
+                    <li>SGW</li>
+                    <ul>
+                        <li>Adattovábbítás a felhasználó és a hálózat között</li>
+                    </ul>
+                    <li>PGW</li>
+                    <ul>
+                        <li>Gateway az IP internet felé</li>
+                        <li>IP cím kezelés</li>
+                        <li>"Charging"</li>
+                    </ul>
+                    <li>MME</li>
+                    <ul>
+                        <li>Felhasználó követés</li>
+                        <li>Vezérlőüzeneteket kezel</li>
+                        <li>SGW-t választ</li>
+                        <li>HSS-sel authentikált</li>
+                        <li>Ő hozza létre a hordozókat</li>
+                    </ul>
+                    <li>HSS</li>
+                    <ul>
+                        <li>Felhasználói adatok</li>
+                    </ul>
+                </ul>
+                <li>VoLTE</li>
+                <ul>
+                    <li>Igény: beszédátvitel LTE felett</li>
+                    <ul>
+                        <li>Az operátoroknak még ebből van a legnagyobb bevétele</li>
+                        <li>Gazdaságosabb, jobb minőségű</li>
+                    </ul>
+                    <li>Megoldás</li>
+                    <ul>
+                        <li>VoIP?: küldjük egyszerűen IP felett</li>
+                        <li>LTE + IMS</li>
+                        <ul>
+                            <li>Használjuk az LTE-t</li>
+                            <li>Használjuk az IP Multimedia alrendszert</li>
+                            <li>&rarr; Alkalmazás és médiaszerverek összessége</li>
+                        </ul>
+                    </ul>
+                    <li>Szükséges</li>
+                    <ul>
+                        <li>Hálózati támogatás</li>
+                        <li>Média kodek támogatás</li>
+                        <li>Software támogatás</li>
+                        <li>Telefon beállítás</li>
+                    </ul>
+                    <li>Hordozók</li>
+                    <ul>
+                        <li>Rádiós interface + alagutak = hordozók</li>
+                        <li>Logikai egység</li>
+                        <li>APN-hez kapcsolódik (pl. internet)</li>
+                        <li>IMS-ben</li>
+                        <ul>
+                            <li>SIP (vezérlés) + RTP (adatfolyam)</li>
+                            <li>SIP és RTP üzeneteket LTE-vel juttatjuk el az IMS-be</li>
+                            <li>+QoS, hiszen ezek telefonhívások</li>
+                        </ul>
+                        <li>Default</li>
+                        <ul>
+                            <li>Nincs QoS</li>
+                            <li>Attach-kor épül fel (Detach-kor le)</li>
+                            <li>Több hordozó a különböző szolgáltatásokhoz (APN-ekhez)</li>
+                        </ul>
+                        <li>Dedikált</li>
+                        <ul>
+                            <li>QoS biztosítás</li>
+                            <li>Csak ideiglenesen létezik (egy hívás erejéig)</li>
+                            <li>Egy default hordozóhoz van kötve</li>
+                        </ul>
+                        <li>Attach</li>
+                        <ol>
+                            <li>Attach kérés (UE &rarr; eNodeB &rarr; MME &rarr; SGW / PGW)</li>
+                            <li>Hordozó létrehozása</li>
+                            <li>Attach válasz (ugyanez visszafele)</li>
+                            <li>IMS kérés</li>
+                            <li>Hordozó létrehozása</li>
+                            <li>IMS cím</li>
+                            <li>IMS (SIP) register (... &rarr; PGW &rarr; IMS)</li>
+                            <li>SIP OK 200 válasz</li>
+                        </ol>
+                        <li>Hívásindítás</li>
+                        <ol>
+                            <li>&rarr; SIP invite</li>
+                            <li>&larr; Előzetes válasz</li>
+                            <li>&larr; Erőforrás kérés</li>
+                            <li>&larr; Hordozó létrehozása</li>
+                            <li>&larr; Végleges válasz</li>
+                            <li>&lrarr; Médiafolyam (RTP)</li>
+                        </ol>
+                    </ul>
+                    <li>VoLTE + 3G (+2G)</li>
+                    <ul>
+                        <li>2G 3G multimédia</li>
+                        <ul>
+                            <li>ICS (IMS Centralized Service)</li>
+                        </ul>
+                        <li>CSFB</li>
+                        <ul>
+                            <li>Hívásindításkor fallback 2G 3G-re</li>
+                            <li>Hívásfogadás LTE-n, majd adatkapcsolat megszakad, vagy fallback</li>
+                            <li>A fallback időigényes (2G 3G attach kell)</li>
+                        </ul>
+                        <li>SRVCC</li>
+                        <ul>
+                            <li>Fallback helyett handover</li>
+                            <li>r(eversed)SRVCC: ugyanez fordítva (2G/3G &rarr; LTE)</li>
+                        </ul>
+                    </ul>
+                </ul>
+                <li>VoWiFi</li>
+                <ul>
+                    <li>Beltéren a lefedettség nagy lehet</li>
+                    <li>Erős, kiszámíthatatlan sugárzásra volna szükség</li>
+                    <li>Megoldás: LTE femtocellák vagy VoWiFi</li>
+                    <li>Előnyei</li>
+                    <ul>
+                        <li>Meglévő WiFi infrastruktúra használata</li>
+                        <li>Marad a hívószám</li>
+                        <li>Transzparens hívásindítás (2G 3G 4G WiFi)</li>
+                        <li>WiFi WiFi handover</li>
+                        <li>VoLTE VoWiFi handover</li>
+                        <li>Azonos számlázás</li>
+                    </ul>
+                    <li>Trusted: WiFi és LTE szolgáltatások egyazon operátortól</li>
+                    <li>Untrusted: ~ nem ugyanattól az operátortól</li>
+                    <ul>
+                        <li>ePDG</li>
+                        <ul>
+                            <li>Evolved Packed Data Gateway</li>
+                            <li>WiFi internet és PGW között</li>
+                            <li>UE és PGW közt IP Sec kapcsolat</li>
+                        </ul>
+                        <li>AAA</li>
+                        <ul>
+                            <li>Authorization, Authentication, Accounting</li>
+                            <li>Biztonsági kulcs</li>
+                        </ul>
+                        <li>HSS</li>
+                    </ul>
+                </ul>
+            </ul>
+            <li>5G</li>
+            <ul>
+                <li>Nagy sebesség</li>
+                <li>Buzi nagy frekvencia </li>
+                <li>Nagy spektrális hatékonyság</li>
+                <li>Kis átviteli költség és fogyasztás</li>
+                <li>User-Controller architektúra (CUPS)</li>
+                <ul>
+                    <li>Control and User Plane Separation</li>
+                    <li>Külön SGW-u és SGW-c</li>
+                    <li>Külön PGW-u és PGW-c</li>
+                </ul>
+                <li>Felhasználás</li>
+                <ul>
+                    <li>IoT</li>
+                    <li>VR</li>
+                    <li>Media Streaming</li>
+                    <li>Cloud Services</li>
+                </ul>
+                <li>Access Network</li>
+                <ul>
+                    <li>LTE + finomítások</li>
+                    <li>MIMO, Beamforming, vivő aggregáció, HetNet stb.</li>
+                </ul>
+                <li>Core Network</li>
+                <ul>
+                    <li>SBA (Service Based Architecture)</li>
+                    <ul>
+                        <li>Független szolgáltatások HTTP API-kkal</li>
+                    </ul>
+                    <li>NFV (Network Function Virtulaization)</li>
+                    <ul>
+                        <li>Virtuális hálózati funkciók</li>
+                        <li>SW/HW elkülönítése</li>
+                        <li>Infrastruktúra megosztása</li>
+                        <li>SDN: + konfigurálhatóság (Software Defined Networking)</li>
+                    </ul>
+                    <li>Network Slicing</li>
+                    <ul>
+                        <li>Különböző alkalmazásoknak külön gerinchálózat</li>
+                    </ul>
+                </ul>
+                <li>Bevezetés</li>
+                <ol>
+                    <li>Standalone NR</li>
+                    <ul>
+                        <li>Készülékek az új "New Radio" bázisállomásokkal kommunikálnak</li>
+                        <li>A New Radio-k férnek hozzá az 5G gerinchálózathoz</li>
+                    </ul>
+                    <li>LTE Assisted 4G</li>
+                    <ul>
+                        <li>A készülékek eNodeB-kkel és New Radiokkal is kommunikálnak</li>
+                        <li>De végső soron mind2 bázisállolmás az LTE networköt használja</li>
+                    </ul>
+                </ol>
+            </ul>
+        </ul>
+        <h2>IPTV</h2>
+        <ul>
+            <li>Digitális TV</li>
+            <ul>
+                <li>Felszínen sugározva (DVB-T)</li>
+                <li>Kábeles adatátvitel (DVB-C)</li>
+                <li>Műholdas sugárzás (DVB-S)</li>
+            </ul>
+            <li>IP alapú TV</li>
+            <ul>
+                <li>IPTV</li>
+                <ul>
+                    <li>Élő adás</li>
+                    <li>Menedzselt hálózaton</li>
+                    <li>Multicast addressing</li>
+                    <li>Országos / regionális / városi</li>
+                    <li>Terjesztési modell</li>
+                    <ul>
+                        <li>Headend &rarr; IPS hálózat &rarr; set-top-box (előfizető)</li>
+                        <li>VoD kiszolgáló</li>
+                        <li>Home gateway</li>
+                        <li>Az IPS QoS-t biztosít a transzport hálózatban</li>
+                        <ul>
+                            <li>Média tartalom minősége</li>
+                            <li>Hálózat mérhető paraméterei (csomagvesztési ráta, avg jitter, max jitter stb.)</li>
+                            <li>Átküldött tartalom szubjektív megítélése</li>
+                        </ul>
+                    </ul>
+                </ul>
+                <li>Internet TV (&nequiv; IPTV) </li>
+                <ul>
+                    <li>VoD</li>
+                    <li>Publikus IP hálózaton</li>
+                    <li>Unicast addressing</li>
+                    <li>Globális</li>
+                    <li>OTT terjesztési modell</li>
+                    <ul>
+                        <li>Tartalom szolgáltató (pl. Netflix) &rarr; Publikus internet (ISP-k hálózata) &rarr; Felhasználó</li>
+                    </ul>
+                </ul>
+            </ul>
+            <li>Valósidejűség</li>
+            <ul>
+                <li>Best effort</li>
+                <ul>
+                    <li>Nincs semmire garancia</li>
+                    <li>Csomagok elvesznek</li>
+                    <li>Átrendeződnek</li>
+                    <li>Késleltetés és jitter nagy lehet</li>
+                </ul>
+                <li>Megoldás</li>
+                <ul>
+                    <li>QoS</li>
+                    <li>Eddig: FIFO alapú csomagtovábbítás</li>
+                    <li>Most: forgalomtípustól függő dinamikus kiszolgálás</li>
+                </ul>
+            </ul>
+            <li>On demand</li>
+            <ul>
+                <li>TCP alapú</li>
+                <li>Hosszú (5-15s) időszegmensek küldése</li>
+            </ul>
+            <li>Live stream</li>
+            <ul>
+                <li>Rövid időszegmensek (~100ms)</li>
+                <li>Folyamatos forgalom (fix csomagráta)</li>
+                <li>TCP vagy UDP/RTP alapú</li>
+                <li>Sorrendtartás, időzítés, alacsony késleltetés</li>
+                <li>Nem kell újraküldés, torlódásszabályozás</li>
+            </ul>
+            <li>Szolgáltatások</li>
+            <ul>
+                <li>Az operátorok támogatják a saját hálózatukban</li>
+                <li>Élő IPTV és IP rádió </li>
+                <li>DRM (Rights management)</li>
+                <li>EPG, Teletext</li>
+                <li>Adás rögzítése (kliens vagy szerver oldalon) akár több párhuzamosan, akár előre időzített módon</li>
+                <li>PIP, Time shiftng</li>
+                <li>VoD videotéka</li>
+                <li>Alkalmazások (hírek, időjárás stb.)</li>
+            </ul>
+            <li>Headend</li>
+            <ul>
+                <li>Bemenet: DVB-T, DVB-C, Content Source</li>
+                <li>Content Aggregation</li>
+                <li>Media transcoding</li>
+                <ul>
+                    <li>H.264/265 videókódolás</li>
+                    <li>MPEG AAC hangkódolás</li>
+                    <li>CBR: konstans bitráta / VBR: változó (komplexitással arányos) bitráta</li>
+                </ul>
+                <li>IP Scrambler (+EPG server, +CAS/DRM)</li>
+                <li>Content Distribution Network</li>
+                <ul>
+                    <li>IP + IGMP + PIM</li>
+                    <li>UDP</li>
+                    <li>RTP + RTCP</li>
+                    <li>MPEG2 TS</li>
+                    <li>PES</li>
+                </ul>
+            </ul>
+            <li>Multicasting</li>
+            <ul>
+                <li>IPv4: 224.0.0.0/4 (D típusú címek)</li>
+                <li>Végpontok egy halmazát azonosítja</li>
+                <li>A csoport (halmaz) tagság dinamikusan változik</li>
+                <li>IGMP</li>
+                <ul>
+                    <li>Csoport tagság management</li>
+                    <li>Végpont és útválasztó kommunikál (host és querier)</li>
+                    <li>Üzenetek</li>
+                    <ul>
+                        <li>Membership query (csoporttagság lekérés)</li>
+                        <li>Membership report (tagság jelentése, válasz a ms.queryre)</li>
+                        <li>IGMPv3: include / exclude mód (pl. DoS támadások ellen)</li>
+                    </ul>
+                    <li>IGMP snooping</li>
+                </ul>
+                <li>PIM</li>
+                <ul>
+                    <li>Multicast útválasztás</li>
+                </ul>
+                <ol>
+                    <li>Sparse mode</li>
+                    <ul>
+                        <li>Explicit IGMP lekérdezések</li>
+                        <li>Egy multicast fát épít fel, melynek levelei a csoporttagok</li>
+                        <li>Gyökere az RP (Rendezvouz point)</li>
+                    </ul>
+                    <li>Dense mode</li>
+                    <li>Source Specific Multicast</li>
+                    <ul>
+                        <li>A multicast fa gyökere egy előre definiált csomópont (S)</li>
+                        <li>Csoport megadása a gyökér és csoportazonosító párossal</li>
+                    </ul>
+                </ol>
+                <li>RTP</li>
+                <ul>
+                    <li>Valósidejű médiaátvitel</li>
+                    <li>Szolgáltatások</li>
+                    <ul>
+                        <li>Csomagátrendeződés kezelése</li>
+                        <li>Időzítés (jitter kompenzáció)</li>
+                        <li>Hang és kép 1aránt</li>
+                        <li>Multicast támogatás</li>
+                        <li>Alkalmazás szintű keretezés (ezmiafaszom?)</li>
+                    </ul>
+                </ul>
+                <li>MPEG-2 TS</li>
+                <ul>
+                    <li>Média tartalmak folyamokba rendezése</li>
+                    <li>Egy TS-ben több médiafolyam</li>
+                    <li>Egyszerre több hangsáv átvitele lehetséges</li>
+                    <li>PID: elemi folyam azonosító</li>
+                    <li>Táblák (IPTV-hez)</li>
+                    <ul>
+                        <li>PAT: egy TS-ben lévő programok listája</li>
+                        <li>PMT: egy programhoz tartozó elemi folyamok (PID-k)</li>
+                        <li>EIT: EPG alrendszer műsorújsága</li>
+                        <li>PCR: időzítésre használt referenciaóra</li>
+                    </ul>
+                </ul>
+                <li>H.264</li>
+                <ul>
+                    <li>Veszteséges tömörítés</li>
+                    <li>CBR / VBR</li>
+                    <li>I-Slice, P-Slice, B-Slice</li>
+                    <ul>
+                        <li>I-Frame: egy képcsoport fix kezdőkerete</li>
+                        <li>P-Frame: egy I vagy P kerethez relatív változás vektorral leírt keret</li>
+                        <li>B-Frame: előre és hátra is utal</li>
+                    </ul>
+                    <li>GOP</li>
+                    <ul>
+                        <li>Group of Pictures</li>
+                        <li>Egy képcsoport I-Frame-mel kezdődik és P/B Framekkel folytatódik</li>
+                        <li>Minden H.264 adatfolyam GOP blokkokból áll (Minden I Frame egy új GOP-t kezd)</li>
+                    </ul>
+                </ul>
+            </ul>
+            <li>Szolgáltatásminőség</li>
+            <ul>
+                <li>Tényezői</li>
+                <ul>
+                    <li>Delay</li>
+                    <li>Jitter</li>
+                    <ul>
+                        <li>De-Jitter puffer</li>
+                        <li>A pufferbe változó időközönként kerül adat</li>
+                        <li>Konstans időközönként olvasódik ki belőle</li>
+                        <li>De: ez késleltetést okoz</li>
+                    </ul>
+                    <li>Packet loss</li>
+                    <li>Reordering</li>
+                    <li>Throughput</li>
+                </ul>
+                <li>Metrikák</li>
+                <ul>
+                    <li>MDI: késleltetés + csomagvesztés</li>
+                    <li>ZAP time: csatornaváltási idő</li>
+                    <ul>
+                        <li>Multicast csoportváltás (IGMP Leave + Join)</li>
+                        <li>Új PIM fa építése</li>
+                        <li>De jitter puffer feltöltése</li>
+                        <li>I-Frame bevárása</li>
+                    </ul>
+                    <li>EPG betöltődési idő</li>
+                </ul>
+            </ul>
+        </ul>
+    </main>
+</body>
+</html>
